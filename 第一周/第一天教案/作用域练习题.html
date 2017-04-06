@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+//    console.log(total);
+//    var total = 0;
+//    function fn (param1, param2) {
+//        console.log(total);
+//        total = param1 + param2;
+//        console.log(total);
+//    }
+//    fn(1,2);
+//    console.log('最后的'+total);
+
+
+    // 作用域链讲完之后的练习
+    var i = 10;
+    function fn () {
+        i++;
+        return function (n) {
+            console.log(n + (++i))
+        }
+    }
+    var f = fn ();
+    f(10); // 21
+    f(20); // 理解有误，其实是上一级作用域不销毁，32
+    fn()(10);// 21
+    fn()(20);// 31
+
+
+
+</script>

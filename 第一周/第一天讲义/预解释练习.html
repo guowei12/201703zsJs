@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+//    //  var num  function sum () {
+//                           num = 5;
+//                          console.log(num);
+//                }
+
+//    console.log(num);
+//    num = 2; // 进行定义
+//    var num = 3;
+//    function sum () {
+//         var num = 5;
+//        console.log(num);
+//    }
+//    num = 4;
+//    console.log(num);
+
+
+
+// 预解释阶段发生在，创建了堆内存，让代码执行之前,对当前作用域中带 var 和 function的进行预解释。
+// var和function的区别。 在预解释阶段 var 只声明没有定义  function 声明和定义同时发生了。
+//  代码自上而下开始依次执行，遇到 num 这时候进行定义，但是function的 sum不再进行定义了，因为已经在预解释阶段发生了定义。
+
+    console.log(total); // undefined
+    var total = 0;
+    function fn (param1, param2) {
+        console.log(total); // 0
+        total = param1 + param2;
+        console.log(total);// 3
+    }
+    fn(1,2);
+    console.log('最后的'+total);// 3
+
+</script>

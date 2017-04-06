@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // 预解释练习
+    //1、
+//    console.log(num);
+//    if (!('num' in window)) {
+//        var num = 10
+//    }
+//    console.log(num);
+
+//  2、
+//    alert(a);// un
+//    var a = 0;
+//    alert(a);// 0
+//    function fn() {
+//        alert(a); // UN
+//        var a = 2;
+//        alert(a);// 2
+//    }
+//    fn();
+//    alert(a); // 0
+
+
+
+
+    //3、在预解释的时候，同一个名称的变量,如果都是通过var声明的，之前声明过，后边的声明就不重新在声明，如果是function，后边会重新声明和定义，但是后边的定义会覆盖前边的。
+    // 在所有的工作环境，执行环境，作用域，栈内存中，永远是先进行预解释。
+
+//    function a(b){
+//        console.log(1)
+//    }
+//    function a () {
+//        console.log(2)
+//    }
+//     a = 3;
+//    console.log(a);
+
+
+    // 4、
+//    (function(){
+//        console.log(a);
+//        var a = b = 3;
+//    })();
+//    console.log(b);
+//    console.log(a);
+
+
+
+
+    //5、
+    function sum (obj, obj2) {
+        obj.name = 'zx';
+        console.log(obj.name);
+        obj = {num: 2};
+        console.log(obj.name);
+        console.log(obj.num);
+    }
+    var obj = {name:'brother'};
+    sum(obj);
+    console.log(obj.name);
+    console.log(obj.num);
+
+</script>

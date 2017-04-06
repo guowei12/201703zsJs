@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="one"></div>
+</body>
+</html>
+<script type="text/javascript">
+    // 我们之前讲了预解释和作用域
+    // 讲了私有作用域 和 全局作用域。 下面我们讲讲  私有作用域和全局作用域的关系作用域链。
+    // 在函数执行的时候，代码工作流程是什么
+    // 1、预解释。
+    // 2、给形参赋值
+    // 3、由上到下进行解析执行代码
+    // 我们说过后面的预解释会把前面的预解释进行覆盖，函数的形参相当于var num ；所以也进行预解释，也是当前函数的私有变量
+
+    // 作用域链，闭包。
+
+    //  如何查找上一级作用域
+//    var num = 1;
+//    var num3 = 3;
+//    var num4 = 4;
+//    function method(num,num2){
+////        console.log(num);
+////
+////        console.log(num3);
+//        console.log(num4);
+//        var num3 = 3;
+//        //console.log(num3);
+//        var num5 = 5; //闭包机制，在函数自有作用域，代码执行的时候。私有作用域会保护私有变量不被外面所访问和调用。这种机制就叫做闭包。这是最简单的闭包
+//        return num + num2;
+//    }
+//   // method(4,2)
+//    console.log(num5);
+
+    //该做作用域的题了
+
+
+
+    //  私有作用域可以访问全局作用域内的东西
+    //  只要是在作用域内执行的代码，或生产的东西，都会跟当前作用域内有联系。在函数执行有返回值，并且返回的值在父作用域之外，中对父级作用域中的变量有调用的时候，当前父级作用域栈内存不能销毁，返回的东西还需要在他基础之上运行，还要找到他。
+
+
+
+
+    function  fn () {
+        var num = 1;
+        return function method () {  // 是fn函数告诉了浏览器创建了堆内存存放他。method是这个栈内存运行生产出来的
+            console.log(++num)
+        }
+    }
+    var that = fn();
+    that();// 这是更严格意义上的闭包，可以在父函数外边，利用父级作用域的值。
+
+
+    (function() { //这就是作用域的链的关系
+        that()
+    })();
+
+//    var oDiv = document.getElementById('one');
+//    (function () {
+//        oDiv.onclick = function () {
+//            // DOM结构需要让这些代码执行有意义，DOM在哪是不是在这个函数的栈内存之外呢，在这个栈内存之外的DOM，DOM结构同样需要这个代码的执行结果。所以这种内存也不销毁
+//        }
+//    })();
+
+//        function  fn1 () {
+//            var num = 1;
+//            return function() {
+//                console.log(num)
+//            }
+//        }
+//        fn1()();  // 这种也销毁
+//
+//
+//
+//    function  fn1 () {
+//        var num = 1;
+//        (function() {
+//            console.log(num)
+//        })()
+//    } // 这种也销毁
+
+
+
+
+
+
+</script>

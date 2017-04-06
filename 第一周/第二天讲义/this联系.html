@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    var obj = {
+        init:function () {
+            console.log(this);
+        }
+    };
+    obj.init();// OBJ
+    function sum () {
+        console.log(this);
+    }
+    sum();// WINDOW
+    function method () {
+        sum();//WINDOW
+    }
+    method();
+
+
+</script>

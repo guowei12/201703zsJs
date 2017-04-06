@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0 auto;
+            padding: 0 auto;
+        }
+        #one {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+        #two {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: green;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="one"> </div>
+    <div id="two"> </div>
+</body>
+</html>
+<script type="text/javascript">
+    // 在这种情况，我们函数和DOM形成映射，是操作DOM的时候方法，这时候的函数作用域是不销毁的
+    var that = document.getElementById('one')
+    var two = document.getElementById('two');
+    that.onclick = function () {
+        var num = 'num';
+        that.setAttribute(num,'1');
+        that.index = num;
+        alert('点了红色了');
+    };
+    console.log(that.index);
+    two.onclick = function () {
+        alert(that.index)
+    };
+    var obj = {
+        name :'liuzhao'
+    };
+    console.log(obj.age)
+</script>

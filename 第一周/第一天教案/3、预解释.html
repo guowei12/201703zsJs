@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    var num1 = 1;
+
+    // 这就叫做预解释 浏览器在解析这行代码的时候，会把 var 和 function  的声明或定义的动作提前，提升到作用域的最前边。也叫变量提升。
+    // 什么叫申明 什么叫定义
+    var num;// 这就是声明
+    num = 2; // 这就是定义
+
+    // 为什么什么说 声明 或 定义的动作,这主要取决于var 和 function 预解释的时候的区别
+
+
+    // a.带var关键字的在预解释阶段只完成了声明；
+    // b.带function关键字的在预解释阶段完成了声明和定义两个操作，这样允许了可以直接对他的调用。  好我们看看两者的区别；
+
+
+    // 我们作用域运行的时候，会把变量的声明提升到最前面，
+    // 函数在执行的时候，会把变量提升到在内存的最前边开始解析，什么叫做变量的提升，变量的声明，比如我们 var num = 1；
+    // 声明放在栈内存的最前
+
+
+    //预解释中的注意项，var 和 function 是在代码运行解析时候的栈内存作用域中才进行的预解释
+
+
+    // 1、 var的声明变量和定义是分离开来的，先声明再赋值定义，function的声明变量和定义是同时进行的。
+//    console.log(obj);
+//    console.log(sum(1, 2));
+//    var obj = {
+//        name: 'zhaoxuan'
+//    };
+//    function sum(x, y) {
+//        var num = 1;
+//        return x + y;
+//    }
+    // 2、在函数体中 形参也是会进行预解释的。
+    function sum (x,y) {
+        console.log(x+"预解释");
+    }
+    sum();
+//    // 2、在判断体中，不管判断成立不成立，代码都会进行预解释。
+//
+//    if (false) {
+//        var num3 = 2;
+//    }
+//    console.log(num3) //undefined
+//    // 3、 在函数表达式中 = 号右边的function不进行预解释， 只进行var 的预解释
+//    var num = function () {
+//        alert('不提前预解释function')
+//    };
+//    // 4、 自执行函数function不进行预解释，里边的代码进行预解释
+//    (function(){
+//        alert(num);
+//        var num = 1;
+//    })()
+//    // 5、 函数返回值 return 下边的代码不执行，但是进行预解释；return 后边跟着的是返回值，所以不进行预解释
+//    function sum() {
+//        var num  = 1;
+//        numT +=1;
+//        return function (){
+//            var num2 = 2;
+//            alert(num2);
+//        };
+//        var numT = 2;
+//    }
+//    // 6、变量名不能重复，在预解释的时候,后边的声明会把前面的声明给覆盖会发生覆盖
+//    fn();
+//    var fn = 1;
+//    function fn () {
+//        console.log(1)
+//    }
+//    fn();
+//    function fn() {
+//        console.log(2);
+//    }
+    //7、不带var 的变量，不进行变量提升，执行相当于给window对象添加了一个自定义属性，只有在代码执行到这的时候才有意义，所以我们在代码执行到他的赋值语句之前调用他，会报错
+</script>

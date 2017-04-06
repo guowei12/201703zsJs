@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // this 就是这个的意思,this代表的是当前执行的主体对象。
+    var obj = {init:function() {
+        console.dir(this)
+    }};
+    function num () {
+        console.log(this)
+    }
+    obj.init();
+    window.obj.init();
+    num();
+    // this 跟指向跟原型链，堆栈内存，跟执行环境，和在哪定义的 都没有关系
+    // 怎么判断this的指向
+    //1、函数执行的时候，看函数前面是否有点'.'，点前面第一个是谁，this就指向谁。没有. 就是window
+    function fn () {
+        num()
+    }
+    num();
+    // 2、 自执行函数的this永远是window
+    // 3、 给一个元素绑定事件，再触发事件，函数执行的时候，直接绑定的函数this指向当前元素
+    var odiv = document.getElementById('one');
+    odiv.onclick = fn;
+    odiv.onclick = function () {
+        console.log(this);
+        fn();
+    }
+</script>

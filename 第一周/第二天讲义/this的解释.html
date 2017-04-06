@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        *{
+            margin: 0 ;
+            padding: 0;
+        }
+        #one {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="one"></div>
+</body>
+</html>
+<script type="text/javascript">
+
+    // this
+
+    // this跟在哪的栈内存中执行的，跟那个堆内存中定义的，跟原型链，更预解释，一点都都没有关。
+    // 1、函数执行的时候，看函数前面有没有. 点前面紧跟着的是谁this就指向谁（调用对象）,没有点就是window。
+    // 2、自执行函数中的this 永远是window
+
+    // 3、DOM事件当中，直接绑定的触发函数中的this，是当前的DOM对象。调用函数的不是。
+
+    //4、构造函数中this 指向当前类的实例
+
+
+
+    //1、 函数的调用中的this
+//        function sum (that) {
+//            console.log(this)
+//        }
+//    console.log(window.sum);
+//    sum();
+//        var obj = {
+//            name:'zhao主席',
+//            init: {
+//                method:(function() {
+//                    this.name = 'haha'; // window.name = haha
+//                    return function () {
+//                        this.name = 'zhao总'
+//                    }
+//                })(),
+//                name:'zhao老师'// 赵总
+//            }
+//        };
+//    obj.init.method();
+//    console.log(obj.init.name); // 赵总
+//    console.log(obj.name); // 赵主席
+//    console.log(window.name);// 哈哈
+
+    //2、 自执行函数中的this
+//    window.name = 'lwx';
+//    (function() {
+//        this.name = 'student';// window
+//    })();
+//    console.log(window.name);
+//  // 3、DOM事件直接绑定函数中的this
+//    var one = document.getElementById('one');
+//    one.onclick = function () {
+//        console.log(this);//
+//        sum();
+//    };
+
+    // '属性名' in 对象、
+//     var obj = {
+//         name: '高佳睿',
+//         age: '18'
+//     };
+//    console.log('num' in window);
+//    var num;
+//    console.log(window.num);
+
+
+</script>

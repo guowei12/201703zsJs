@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0 auto;
+            padding: 0 auto;
+        }
+        #one {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="one"> </div>
+</body>
+</html>
+<script type="text/javascript">
+    // 全局作用域 window ，加载html页面，浏览器会创建一个栈内存空间供js代码代码执行，这个栈内存就是全局作用域
+//    var num1 = 1;
+//    var num2 = 2;
+//    var num3 = 3;
+//    function method (param1, param2){
+//        console.log(num1); // undefined
+//        var num2 = 3;
+//        var num1 = 5; // 5
+//        console.log(num2); // 3
+//        return function () {
+//            var num3 = 3;
+//            console.log(num3)
+//        }
+//    }
+//    method();
+//    // 如何查找上一级作用域？
+//    // method在执行之出，创建一个栈内存，供他的代码工作执行，进行预解释。在这个栈内存私有作用域中，所声明的变量都是私有变量，这些变量 num1 ，是私有变量，会受到当前作用域的保护，不被外界所干扰和调用。（闭包）。代码执行，我执行到num2，当前作用域中没有提前声明他的存在，那当前作用域会访问上一级作用域，问问他有没有创建和赋值。这就是作用域链，私有和共有作用域之间的关系。1、私有能访问公有的，公有的不行能调用访问私有的。
+//
+//
+//
+//
+//    // 1、作用域是如何产生的
+//    // 2、如何查找上一级作用域（作用域链）。 引出了闭包的内容。
+//    // 3、严格意义上的闭包，严格闭包通过栈内存不销毁，保护内部变量，而且下一级作用域可已访问内部变量
+//
+//    function  fn () {
+//        var num = 1;
+//        return function method () {
+//           return (++num)
+//        }
+//    }
+//    var that = fn();
+//    var num = that();  // 这执行的时候才是严格意义上的闭包
+//    // 这是更严格意义上的闭包，可以在父函数外边，利用父级作用域的值。
+//    // 在函数执行的时候，函数体中有返回值则，函数执行的作用域一般不销毁。
+//
+//    // 调用了上一级栈内存的变量，并返回给函数外，造成了上一级作用域不销毁。（栈内存）
+//   //   闭包的缺点：会造成很多不销毁的栈内存。影响浏览器性能
+//    //  闭包的优点 ：  1、保护内部变量不被外界所污染，内部变量也不污染外部变量
+//                    // 2、 可以通过返回值，访问内部变量的值
+//    // 销毁的作用域。
+//    //1、当函数执行完，如果没有返回值，供外边作用域调用则直接销毁。
+//        function  sum (n,y) {
+//            var i = 0;
+//            i = n + y;
+//            alert(i);
+//        }
+//        sum(1,2);
+//        sum(1,2);
+//    // 2、在函数内部的自执行函数，虽然调用了上级作用域的值，但是函数执行完作用域依然销毁
+////    function sum () {
+////        var num = 1;
+////        (function(){
+////            var  i = 0;
+////            alert(num)
+////        })()
+////    }
+////    sum();
+//    // 3 、 在我们的函数执行的返回值，紧跟着当前函数直接执行的时候。作用域也会销毁。
+//    function method () {
+//        var num = 1;
+//        return function () {
+//            num +=1
+//        }
+//    }
+//    method()();
+//    // 4、产生第三方对函数内部变量有承接，赋值的时候，当前作用域不销毁，这种销毁是暂时不销毁。
+//    function method () {
+//        var num = 1;
+//        return function () {
+//           return num +=1
+//        }
+//    }
+//    var obj = method()();
+    // 5  在绑定事件中的函数，函数的栈内存是永远不销毁的。
+    // 在这种情况，我们函数和DOM形成映射，是操作DOM的时候方法，这时候的函数作用域是不销毁的
+    var that = document.getElementById('one');
+    that.onclick = function () {
+        that.index = 1;
+    };
+
+
+
+
+
+
+</script>

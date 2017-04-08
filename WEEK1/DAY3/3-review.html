@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //->预解释的时候：var num; ->undefined  ->window.num=undefined在全局作用域中声明的变量也相当于给WINDOW增加了一个私有的属性
+
+    console.log(num);//->undefined
+    console.log(fn);//->undefined 在新版本的浏览器中,条件中的函数在预解释的时候只能先声明不能被定义,当然函数如果不在判断中,预解释的时候是可以被定义的
+    if (("num" in window)) {//-> ATTR IN OBJ：验证当前的NUM是否为WINDOW的一个属性,是返回TRUE,反之是FALSE  =>FALSE
+        var num = 100;
+        console.log(fn);//->函数体本身 在新版本的浏览器中,只要条件成立,它就认为肯定会把函数执行的,那么我们提前把函数进行定义了
+        function fn() {
+
+        }
+    }
+    console.log(num);//->undefined
+</script>
+</body>
+</html>

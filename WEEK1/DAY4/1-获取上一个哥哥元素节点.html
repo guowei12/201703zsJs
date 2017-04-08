@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<!--ul.box>li*10>a>img+span [TAB]UL的样式叫做BOX，里面有10个LI，每个LI下有一个A，A中有一个IMG和SPAN标签-->
+<!--ul>li{$}*9 [TAB]创建九个LI,每个LI中的内容是从1~9累加的数字-->
+
+<div>1</div>
+<div>2</div>
+<div id="div3">3</div>
+<div>4</div>
+<div>5</div>
+
+<script>
+    //num.log [TAB]自动补齐控制台输出的CONSOLE.LOG(NUM)
+    //    var oDiv3 = document.getElementById('div3');
+    //    console.log(oDiv3.previousSibling);//->获取上一个哥哥节点(不一定是元素)
+
+    /*
+     * 获取当前元素的上一个哥哥元素节点
+     * 1、先获取当前元素的上一个哥哥节点(不一定是元素,如果是元素的话NODE TYPE为一)，如果不是元素节点，我们基于当前找到的节点继续找上一个哥哥，直到找到元素节点为止 =>具体找几次不知道
+     * 2、如果一直找，找到头了，还没有元素节点，我们返回NULL即可
+     */
+    //    var oDiv3 = document.getElementById('div3');
+    //    var pre = oDiv3.previousSibling;
+    //    while (pre && pre.nodeType !== 1) {//->条件成立说明它不是元素节点,我们就需要循环向上查找；还有一个条件需要我们注意,只有找到的上一个哥哥存在我们才会继续找,如果已经找到开头了,没必要在继续找了(pre !== null  <==> pre)；
+    //        pre = pre.previousSibling;
+    //    }
+    //    console.log(pre);
+
+
+    /*
+     * prev：获取当前元素的上一个哥哥元素节点(兼容所有浏览器) =>JQ中也有一个叫做PREV的方法,我们接下来写的代码就是JQ源码
+     * @parameter
+     *    curEle:current element 当前操作的元素
+     * @return
+     *    上一个哥哥元素节点或者是NULL(没有返回NULL)
+     * By Team on 2017-04-08 11:13
+     */
+    function prev(curEle) {
+        //curEle.previousElementSibling:获取上一个哥哥元素节点,但是在IE6~8下不兼容；
+        //in：用来检测某一个属性名是否属于这个对象(不管是私有的还是公有的属性)，只要是它的属性就返回TRUE
+        if ('previousElementSibling' in curEle) {
+            return curEle.previousElementSibling;
+        }
+        var p = curEle.previousSibling;
+        while (p && p.nodeType !== 1) {
+            p = p.previousSibling;
+        }
+        return p;
+    }
+
+    var oDiv3 = document.getElementById('div3');
+    var p = prev(oDiv3);
+
+
+    //->获取下一个弟弟元素节点 next
+    //->获取所有的哥哥元素节点 prevAll
+    //->获取所有的弟弟元素节点 nextAll
+    //->获取所有的兄弟元素节点 siblings
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //->在非严格模式下(我们正常写代码默认就是非严格模式),ARGUMENTS和形参存在的“映射”关系：一个的值发生改变,大家都会受到影响
+    //    function fn(a, b) {
+    //        //->a=10
+    //        //->b=20
+    //        //->arguments: [0:10,1:20,length:2]
+    //
+    //        a = 100;
+    //        console.log(arguments[0]);//->100
+    //
+    //        arguments[1] = 200;
+    //        console.log(b);//->200
+    //
+    //        arguments.length--;//->ARGUMENTS是内置的类数组,“LENGTH--”只会把LENGTH属性的值改了,但是不会影响最后容器中的内容存储
+    //        console.log(arguments);
+    //    }
+    //    fn(10, 20);
+
+    //->arguments.callee:当前函数本身
+    //->arguments.callee.caller:存储的是当前函数执行所在的作用域,或者说在哪个函数下执行的,这个属性存储的就是那个函数名(在WINDOW下执行的,存储的结果是NULL)
+    //    function fn() {
+    //        console.log(arguments.callee.caller);
+    //    }
+    //    function sum() {
+    //        fn(10, 20);
+    //    }
+    //    sum();
+
+    //->JS中的严格模式:对一些代码的要求比之前更加严格了,具体都有哪些变化(高程三最后专题总结的时候"JS严格和非严格模式的区别")
+    "use strict";//->在编写代码之前声明采用JS的严格模式:这种模式现在应用特别的多,基本上封装的组件类库都是采用这种模式
+    function fn(a, b) {
+        a = 100;
+        console.log(arguments[0]);//->10
+
+        arguments[1] = 200;
+        console.log(b);//->20
+
+        //arguments.callee
+        //arguments.callee.caller //->Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+
+        //->严格模式下ARGUMENTS和形参之间的“映射”关系中断了，而且禁止我们使用CALLEE/CALLER两个属性
+    }
+    fn(10, 20);
+</script>
+</body>
+</html>

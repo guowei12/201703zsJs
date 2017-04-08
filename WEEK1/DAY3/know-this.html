@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //console.log(this);//->WINDOW
+
+    //->THIS指的是当前函数执行的主体：谁来触发这个方法执行或者谁来操作这个方法,那么THIS就是谁
+    //贾泽鑫.吃饭()
+    //李文新.吃饭()
+
+    //->遇到THIS三四而后行："你以为你以为的就是你以为的"
+
+    //->1、自执行函数执行,方法中的THIS都是WINDOW
+    //    ~function () {
+    //        console.log(this);//->window
+    //    }();
+
+    //    var obj = {
+    //        fn: (function () {
+    //            console.log(this);//->window
+    //
+    //            return function () {
+    //
+    //            }
+    //        })()
+    //    };
+
+    //->2、给元素绑定事件，当事件触发方法执行的时候，方法中的THIS是当前元素本身
+    //    document.body.onclick = function () {
+    //        console.log(this);//->document.body
+    //    };
+
+    //->3、函数执行，看函数前面是否有点，有的话，点前面是谁THIS就是谁，没有的话，THIS就是WINDOW
+    //    var obj = {
+    //        fn: function () {
+    //            console.log(this);
+    //        }
+    //    };
+    //    var fn = obj.fn;
+    //    fn();//this->window
+    //    obj.fn();//this->obj
+    //    obj.__proto__.__proto__.hasOwnProperty();//->hasOwnProperty方法中的this是：obj.__proto__.__proto__
+
+
+    function fn() {
+        console.log(this);
+    }
+    document.body.onclick = function () {
+        //this->document.body
+        
+        fn();//this->window
+    }
+</script>
+</body>
+</html>

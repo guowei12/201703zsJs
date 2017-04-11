@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    var num = 10;
+    var obj = {num: 20};
+    obj.fn = (function (num) {
+        this.num = num + 2;
+        num--;
+        return function (n) {
+            this.num *= n;
+            num -= 2;
+            console.log(num);
+        }
+    })(num);
+    var fn = obj.fn;
+    fn(30);
+    obj.fn(15);
+    console.log(num, obj.num);
+</script>
+</body>
+</html>

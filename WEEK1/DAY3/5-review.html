@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    var obj = {name: "珠峰", age: 7};
+    ~function (obj) {
+        obj.name = "中国";
+        obj = {};
+        obj.age = 5000;
+        console.log(obj);
+    }(obj);
+    console.log(obj);
+
+    //->自执行函数常用的几种方式：第一种可以用来把函数执行的结果赋值给一个变量,也是项目中最常用的,其它的方式仅仅是用来装X
+    //    var num = (function () {
+    //
+    //    })();
+    //    ~function () {
+    //
+    //    }();
+    //    !function () {
+    //
+    //    }();
+    //    +function () {
+    //
+    //    }();
+
+    //    var obj = {
+    //        num: 10,
+    //        fn: (function (n) {
+    //            n++;
+    //            return function () {
+    //                console.log(n);
+    //            }
+    //        })(obj.num)//->Uncaught TypeError: Cannot read property 'num' of undefined
+    //    };
+    //    obj.fn();
+</script>
+</body>
+</html>

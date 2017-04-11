@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+// 继承练习
+
+function A () {
+    this.nameX = function () {
+        console.log('zx');
+    }
+}
+function B (){
+    this.name = 'nb';
+}
+B.prototype = new A();
+var a = new B();
+console.dir(a.nameX);
+console.log(a.nameX());
+
+</script>
+<script src="../static/call方法.js"></script>

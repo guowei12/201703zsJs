@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    function  A (age) { // 我在实例化的时候,给实例创建私有属性， 直接用this.属性名即可。
+        // 想一想this的知识点
+            this.sum = function () {
+                var num = 0;
+                for  (var i = 0; i<arguments.length; i ++) {
+                    num+=arguments[i]
+                }
+                return num;
+            };
+            this.age = age;
+    }
+    A.prototype.sam = function () {
+        return '找到了'
+    };
+
+
+    var a = new A(18);
+    console.log(a.sam());
+    var b = new A(22);
+    console.log(b.sam());
+    console.log(a.age);
+    console.log(b.age);
+    console.log(a.age == b.age);
+    console.log(a == b );
+
+
+
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+var selfInfo={
+    myName:function(){
+        console.log("李玉洁");
+    },
+    age:function (){
+        console.log("27");
+    },
+    hobby:function(){
+        console.log("eating")
+    },
+    inti:function(){
+        console.log()
+    }
+}
+//  单例模式 ： 就是在对象上定义方法。  就是写代码的一种风格。
+//   减少了全局变量污染， 节省了全局栈内存的消耗。
+    var obj = {
+        myFav: 'coding',
+        myName: function () {
+            alert('my name is Mr Zhao');
+            console.log(this.myFav);
+        },
+        myAge: function () {
+            alert ('my age is 18')
+        }
+    };
+    obj.myName();
+// 工厂模式 ： 其实就是函数的封装。根据不同参数，返回不同值或者进行不同的操作。
+    function self (name, age ,sex) {
+        var person = {};
+        if (sex == 'man') {
+            return person.job = 'soldier'
+        }
+        if (sex == 'girl') {
+            return person.job = 'teacher'
+        }
+    }
+//
+
+
+</script>
+</body>
+</html>

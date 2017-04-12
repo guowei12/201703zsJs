@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // JS中不存在严格意义上的多态。不存在重载。
+    // JS中只存在重写，不存在重载。我们可以通过重写的形式实现重载
+//    function sum () {
+//        console.log(1)
+//    }
+//    function sum () {
+//        console.log(2)
+//    }
+//    sum();
+    // 通过重写实现重载，根据实参返回不同函数或者值
+    function sum () {
+        if (arguments[0] == 1) {
+            return function () {
+                console.log(1)
+            }
+        }
+        if  (arguments[0] == 2) {
+            return function () {
+                console.log(2)
+            }
+        }
+    }
+    var num = sum(2)();
+
+    console.dir(sum)
+
+</script>

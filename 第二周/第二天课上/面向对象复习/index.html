@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    //  类：具有相同属性 还可以调用相同方法的集合就叫类
+    // js内置类; Number String Boolean Null Undefined
+    //         Object Function RegExp Array Math Date
+//     function Number() { } // 构造函数的写法
+//     function  Array() { }
+//    // 手动定义一个构造函数 也要遵循首字母大写
+//    function  Myclass () {
+//        this.name = 'zhufeng'
+//    }
+    // 类 class  构造函数
+    // JS中ES5不存在类这个概念，但是他通过构造函数实现了类的功能。
+    // Myclass 就是一个Myclass类
+
+    // 原型链  不可枚举的是三个属性   所有的对象数据类型的一个属性   __proto__ 。 这个属性的值，指向的是所属类的原型。也就是所属构造函数的prototype，他是一个对象数据类型，是一个引用地址。
+    // prototype 构造函数的prototype 。
+    // 在构造函数中的prototype，都存在一个属性 constructor。
+    // constructor的值存的是我们的构造函数本身
+//    console.dir(Myclass.prototype.constructor);
+//    var obj = {};
+//    console.log(obj);
+//    console.log(obj.__proto__);
+//
+//    function sum () {
+//    }
+//    console.dir(sum);
+//    console.dir(sum.__proto__);
+//
+//
+//
+//    function Obj () {
+//
+//    }
+//    Obj.prototype.slice=function () {
+//
+//    };
+//    Obj.prototype.sort=function () {
+//
+//    };
+//    var obj = new Obj();
+////    obj = {
+////        __proto__:{
+////            //所属类的prototype
+////            prototype:{
+////                slice:function(){},
+////                sort:function (){},
+////                constructor:function Obj () {
+////                }
+////            }
+////        }
+////    };
+//    // console.log(Obj.__proto__ == Function.prototype);
+//    console.log(obj.__proto__ == Obj.prototype);
+
+
+    // 检测当前对象属于哪一类 instanceof
+//    var mycla = new Myclass();// 通过new + 构造函数名的形式创建了一个当前类的实例
+//    console.log( Myclass instanceof Function);
+//    console.log( Function instanceof Array);
+    // 字面量的形式创建内之类的实例
+    var ary = [1,2,3];
+    function  sum () {}
+    var obj ={
+        name : 'zhaoxuan'
+    };
+    console.dir(obj)
+    var ary2 = new Array(2,3,4);
+    var obj2 = Object();
+    console.log(sum instanceof Function);
+    console.log(Object.prototype.toString.call(ary2));
+
+</script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //->创建数据的方式有两种：
+    var ary1 = [12, 23];//->字面量方式创建
+    var ary2 = new Array(34, 45);//->实例创建(构造函数模式创建)
+
+    //->链式写法：执行当前方法返回的结果依然是当前类的一个实例，这样就可以继续调取当前类原型上的其它方法执行了
+    //    console.log(ary1.slice(1).push(100));
+    //    console.log(ary1.slice(1).push(100).pop());//->Uncaught TypeError: ary1.slice(...).push(...).pop is not a function 执行完成PUSH方法返回的是新增数组的长度,它是一个数字,不能继续调取数组的方法
+
+    //->需求：有一个数组，既要实现去重，也要实现排序(大->小)
+    //->itar [tab] FOR循环快捷键
+    var ary = [1, 2, 2, 3, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 5, 4, 3, 2, 1];
+
+    ~function (pro) {
+        /*
+         * myDistinct：实现数组去重(采用对象键值对思想处理)
+         * @return：
+         *   [Array]去重后的数组,原来的数组也会发生改变
+         */
+        function myDistinct() {
+            var obj = {};
+            for (var i = 0; i < this.length; i++) {
+                var cur = this[i];
+                if (obj[cur] == cur) {
+                    this[i] = this[this.length - 1];
+                    this.length--;
+                    i--;
+                    continue;
+                }
+                obj[cur] = cur;
+            }
+            obj = null;
+            return this;//->返回去重后的数组，目的是为了实现我们的链式写法
+        }
+
+        /*
+         * myBubble：实现数组排序(采用冒泡排序思想实现升序)
+         * @return：
+         *   [Array]排序后的数组,原来的数组也会发生改变
+         */
+        function myBubble() {
+            var temp = null;
+            for (var i = 0; i < this.length - 1; i++) {
+                for (var j = 0; j < i; j++) {
+                    var cur = this[j],
+                            next = this[j + 1];
+                    if (cur > next) {
+                        temp = cur;
+                        cur = next;
+                        next = temp;
+                    }
+                }
+            }
+            return this;
+        }
+
+        pro.myDistinct = myDistinct;
+        pro.myBubble = myBubble;
+    }(Array.prototype);
+
+    ary.myDistinct().myBubble().reverse();
+    console.log(ary);
+
+
+    //->对于引用数据类型来说，除了一些操作的语法不太一样以外，没有本质的区别；但是对于基本数据类型来说，还是存在很大的区别的；
+</script>
+</body>
+</html>

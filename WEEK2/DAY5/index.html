@@ -13,10 +13,11 @@
     <!--HEADER-->
     <div class="header clear" id="header">
         <span>排序：</span>
-        <a href="javascript:;">上架时间<i class="up"></i><i class="down"></i></a>
-        <a href="javascript:;">价格<i class="up"></i><i class="down"></i></a>
-        <a href="javascript:;">热度<i class="up"></i><i class="down"></i></a>
+        <a href="javascript:;" sort-attr="data-time">上架时间<i class="up"></i><i class="down"></i></a>
+        <a href="javascript:;" sort-attr="data-price">价格<i class="up"></i><i class="down"></i></a>
+        <a href="javascript:;" sort-attr="data-hot">热度<i class="up"></i><i class="down"></i></a>
         <!--A中href='javascript:;'是阻止A标签点击跳转页面(锚点定位)的默认行为的,这里把A仅仅当做一个按钮来实现点击即可-->
+        <!--sort-attr:规定排序的时是按照LI中存储的自定义属性中哪一个字段进行排序的，一定要记住，我们的A和LI对应的字段要严格匹配-->
     </div>
 
     <!--LIST-->

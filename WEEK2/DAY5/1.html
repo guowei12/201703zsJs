@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //->思考题：(5).plus(3).minus(2) =>6
+    ~function (pro) {
+        function plus() {
+            //console.log(this);//->object {[[PrimitiveValue]]: 5}
+            var num = arguments[0] || 0;
+            return this + parseFloat(num);
+        }
+
+        function minus() {
+            var num = arguments[0] || 0;
+            return this - parseFloat(num);
+        }
+
+        pro.plus = plus;
+        pro.minus = minus;
+    }(Number.prototype);
+    //    console.log((5).plus(3.5).minus(8));
+
+    //->基本数据类型的值通过“字面量”和“实例”创建的方式创建，是有所区别的
+    //->不管是哪种方式创建,创建出来的结果都是Number类的实例,都可以调取Number.prototype上的属性和方法
+    //    var num = 5;
+    //    console.log(num.toFixed(2));
+    //
+    //    num = new Number(5);
+    //    console.log(num.toFixed(3));
+    //->第一种字面量方式创造出来的是“值类型(基本数据类型)->不需要额外开辟空间存储”；而实例创建方式创造出来的是“引用数据类型(实例)->严谨的OOP思想”；
+    //    var num1 = 5;
+    //    var num2 = new Number(5);
+    //    console.log(typeof num1);//->'number'
+    //    console.log(typeof num2);//->'object'
+    //    console.log(num1 instanceof Number);//->FALSE
+    //    console.log(num2 instanceof Number);//->TRUE
+
+    //->括号表达式：
+    //->保证一些操作符合浏览器识别的语法
+    //    function () {}();//->Uncaught SyntaxError: Unexpected token (
+    //    (function () {})();
+
+    //    5.toFixed(2)//->Uncaught SyntaxError: Invalid or unexpected token(…) 不允许基本数据类型中的数字直接调取方法或者属性,需要使用括号包起来才可以
+    //    (5).toFixed(2)   //->5===(5) TRUE
+
+    //    {name:'zhufeng'}.name  //->Uncaught SyntaxError: Unexpected token .(…)
+    //    ({name:'zhufeng'}).name
+
+    //    eval('('+str+')');//->在IE6~7中,浏览器不支持JSON这个对象,所以不能使用JSON.parse方法了,只能使用EVAL把JSON格式的字符串转换为JSON格式对象；但是为了保证转换的时候有些数据不报错，我们在字符串的外面手动拼接一个括号表达式
+
+    //->本身也有计算的效果
+    //->一个括号中如果包含多项，它只会把最后一项的值COPY过来，然后进行后续的处理；如果最后一项是函数的话，不管点前面是什么，方法执行里面的THIS都指向WINDOW；
+    //->一个括号中如果只有一项，和不加括号没有区别，仅仅是保证语法正确
+    //    function fn1() {
+    //        console.log(1);
+    //    }
+    //    function fn2() {
+    //        console.log(2, this);
+    //    }
+    //    var obj = {
+    //        fn1: fn1,
+    //        fn2: fn2
+    //    };
+    //    (fn1, obj.fn2)(); //->this:window
+    //    (obj.fn2)();//->this:obj
+</script>
+</body>
+</html>

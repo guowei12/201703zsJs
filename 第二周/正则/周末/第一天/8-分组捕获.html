@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    // 身份证号
+    // 13 0635 1991 12 01 2413
+    var reg4 = /^\d[17](X|\d)$/;
+    var reg5 = /^(\d{2})(\d{4})(\d{4})(\d{2})(\d{2})(\d{4})$/;
+    var str = '130635199112012413';
+    reg5.exec(str);
+    console.log(reg5.exec(str));// 我们查看发回值,第一项是大数组捕获返回的,后边的每一项都是小数组依次的捕获.
+    // exec 不仅能捕获大正则项,而且对应的小正则项也能捕获;
+    // match 则只能捕获大正则项
+
+
+</script>

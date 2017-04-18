@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+//    // 正则 exec  捕获到的是一个数组,分别为捕获到的字符串,index:字符串对应索引,input:被检测的原始整个字符串
+//    var reg = /\d+/;
+//    var str = '1991zhaoxuan1106';
+//    console.log(reg.test(str));
+//    console.log(reg.exec(str));
+//    // 正则捕获的特性:l-懒惰性,每次正则捕获只捕获,在整个字符串中第一次捕获到的.
+//    // 捕获原理:
+//    // 正则每次捕获时候的开始位置,保存在他的一个属性上lastIndex,默认值是0;第二次还是从0开始,当前对象没有记忆住这个正则捕获记忆
+//    // 如何解决懒惰性: 在正则末尾加一个修饰符g
+//    // 修饰符
+//    //    i	执行对大小写不敏感的匹配。
+//    //    g	执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。
+//    //    m	执行多行匹配。
+//    var reg = /\d+/g;
+//    var str = '1991zhaoxuan1106';
+//    console.log(reg.exec(str));
+//    console.log(reg.lastIndex);
+//    console.log(reg.exec(str));
+//    console.log(reg.lastIndex);
+//    console.log(reg.exec(str));
+//    console.log(reg.lastIndex);
+//
+//
+//    // 拿出所有匹配项
+//    var res =  reg.exec(str);
+//    var ary = [];
+//    while (res) {
+//        ary.push(res[0]);
+//        res = reg.exec(str)
+//    }
+//    console.log(ary);
+
+    // 正则捕获贪婪性
+    var reg = /\d+?/g;
+    var str = '1991zhaoxuan1106';
+    // 1符合 9 符合 9 符合 1 符合  当然1991也符合,我们可以通过在量次元字符后边添加一个?来解决
+    // 把?放在一个普通元字符后边代表出现0-1次,放在量词元字符后边相当于取消捕获时候的贪婪性
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));
+//    var res =  reg.exec(str);
+//    var ary = [];
+//    while (res) {
+//        ary.push(res[0]);
+//        res = reg.exec(str)
+//    }
+//    console.log(ary)
+
+
+    // 支持正则表达式的 String 对象的方法
+
+//    search	检索与正则表达式相匹配的值。
+//    match	    找到一个或多个正则表达式的匹配。
+//    replace	替换与正则表达式匹配的子串。
+//    split	     把字符串分割为字符串数组。
+
+    var str = 'zhaoxuan ao shi yi ge hao ren ao';
+    var reg = /ao/g;
+    console.log(str.match(reg));
+    console.log(str.search(reg));
+    console.log(str.replace(reg,'赵煊'));
+    console.log(str.replace(reg,function () {
+        console.log(arguments);
+        return '好人'
+    }));
+
+</script>

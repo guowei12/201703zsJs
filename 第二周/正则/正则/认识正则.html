@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // 学习的关键字:
+    // 正则: 匹配和捕获字符串的一个方法准则.
+    // 1-怎么创建正则
+    // 2-创建正则所需材料:元字符-量词元子符-修饰符
+    // 3-正则的方法   test()匹配  exec()捕获
+    // 4-正则对应字符串的方法: search 重点:  replace  match
+    // var reg = /元字符/gi(修饰符) 字面量形式创建正则
+    // var reg = new RegExp('zhaoxuan',g)
+    // 正则的创建,字面量形式 和 构造函数形式是有区别的.
+
+    var reg = /\d+/;// 数字出现一到多次
+    var str = 'asdasd';
+    // test() 检测-匹配. 检查匹配符合正则的字符串.返回值:是布尔数据类型,如果能匹配符合则返回true反之false;
+    console.log(reg.test(str));
+    var reg2 = /\w/;
+    console.dir(reg2);
+    // exec() 捕获字符串,返回值:是一个数组.第一项是我们捕获到的内容项,第二项index-是我们捕获检查到的每一项开始处的索引,     ;input保存的是我们所检查捕获的最原始字符串
+    var str = '1991zhaoxuan1106';
+    var reg3 = /\d+/;
+    console.log(reg3.exec(str));
+    console.log(reg3.exec(str));// 还是和上一项捕获一样,没有捕获到1106
+    // 正则的懒惰性,就是每次捕获都是从第一项开始. 贪婪性:只匹配捕获最长的字符串
+
+
+
+</script>

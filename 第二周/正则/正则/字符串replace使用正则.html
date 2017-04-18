@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // 字符串replace 替换字符串
+    // 利用正则全局捕获,把字符串中的符合项都给替换
+//    var str = '1949zhenxing2017Zhenxing1231';
+//    console.log(str.replace('zhenxing', '振兴'));
+//    var reg = /zhenxing/gi;
+//    console.log(str.replace(reg, '振兴'));
+
+
+    // 第二项实参还可以传一个回调函数
+//    console.log(str.replace(reg,function () {
+//        console.log(arguments);
+//        //第一项 匹配到的内容项
+//        // 第二项匹配到内容的开始索引 ,
+//        // 第三项是整个的字符串
+//        return 'yujie'
+//    }));
+    // '19911106'把数字转化成大写
+    var ary = ['零','壹', '貮', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
+    var reg = /\d/g;
+    var str = '19911106';
+    console.log(str.replace(reg, function () {
+        // console.dir(arguments[0]);
+        console.dir(arguments);
+        return ary[arguments[0]]
+    }));
+
+</script>

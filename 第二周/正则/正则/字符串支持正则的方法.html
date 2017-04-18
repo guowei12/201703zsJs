@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // 字符串方法中支持使用正则的方法.
+
+    // search 查找符合正则的字符串开始索引
+    // match  和正则的exec很像,如果正则中没有g修饰符,则返回的是第一回捕获内容数组,加了g的话,返回的是,字符串中符合这个正则的所有字符串捕获项
+    // replace 替换换字符串
+    // split
+    var str = '1949zhenxing2017big2';
+    var reg = /\d+/g;
+    console.log(str.search(reg));
+    console.log(str.match(reg));
+
+
+</script>

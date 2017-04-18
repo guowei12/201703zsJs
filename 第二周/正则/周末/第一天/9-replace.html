@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    var str = 'zhaoxuan ao shi yi ge hao ren ao';
+    var reg = /ao/g;
+    console.log(str.match(reg));
+    console.log(str.search(reg));
+    console.log(str.replace(reg, '赵煊'));
+    console.log(str.replace(reg, function () {
+        return '好人'
+    }));
+    // 看看回调函数的实参是什么?  replace的返回值是一个修改后的全新字符串;
+    var str = '19911106';
+    var ary = ['零','壹', '貮', '叁', '肆', '伍', '陆', '柒', '捌', '纠'];
+    str.replace(/\d/g,function () {
+        var num =  arguments[0];
+        var str = ary[num];
+        return str;
+    })
+
+
+</script>

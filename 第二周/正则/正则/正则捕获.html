@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // exec 正则的捕获
+    //    var reg = /\d+/;
+    //    var reg2 = /\d+?/g;
+    //    var str = '1949zhen2017big2';
+
+    //    console.log(reg2.exec(str));
+    //    console.log(reg2.lastIndex+'这是没次捕获的标记');
+    //
+    //    console.log(reg2.exec(str));
+    //    console.log(reg2.lastIndex+'这是没次捕获的标记');
+    //
+    //    console.log(reg2.exec(str));
+    //    console.log(reg2.lastIndex+'这是没次捕获的标记');    console.log(reg2.exec(str));
+    //    console.log(reg2.lastIndex+'这是没次捕获的标记');    console.log(reg2.exec(str));
+    //    console.log(reg2.lastIndex+'这是没次捕获的标记');    console.log(reg2.exec(str));
+    //    console.log(reg2.lastIndex+'这是没次捕获的标记');
+    // 这就是正则捕获的懒惰性
+    // 只要在正则后边加一个,修饰符.g  ---  global;
+    // 加了g正则是靠什么记忆的,靠的他的lastIndex这个属性,进行记忆.查看上次捕获到的位置
+
+    // 修饰符
+    // g 全局检索
+    // i 忽略大小写
+    // m 多行匹配
+    // 贪婪性: 解决正则的贪婪性,在量词元字符后边加上?就解决了贪婪性
+    // ?在正则中,元字符的意思是出现0-1个,如果放在量词元字符后边就解决了正则的贪婪性
+
+    //写一个小功能 拿到所有捕获的内容
+    var reg2 = /\d+/g;
+    var reg3 = /\d+?/g;
+    var str = '1949zhen2017big2';
+//    var ary = [];
+//    var res = reg3.exec(str);// 返回值是一个数组,第一项是捕获的内容
+//    console.log(res)
+//    while (res) {
+//        ary.push(res[0]);
+//        res = reg3.exec(str)
+//    }
+//    console.log(ary, res);
+    function collect (reg, str) {
+        var res =  reg.exec(str);
+        var ary = [];
+        while (res) {
+            ary.push(res[0]);
+            res = reg.exec(str);
+        }
+        return ary;
+    }
+    console.log(collect(reg2, str));
+
+
+</script>

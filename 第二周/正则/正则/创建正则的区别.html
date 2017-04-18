@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // 创建正则的区别
+    // 创建正则的方式1/字面量的形式 2/构造函数的形式
+//    var reg = /\d+/;
+//    var reg2 = new RegExp('zhaoxuan');
+//    console.log(reg2.test('zhaoxuan'));
+    //区别
+    // 我们的字面量形式不可以,用变量来创建. /中间不能添加变量/
+    // 而构造函数的形式,在创建传参的时候,传的参数可以是变量
+
+    // 举个栗子
+    // 字面量
+//    var str = 'yujie';
+//    reg = /str/; // 把str 解析成字符str. 不会解析变量.只会把str解析成字符串
+//    console.log(reg.test('yujie'));
+//    console.log(reg.test('str'));
+    // 构造函数的形式 可以在传参的时候添加变量
+    var str = 'yujie';
+    var num = 'young';
+    var reg = new RegExp(str+'18岁'+num);
+    console.log(reg.test('yujie18岁young'));
+
+
+    // 写个栗子 任意组 任意名字
+    // '2peizhenxing'
+    var reg = /^\d{1}\w+/;
+    var reg2 = new RegExp('\d{1}\w+');
+
+    console.log(RegExp.prototype);
+
+
+</script>

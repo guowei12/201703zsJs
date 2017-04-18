@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // 年龄18-65之间
+    var reg = /^([1-5]{1}|6)(([0-5]|[5-9]){1})$/;
+    var reg1 = /^(1[8-9]|(2-5)[0-9]|6[0-5])/;
+    console.log(reg1.test(66));
+    // 邮箱
+    var reg2 = /^([\w])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/ ;
+    console.log(reg2.test('296569012@qq.com'));
+    // 中国标准姓名
+    var reg3 = /^[\u4e00-\u9fa5]{2,4}$/;
+    // 身份证号
+    // 13 0635 1991 12 01 2413
+    var reg4 = /^\d[17](X|\d)$/;
+    var reg5 = /^(\d{2})(\d{4})(\d{4})(\d{2})(\d{2})(\d{4})$/;
+
+
+</script>

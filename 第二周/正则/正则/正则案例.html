@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // 有效数字的正则
+    var reg2 = /^[-|+]?(([1-9]+\.?\d+)|(0\.\d+)|([0-9]))$/;
+    console.log(reg2.test('-0'));
+    // 年龄范围  18 - 65;
+    // 18-19  20 -59 60-65
+    var reg = /^((1[8-9])|([2-5][0-9])|(6[0-5]))$/;
+    console.log(reg.test('55'));
+//    var reg2 = /^6.?[0-5]$/;
+//    console.log(reg2.test('655'));
+
+    //  身份证号
+//    var reg = /^\d{17}(X|\d)$/;
+    var reg = /(\d{3})(\d{3})(\d{4})(\d{4})(\d{3})(\d|X)/;
+    console.log(reg.test("130635199112012413"));
+
+
+</script>

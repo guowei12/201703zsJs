@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+// 分组()
+var reg = /(\d+)zhaoxuan(\d+)/;// 把一个大正则划分成几个小正则
+// 作用:1-改变优先级,优先运算小括号里边的 2-
+console.log(reg.test('1991zhaoxuan1106'));
+
+// 范围 | [] 正则匹配在这一范围内的单词无论一个或者多个都会匹配到,都会返回true
+// 在[]出现的所有的字符,都只代表本身的意思.(没有特殊的含义)
+// [abc]	查找方括号之间的任何字符。
+// [^abc]	查找任何不在方括号之间的字符。
+// [0-9]	查找任何从 0 至 9 的数字。
+// [a-z]	查找任何从小写 a 到小写 z 的字符。
+// [A-Z]	查找任何从大写 A 到大写 Z 的字符。
+// [A-z]	查找任何从大写 A 到小写 z 的字符。
+// [adgk]	查找给定集合内的任何字符。
+// [^adgk]	查找给定集合外的任何字符。
+// (red|blue|green)	查找任何指定的选项。
+    var reg1 = /[123]/;
+    var reg2 = /1|2/;
+console.log(reg1.test('342'));
+console.log(reg2.test('32'));
+    // 举个栗子 判断是否为有效数字
+    var reg = /^[+-]?([0-9])(\.\d+)?$/;
+console.log(reg.test(1.21231231233));
+
+</script>

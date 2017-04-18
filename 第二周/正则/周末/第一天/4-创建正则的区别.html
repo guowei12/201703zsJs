@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // 字面量形式的正则,不能放变量,正则之间不能放变量.
+    var str = '1991zhaoxuan1106';
+    var reg = /^str$/;
+    console.log(reg.test('1991zhaoxuan1106'));
+    var newReg = new RegExp('\\d' + str + '\\d','g');// 第一个参数是正则表达式,第二个参数是正则修饰符
+    console.log(newReg.test('1991zhaoxuan1106'));
+    // 通过正则构造函数创建的正则可以进行传输变量
+</script>

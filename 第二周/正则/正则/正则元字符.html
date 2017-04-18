@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+//    var reg = /zhaoxuan/;
+//    var reg2 = /\d+/;
+//    var str = 'zhaoxuan';
+//    var str2 = '123456789';
+//    console.log(reg2.test(str2));
+    // 正则-元字符
+
+    // 常用元字符
+    // \d 0-9任意一个数字;
+    // \D 除去数字以外任意字符
+    // .  除去换行符\n(换行符)和换行结束符以外的任意字符
+    // \w 数字/字母/下划线中任意一个字符
+    // \W 除去单词外的任意字符
+    // \s 查找空白字符
+    // \S 查找非空白字符
+
+    // 不常用的元字符
+    // \b 匹配边界符 就是单词的边界
+    // \B 匹配非边界符
+    // \0 查找UNL字符
+    // \f 查找换页符
+    // \r 查找回车符
+    // \v 查找垂直制表符
+    // \t 查找制表符
+    // xxx 查找8进制字符
+    // xdd 查找16进制的字符
+    // uxxxx 查找16禁止的Unicode字符 (汉字)
+
+    // 表示数量元字符-量词元字符
+
+    // + 表示1到多个: 如 \d+ 1到多个数字
+    // * 表示0到多个;
+    // ? 表示0或者1次
+    // {}表示数量,里遍填写的内容表示出现的 次数
+    // {1} 表示出现1次 {n}表示出现n次
+    // {1,2} 表示连续出现1到2次, {n,m}表示连续出现n到m次
+    // {1,} 表示连续出现1到多次  {n,} 表示连续出现n到多次
+
+    // 特殊的量词元字符
+    // ^ 以什么什么开始
+    // $ 以什么什么结尾
+    // \ 转义字符
+//    var reg = /0.16/g;
+//    var str = '0a16';
+//    console.log(reg.test(str));
+    // 小例子
+    // 以数字开头以数字结尾
+    var reg2 = /^\w+$/;
+    var str = '1991zhaoxuan1106';
+    console.log(reg2.test(str));
+    var reg = /2{2}/;
+    str = '0.31212';
+    console.log(reg.test(str));
+    // 在调用正则RegExp的test()的时候,只要字符串有一段符合正则就可以,则返回true
+
+
+</script>

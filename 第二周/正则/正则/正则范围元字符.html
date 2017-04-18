@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // 创建一个正则范围用 [] , [1-6]代表1-6的范围
+    // 我们在用[]的时候,在[]中的单词,只代表本身单词或者运算符的意思,没有元字符的意思,比如 .
+    //  [abc] 代表的是a或b或c任意一个
+    //  [^abc] 非abc除外的任意,不包含abc
+    //  [0-9] 代表0-9的数字范围内任意字符
+    //  [a-z] 代表小写a到小写z这个范围内,任意的字符
+    //  [A-Z] 代表大写的A-Z这个范围内任意
+    //  [A-z] 代表大写A到z这个范围内任意
+    //  [a-zA-Z0-9]
+    //  或者 |
+    // (zhao)|(xuan) 代表的是zhao出现 或者 xuan出现都符合
+
+    //    var reg = /(\d+)|(zhenxing)|(\d+)/;// 出现数字或者zhengxing或者zhenxing数字
+    //    var reg2 = /\d+|zhenxing|\d+/ ;
+    //    console.log(reg.test('zhenxingjkasdjkasdasd'));
+    //    console.log(reg2.test('zhenxing'));
+
+//    //    var reg  = /2|36/;
+//      var reg  = /[\+5]/; // . 除换行符以外的任意,但是在中括号里边只代表字面意思  出现3 或者 . 或者 7 都可以
+//    // 在[]中转义不了.
+
+    var reg1 = /^(1|2|3)2/; // 以1或者2或者3开始都可以
+    var reg2 = /^1|4|32/;   // 只能以1开始可以出 1或2或3
+//    console.log(reg1.test(152));
+//    console.log(reg2.test(152));
+//    console.log(reg2.test(252));
+    var reg3 = /[(0)-4]/; // .-5 在4以前都可以,.-配合 .只是表示一个未知的数字,检测范围不超过后边数字之后
+//    console.log(reg3.test('.'));
+
+    // 大家都整理正则中的 .的作用
+    // 分组() 优先进行()里边的运算,然后进行分组,在捕获的时候我们会分组捕获
+//    var str = 'zhao1106';
+//    var reg = /zhao(\d+)/g;
+//    console.log(reg.exec(str));
+    var reg = /[.-9]/;
+    console.log(reg.test('1'));
+
+</script>

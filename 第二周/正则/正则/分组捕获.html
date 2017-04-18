@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    //  身份证号
+    //  var reg = /^\d{17}(X|\d)$/;
+    // 在小分组正则中添加?:实现只匹配不捕获
+    // 分组作用: 优先匹配分组内的内容
+    var reg = /(\d{3})(\d{3})(\d{4})(\d{4})(\d{3})(?:\d|X)/;
+    console.log(reg.exec("130635199112012413"));
+    console.log(reg.test("130635199112012413"));
+
+
+
+
+
+
+
+
+</script>

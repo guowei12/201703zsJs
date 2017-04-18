@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    /*
+    * 正则     正则表通常被用来匹配、替换文本。
+    * 创建正则  字面量形式/正则操作符/
+    * 正则要结合
+    * */
+    // 如何创建一个正则表达式
+    // 字面量形式 var reg =  /^\d$/g
+    // 构造函数模式 var reg =  new RegExp('')
+    // 这两者是有不同的
+
+
+//  test方法只是检查判断,字符串中是否含有能跟正则匹配的东西 正则匹配
+//    var reg = /\d/;
+//    console.log(reg.test('我们是3班'));
+//    console.log(reg.test(3));
+//    console.log(reg.test('我们'));
+//    console.dir(reg);
+//    // 查找到正则匹配的内容到底是什么用,exec()方法  正则捕获
+//    console.log(reg.exec('阿萨德1中国2'));
+//    console.log(reg.exec('12'));
+
+        // 分组 () 把一个大正则通过()分组划分为几个小正则
+    var rr = /^(\d+)zhufeng(\d+)$/
+    // 或者 x|y x或者y其中一个
+
+
+    // [],方括号用于查找某个范围内的字符
+    // [xyz] 查找xyz中的任意一个
+    // [^xyz] 查找除了xyz中的任何字符
+    // [a-z] a到z任何一个
+    // [^a-z] 除了a到z任何一个
+    // \d 查找数字
+    // \D 查找非数字字符
+    // \b 查找边界符
+    // \w 数字'字母'下划线中的任意一个字符
+    // \s 查找一个 空格 制表符 换页符
+
+    // 在中括号中出现的所有的字符都是代表本身意思的字符,没有特殊的含义
+    var reg = /^[.]$/;
+    console.log(reg.test('.'));
+    var rr = /^(\d+)zhufeng(\d+)$/
+
+    var  reg = /^[+-]?$/
+
+
+
+
+
+
+</script>

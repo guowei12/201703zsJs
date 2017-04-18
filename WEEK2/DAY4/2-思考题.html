@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="" id="link"></a>
+<script>
+    var oLink = document.getElementById('link');
+    //->回去后画出oLink的原型图
+    console.dir(oLink);
+    //->私有(NodeList、HTMLCollection、DOMTokenListCSSStyleDeclaration...)->HTMLAnchorElement.prototype->HTMLElement.prototype->Element.prototype->Node.prototype->EventTarget.prototype->Object.prototype =>Function
+
+
+    //->思考题：(5).plus(3).minus(2) =>6
+    ~function (pro) {
+        function plus() {
+
+        }
+
+        function minus() {
+
+        }
+
+        pro.plus = plus;
+        pro.minus = minus;
+    }(Number.prototype);
+    console.log((5).plus(3).minus(2));
+
+    //->思考题：在数组的原型上实现一个mySlice的方法，要求和slice功能一样(使用原生JS实现,不能使用数组中的任何方法)
+    /*
+     * slice(n,m)
+     * slice(n)
+     * slice()
+     * slice(n,m) n>m
+     * slice(n,m) n或者m有一个为负数
+     * slice(n,m) n或者m不是有效数字
+     * slice(n,m) n或者m不是整数
+     * slice(n,m) n或者m超出了最大和最小索引的范围
+     * ...
+     */
+    Array.prototype.mySlice = function mySlice() {
+        var n = arguments[0],
+                m = arguments[1];
+
+    }
+</script>
+</body>
+</html>

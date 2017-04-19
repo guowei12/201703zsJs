@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // client 内容的高度和我们的
+    // clientHeight 盒子模型高度
+    // clientWidth  盒子模型宽度
+    // clientLeft  左边框宽度
+    // clientTop 上边框宽度
+
+    // offset系列..
+    // offsetWidth/offsetHeight:client + border值
+    // offsetParent: 当前元素的父级参照物.在没有脱离文档流定位关系的情况下他们的offsetParent都是body
+    // offsetTop
+    // offsetLeft :当前元素边框外侧,到父级参照物边框内侧的距离,
+    // scroll 系列
+    // scrollHeight/scrollWidth:和我们的 clientH和clientWidth获取的值是一模一样的(前提是:容器中的内容没有溢出的情况);在有内容溢出的情况下,是真实内容的宽高+填充,获取到的都是约等于的值:因为同一个浏览器是否设置overflow:hidden对于结果是有影响的
+
+    // scrollLeft scollTop 动条走过的高度和宽度
+
+
+    // 关于js模型的取值问题,通过13个属性获取值,获取的值都是整数,因为浏览器在获取值给我们返回的时候都默认进行了四舍五入.
+
+    // 关于浏览器盒子本身的信息
+    // document.documentElement.clientHeight
+    // document.documentElement.clientWidth
+    // 当前浏览器可视化窗口的宽度和高度,一屏幕高度和宽度
+
+    // document.documentElement.scrollHeight 当前html页面真实高度,约等于的值
+    // document.documentElement.scrollWidth 当前html页面真实宽度,约等于的值
+    // 获取和设置的时候也需要写两套
+    // document.documentElement.scrollTop||document.body.scrollTop
+    // document.documentElement.clientWidth||document.body.clientWidth
+    // 设置
+    // document.documentElement.scrollTop = 0;
+    // document.body.scrollTop = 0;
+    //getWindow 获取浏览器盒子模型的方法
+    //需求:获取:只传了attr是只获取attr的值
+    //     设置:如果传了value值,就是设置了
+    function getWindow (attr, value) {
+        if(typeof value === 'undefined') {
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = value;
+        document.body[attr] = value;
+    }
+
+</script>

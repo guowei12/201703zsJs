@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            opacity: 0.1;
+            filter: alpha(opacity = 100);
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">当社会的目光都聚焦在人工智能和大数据这些前沿科技上时，聊「制造业」可能显得有些「格格不入」。但这正是许多人可能会忽略的一点：虽然这些前沿科技构成的虚拟世界显然更加丰富和有趣，但是它们是有多么依赖着看得见、摸得着的制造业啊！</div>
+</body>
+</html>
+<script>
+//    var box = document.getElementById('box');
+//    console.log(box.style.height);// 获取的是行内样式.获取的是元素的行内样式值
+//    // 元素.style.样式 需要把所有的样式都写在行内才能起作用
+//    // 在我们工作中css和html要分离的,坚决抵制在行内写样式
+//    // 使用
+//    // 传两个参数,第一参数是我们查找的元素,第二个参数是元素的伪类
+//    console.log(win);var win = window.getComputedStyle(box,null);
+//    // 这个方法获取所有经过浏览器计算过的样式.
+//    // 浏览器计算样式:只要浏览器渲染可这个html元素,他的样式浏览器都会计算
+//    // 获取的结果是 CSSStyleDeclaration这个构造函数的一个实例:包含了当前元素的所用样式
+//    // 这是一个实例,是一个对象,那么我们可以具体访问他的属性值
+//    console.log(win.height);
+
+
+
+//    // 虽然强大,但是在IE6-8不兼容.
+//    // 在IE6-8下我们可以使用currenStyle来获取样式
+//    // 写一个兼容的方法来获取样式中attr对应的值
+//    function getCss (ele, attr) {
+//        if (window.getComputedStyle) {
+//            var val = window.getComputedStyle(ele,null)[attr]
+//        }else {
+//            val = ele.currentStyle[attr];
+//        }
+//        return val;
+////        var val;
+////        try{
+////            val =  window.getComputedStyle(ele,null)[attr]
+////        }catch (e){
+////            val =  ele.currentStyle[attr];
+////        }
+////        return val;
+//        //try catch 比较消耗兼容
+//    }
+//// 检测浏览器版本号和类型
+//    window.navigator //检测浏览器信息
+//    window.navigator.userAgent //检测浏览器信息
+//    window.navigator.userAgent //检测浏览器信息
+//    // MSIE ie都存在这个属性
+//    // 写一个检测当前浏览器的方法,获取当前浏览器的版本号
+
+    // 通过检测IE678处理getCSS兼容
+    function getWinCSS (ele, attr) {
+        var val = null;
+        if (/MSIE (6|7|8)/.test(navigator.userAgent)) {
+            val = ele.currentStyle[attr]
+        } else {
+            val = window.getComputedStyle(ele,null)[attr]
+        }
+        return val;
+    }
+    console.log(getWinCSS(box, 'borderWidth'));
+    // 标准浏览器和ie低版本浏览器有些不一样,不同的浏览器,写入和解析的方式不一样
+
+
+</script>

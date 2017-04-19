@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 240px;
+            height: 300px;
+            padding: 25px;
+            margin: 10px auto;
+            border: 5px solid #000;
+            background: #cecece;
+        }
+        #inner {
+            width: 100px;
+            height: 100px;
+            padding: 50px;
+            border: 5px solid black;
+            background: yellow;
+            float: left;
+            position: relative;
+        }
+        #center {
+            width: 80px;
+            height: 80px;
+            border: 5px solid #cfcfcf;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div id="center">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    // offsetParent
+    var outer = document.getElementById('outer');
+    var inner=document.getElementById('inner');
+    var center = document.getElementById('center');
+//    center.parentNode// 父亲节点
+//    inner.parentNode// 父亲节点
+//    outer.parentNode// 父亲节点
+    console.log(center.offsetParent);
+    console.log(center.offsetLeft);
+
+
+    //offsetParent
+
+// function offset(ele) {
+//     var totalTop = null,totalLeft = null;par =ele.offsetParent;
+//     // 有误差
+//     totalTop += ele.offsetTop ;
+//     totalLeft += ele.offsetLeft;
+//     while (par) {
+//         if (window.navigator.userAgent.indexOf('MSIE 8.0') === -1){ // 在ie中client是加border值的
+//             totalLeft += par.clientLeft;
+//             totalTop += par.clientTop;
+//         }
+//         totalLeft+= par.offsetLeft;
+//         totalTop += par.offsetTop;
+//
+//         par = par.offsetParent;
+//     }
+//     return {left:totalTop,top:totalTop}
+// }
+
+
+</script>

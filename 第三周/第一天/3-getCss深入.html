@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    当社会的目光都聚焦在人工智能和大数据这些前沿科技上时，聊「制造业」可能显得有些「格格不入」。但这正是许多人可能会忽略的一点：虽然这些前沿科技构成的虚拟世界显然更加丰富和有趣，但是它们是有多么依赖着看得见、摸得着的制造业啊！
+</div>
+
+</body>
+</html>
+<script src="/三期正式课/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    // 去掉单位
+    var box = document.getElementById('box');
+    function getWinCSS(ele, attr) {
+        var val = null,reg = null;
+        reg = /^(-?\d+(\.\d+)?)(px|pt|rem|em)?$/i;
+        if (/MSIE (6|7|8)/.test(navigator.userAgent)) {
+            if (attr === 'opacity') {
+                val = ele.currentStyle['filter'];
+                reg = /^alpha\(opacity =(\d+(?:\.\d+)?)\)$/i;
+                val =  reg.test(val)?reg.exec(val)[1]/100:1;
+            }else {
+                val = ele.currentStyle[attr]
+            }
+        } else {
+            val = window.getComputedStyle(ele, null)[attr]
+        }
+
+        return reg.test(val)? parseFloat(val): val;
+    }
+    console.log(getWinCSS(box, 'width'));
+    console.log(getWinCSS(box, 'float'));
+
+
+    // 第二次升级: 有些样式属性在不同浏览器中是不兼容的
+    // opacity:0.1
+    // filter:alpha(opciaty =  10)
+    // console.log($('div').css('width'));
+</script>

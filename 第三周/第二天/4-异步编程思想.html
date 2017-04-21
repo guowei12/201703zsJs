@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    // js是单线程的,只有一条路能走,这条路走不通了没有别的路能走了,比如报错了就不会往下跑了.
+    // 同步: 接力赛跑,一个人跑完下一个人才能跑
+    // 异步: 规划做一件事情,不是立马去做,而是等一定的时间再去做.我们不会等着他,下面的事情会同样去做,如果想在下面的执行的时候,规划的事情要做了,也得等着下面的事情执行完再去做我们规划的.
+    // 在js中异步编程,只有四种情况:定时器都是异步的,所有的事件绑定都是异步的,ajax都是异步的,回调函数也是异步的.
+//
+//    setTimeout(function() {
+//        alert(1)
+//    },1000);
+//    while (1) {
+//
+//    }
+//    var n = 0;
+//    window.setTimeout(function () {
+//        n++;
+//        console.log(n);
+//    },1000);
+//    console.log(n);
+
+//        var n = 0;
+//        window.setTimeout(function () {
+//            n++;
+//            console.log(n);
+//        },0);
+//        console.log(n);
+// 每一个定时器,不同的浏览器都有一个最小的异步等待值,IE10-13ms,谷歌5-6ms.如果设置的时间值不起作用,也要等个最小值.
+
+
+    //        var n = 0;
+    //        window.setTimeout(function () {
+    //            n++;
+    //            console.log(n);
+    //        },0);
+    //        while(1){
+    // }
+    // console.log(n)
+
+
+
+
+    //        var n = 0;
+    //        window.setTimeout(function () {
+    //            n+=2;
+    //            console.log(n);
+    //        },20);
+    //        window.setTimeout(function () {
+    //            n+=4;
+    //            console.log(n);
+    //        },1);//谁先到执行谁
+    //        console.log(n);
+    //        for(var i = 0 ; i< 1000; i++) {
+    //
+    //        }
+    //        console.log(n)
+
+</script>

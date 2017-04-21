@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei UI";
+        }
+
+        #box {
+            width: 600px;
+            height: 30px;
+            line-height: 30px;
+            padding: 10px;
+            background: lightgreen;
+            margin: 10px auto;
+            color: white;
+            border: 2px dashed black;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        #box div {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="one"><i style="color: red">开始:</i>手动阿萨德阿萨德啊实打实大阿萨德阿萨德阿萨德阿萨德阿萨德啊实打实大阿萨德阿萨德阿萨德阿萨</div>
+    <div class="two"><i style="color: red">开始:</i>手动阿萨德阿萨德啊实打实大阿萨德阿萨德阿萨德阿萨德阿萨德啊实打实大阿萨德阿萨德阿萨德阿萨</div>
+</div>
+</body>
+</html>
+<script>
+    function getCss (ele, attr) {
+        var res = null;
+        var regStyle  = /^\d+(\.?\d+)[rem|px|%|em]/;
+        var reg  = /MSIE ([6-8]?\.0)/;
+        // "alpha(opacity = 10)"
+        var regOp = /^alpha\(opacity = (\d+)\)?/;
+        if (reg.test(window.navigator.userAgent )) {
+            res = ele.currentStyle[attr];
+            if (regOp.test(res)) {
+                return res = regOp.exec(res)[1]/100
+            }
+        }else{
+            res = window.getComputedStyle(ele,null)[attr]
+        }
+        if (regStyle.test(res)) {
+            return parseFloat(res);
+        }
+        return res;
+    }
+    var box = document.getElementById('box');
+    var box1 = document.getElementsByClassName('one')[0];
+    var box2 = document.getElementsByClassName('two')[0];
+    function move () {
+        box.scrollLeft += 1;
+        var len = getCss(box1,'width');
+        console.log(len,box.scrollLeft);
+        if (box.scrollLeft >= len) {
+            box.scrollLeft = 0;
+        }
+    }
+    var timer = window.setInterval(move, 10);
+    box.onmouseover = function () {
+        window.clearInterval(timer)
+    };
+    box.onmouseout = function () {
+        timer = window.setInterval(move,10)
+    }
+</script>

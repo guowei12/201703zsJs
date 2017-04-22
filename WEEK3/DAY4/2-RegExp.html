@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //    var str = 'zhufeng{2017}peixun{2018}yangfan{2019}qihang{2020}';
+
+    //    var reg = /\d+/;
+    //    console.log(reg.lastIndex);//->0  下一次正则捕获的时候，从字符串中哪一个索引位置开始进行查找
+    //    console.log(reg.exec(str));
+    //    console.log(reg.lastIndex);//->0 在默认情况下,执行EXEC结束后,lastIndex值没有发生任何的改变,下一次捕获还是从字符串起始位置开始查找,导致每一次捕获的结果都是一样的 =>"正则的懒惰性"
+    //    console.log(reg.exec(str));
+
+    //-----------------------------------
+    //    var reg = /\d+/g;
+    //    console.log(reg.lastIndex);//->0
+    //    console.log(reg.exec(str));//->['2017']
+    //    console.log(reg.lastIndex);//->11
+    //    console.log(reg.exec(str));//->['2018']
+    //    console.log(reg.exec(str));//->['2019']
+    //    console.log(reg.exec(str));//->['2020']
+    //    console.log(reg.lastIndex);//->42
+    //    console.log(reg.exec(str));//->null 已经没有和正则相匹配的了,捕获的结果则为NULL,也说明本次捕获结束
+
+    //-------------------------------
+    //    var reg = /\d+/g;
+    //    var ary = [];
+    //    var result = reg.exec(str);
+    //    if (reg.global === false) {
+    //        //->没有加G的话：为了避免死循环,我们捕获到第一个即可
+    //        //reg=eval(reg.toString()+'g') 这个操作可以实现加G
+    //        ary.push(result[0]);
+    //    } else {
+    //        //->已经加G的话：全部匹配的都捕获到
+    //        while (result) {
+    //            ary.push(result[0]);
+    //            result = reg.exec(str);
+    //        }
+    //    }
+    //    console.log(ary);
+    //---------------------------------------
+    //    var reg = /\d+/;
+    //    var ary = str.match(reg);
+    //    console.log(ary);
+
+    //    RegExp.prototype.myExecAll = function myExecAll() {
+    //        //->this:current reg
+    //        var str = arguments[0];
+    //
+    //        //->验证要处理的字符串是否符合标准
+    //        if (typeof str === 'undefined' || typeof str !== 'string') {
+    //            throw new ReferenceError('Not a valid parameter!');
+    //        }
+    //
+    //        //->验证正则是否加了全局修饰符G
+    //        if (this.global === false) {
+    //            return this.exec(str);
+    //        }
+    //
+    //        //->如果其它都正确，我们只需要循环捕获即可
+    //        var ary = [],
+    //                result = this.exec(str);
+    //        while (result) {
+    //            ary[ary.length] = result[0];
+    //            result = this.exec(str);
+    //        }
+    //        return ary;
+    //    };
+
+    //    var str = 'zhufeng2017peixun2018yangfan2019qihang2020';
+    //    var reg = /\d+/;
+    //    console.log(reg.myExecAll(str));//->["2017"]
+    //    reg = /\d+/g;
+    //    console.log(reg.myExecAll(str));//->["2017", "2018", "2019", "2020"]
+    //--------------------------------
+    //    var str = 'zhufeng{2017}peixun{2018}yangfan{2019}qihang{2020}';
+    //    var reg = /\{(\d+)\}/;
+    //    console.log(reg.myExecAll(str));//->['{2017}','2017']
+    //    reg = /\{(\d+)\}/g;
+    //    console.log(reg.myExecAll(str));//->["{2017}", "{2018}", "{2019}", "{2020}"]
+    //->通过此实验，证明了字符串的MATCH方法在实现正则捕获的时候,如果只需要捕获一次(例如正则不加G),和执行一次EXEC的结果是一样的；如果捕获多次才可以完成,我们获取的结果中只有大正则捕获的,没有小分组捕获的；
+
+
+    RegExp.prototype.myExecAll = function myExecAll() {
+        var str = arguments[0];
+
+        //->验证要处理的字符串是否符合标准
+        if (typeof str === 'undefined' || typeof str !== 'string') {
+            throw new ReferenceError('Not a valid parameter!');
+        }
+
+        //->验证正则是否加了全局修饰符G
+        if (this.global === false) {
+            return this.exec(str);
+        }
+
+        //->如果其它都正确，我们只需要循环捕获即可
+        var ary = [],
+                result = this.exec(str);
+        while (result) {
+            ary[ary.length] = result;
+            result = this.exec(str);
+        }
+        return ary;
+    };
+    //    var str = 'zhufeng{2017}peixun{2018}yangfan{2019}qihang{2020}';
+    //    var reg = /\{(\d+)\}/g;
+    //    var result = reg.myExecAll(str);
+    //    console.log(result);
+
+
+    //====================================
+    //正则的贪婪性：每一次匹配捕获的时候，都是把当前正则最长的匹配结果捕获到
+    //    var str = 'zhufeng2017';
+    //    var reg = /\d+/;
+    //    console.log(reg.exec(str));//->['2017']
+    //    reg = /\d+?/;//->在量词元字符后面加一个问号就是取消贪婪性
+    //    console.log(reg.exec(str));//->['2']
+
+    //====================================
+    //->不管我们执行EXEC还是TEST,如果增加G,每一次执行方法都会把lastIndex值改变,下一次再捕获的时候,是从上一次结束后的位置继续开始查找
+    //    var str = 'zhufeng2017peixun2018yangfan2019';
+    //    var reg = /\d+/g;
+    //    console.log(reg.test(str));//->TRUE
+    //    console.log(reg.exec(str));//->['2018']
+
+    //    if (reg.test(str)) {
+    //        console.log(reg.exec(str));
+    //    } 不要这样写,判断中的TEST执行会影响EXEC的查找的开始位置
+
+    //------------
+    //    var str = 'zhufeng{2017}peixun{2018}';
+    //    var reg = /\{(\d+)\}/g;
+    //    console.log(reg.test(str));//->TRUE
+    //    console.log(RegExp.$1);//->'2017' 获取第一次匹配结果中,第一个小分组内容,同理$2就是获取本次匹配结果中,第二个小分组的内容
+    //
+    //    reg.test(str);
+    //    console.log(RegExp.$1);//->'2018'
+</script>
+</body>
+</html>

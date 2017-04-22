@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<script>
+    //->replace([old],[new])：把字符串中旧的字符替换成新的字符,执行一次替换一次
+    //    var str = '珠峰教育';
+    //    str = str.replace('珠峰', '珠峰培训');
+    //    console.log(str);
+
+    //    var str = '珠峰教育,珠峰集团';
+    //    str = str.replace('珠峰', '珠峰培训').replace('珠峰', '珠峰培训');
+    //    //->'珠峰教育,珠峰集团' => '珠峰培训教育,珠峰集团'
+    //    //->'珠峰培训教育,珠峰集团' => '珠峰培训培训教育,珠峰集团'
+    //    //...
+    //    console.log(str);
+    //在replace不基于正则的情况下,有一些需求是处理不了的,例如上面的案例
+
+    //    var str = '珠峰教育,珠峰集团';
+    //    str = str.replace(/珠峰/g, '珠峰培训');//->把正则所匹配的内容全部替换为“珠峰培训”
+    //    console.log(str);//->'珠峰培训教育,珠峰培训集团'
+
+    //==============RELPACE原理=====================
+    //    var str = 'zhufeng{2017},peixun{2018}';
+    //    var reg = /\{(\d+)\}/g;
+    //->在执行REPLACE的时候,会根据当前正则在字符串中查找所有匹配的结果,查找到一个就进行一次捕获；
+    //->不仅仅捕获,而且还会把第二个参数(回调函数)执行一次；
+    //->不仅如此,在每一次执行这个函数的时候,会把当前正则捕获的结果当做实参传递给回调函数(捕获的结果包含：大正则匹配的和里面每一个小分组匹配的结果)；
+    //->在回调函数执行的时候,函数中返回的是什么(RETURN)就相当于把当前正则匹配的这些内容替换成RETURN后面的值
+    //    str = str.replace(reg, function () {
+    //        //console.log(arguments[0]);//->大正则本次匹配的结果
+    //        //console.log(arguments[1]);//->第一个小分组本次匹配的结果
+    //        return '@' + arguments[1] + '@';
+    //    });
+    //    str = str.replace(reg, '@$1@');//->在这里出现的$1等价于上面的arguments[1]:当前捕获到的第一个小分组内容 和 RegExp.$1是同一套原理
+    //    console.log(str);
+
+
+    //==================举个栗子==============
+    //    var str = 'zhu feng pei xun，shi zhong guo zui you xiu de qian duan pei xun ji gou，mei you zhi yi！';
+    //    //需求：计算当前字符串中出现次数最多的字符是哪一个？出现了多少次？
+    //
+    //    //->获取和存储每一个字母出现的次数
+    //    //    var obj = {};
+    //    //    for (var i = 0; i < str.length; i++) {
+    //    //        var cur = str[i];
+    //    //        if (cur === ' ' || cur === '，' || cur === '！') continue;
+    //    //        if (obj[cur]) {
+    //    //            obj[cur]++;
+    //    //            continue;
+    //    //        }
+    //    //        obj[cur] = 1;
+    //    //    }
+    //
+    //    var obj = {};
+    //    var reg = /[a-zA-Z]/g;
+    //    str.replace(reg, function () {
+    //        var cur = arguments[0];
+    //        obj[cur] ? obj[cur]++ : obj[cur] = 1;
+    //    });
+    //
+    //    //->在OBJ中得到最大出现的次数
+    //    var maxNum = 1;
+    //    for (var key in obj) {
+    //        var val = obj[key];
+    //        val > maxNum ? maxNum = val : null;
+    //    }
+    //
+    //    //->通过最大次数在OBJ中获取对应的字符
+    //    var result = [];
+    //    for (key in obj) {
+    //        obj[key] === maxNum ? result.push(key) : null;
+    //    }
+    //    console.log(result);
+
+    //==================举个栗子==============
+    //需求：把所有拼音的首字母变为大写
+    var str = 'zhu feng pei xun，shi zhong guo zui you xiu de qian duan pei xun ji gou，mei you zhi yi！';
+    str = str.replace(/\b[a-z]/g, function () {
+        return arguments[0].toUpperCase();
+    });
+    console.log(str);
+
+    //==================思考题==============
+    //需求：我有一个时间字符串 '2017-4-22 18:9:35'  => '2017年04月22日 18时09分35秒' 或者 '04-22 18:09' ... 替换为任意想要的
+
+    //==================思考题==============
+    //需求：我有一个字符串 'xxx.xxx.xx?a=1&b=2&c=3'  => {a:1,b:2,c:3}
+</script>
+</body>
+</html>

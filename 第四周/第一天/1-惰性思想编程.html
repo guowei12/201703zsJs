@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 惰性函数封装:是我们封装方法和组件的一种思想,一种技巧.
+    // 耍一些小聪明,做一些小优化,避免了代码的冗余和耦合
+    var utils = (function () {
+        var flag = 'getComputedStyle' in window;
+        function  myNa() {
+            if (flag) {
+                alert('我是葛猛')
+            }
+        }
+        function  myAge ( ) {
+            if (flag) {
+
+            }
+        }
+        return {
+            myName: myNa
+        }
+    })();
+
+    // 用了哪些js的机制:关键词:1/作用域 2/预解释 3/堆栈内存的理解 4/函数机制 5/闭包机制
+
+    // 1/ 我们的方法都释放在,自执行函数的栈内存(私有作用域)中
+    // 2/ 进行预解释,保存我们的方法
+
+
+</script>

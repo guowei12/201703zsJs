@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function  Utils () {
+        this.myName = function (name) {
+            alert('my name is ' + name)
+        }
+    }
+    var util = new Utils();
+    util.myName('小甜甜葛猛');
+
+    Utils.prototype.myAge = function () {
+        alert('my age is 6岁,so im a 小可爱')
+    };
+//    var age = new  Utils();
+//    age.myAge();
+     util.myAge();
+    // 利用面向对象的思想把我们的getCss写出来
+
+
+
+
+
+
+</script>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            width: 500px;
+            height: 400px;
+            margin:  20px auto;
+            list-style: none;
+            background: lightyellow;
+            text-align: center;
+        }
+        ul li {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            margin: 20px auto;
+            font-size: 20px;
+            background: lightgreen;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="child" class="big">
+    <li class="item one  asd" id="one">欢迎两位美女参观珠峰培训 111</li>
+    <li class="item two">珠峰培训专注前端 222</li>
+    <li class="item">我们是三班 333</li>
+    <li class="qqqq item">挨着最近的是张盛尧童鞋 444</li>
+    <li class="item item">他是3三组组长单身强悍 555</li>
+</ul>
+</body>
+</html>
+<script src="../../jquery-3.2.1.js"></script>
+<script src="./utils/utils.js"></script>
+<script>
+    // 不是机制,也不是思想.主要来锻炼大家的逻辑思维,和编程意识.真正的前端开发思想.
+    // 1获取某一元素的所有元素子节点
+    var oUl = document.getElementById('child');
+    var one = document.getElementById('one');
+//    console.log(oUl.children);
+//    function children (ele) {
+//        //2 找到所有的子节点
+//        // 子节点
+//        var ary = [];
+//        if (!'getComputedStyle' in window) {
+//            var childs = ele.childNodes;
+//            for (var i = 0; i< childs.length; i++) {
+//                var item = childs[i];
+//                // nodeType ==1说明当前节点为元素节点;
+//                // ary.push(item) 把找到的每一项放进篮子到时候集体返回(产出);
+//                item.nodeType == 1 ? ary[ary.length] = item : null;
+//                // push的优化
+//            }
+//        } else {
+//            return ele.children;
+//        }
+//
+//        return ary;
+//    }
+//    console.log(children(oUl));
+
+
+//    // 获取上一个元素哥哥节点
+//    function prev(ele) {
+//       if (flag) {
+//           return ele.previousElementSibling;
+//       }else {
+//           var pre = ele.previousSibling;// 获取元素的上一个哥哥节点,先找到他的哥哥节点看看
+//           // 重复的循环和判断一个事情,我们就会想到while循环判断
+//           while (pre && pre.nodeType !== 1) {
+//               pre = pre.previousSibling;
+//           }
+//           return pre;
+//           // ele.previousElementSibling;// 获取上一个元素节点
+//       }
+//    }
+
+    function next (ele) {
+        if (flag) {
+            return ele.nextElementSibling;
+        }else {
+            var next = ele.nextSibling;// 获取元素的上一个哥哥节点,先找到他的哥哥节点看看
+            // 重复的循环和判断一个事情,我们就会想到while循环判断
+            while (next && next.nodeType !== 1) {
+                next = next.nextSibling;
+            }
+            return next;
+            // ele.nextElementSibling;// 获取下一个元素节点
+        }
+    }
+
+
+    // 1 获取某一元素的所有元素子节点
+    // 2 首先找到元素, 然后获取他的所有子节点
+    // 3 遍历子节点找到所有元素子节点
+    // 4 把所有元素子节点放在一起把他返回
+
+//    function hasClass (ele, className) {
+//        var reg = new RegExp('(^| +)'+ className + '( +|$)');
+//        return reg.test(ele.className);
+//    }
+//
+//    console.log(hasClass(one, 'item123'));
+    // 给一个元素添加类名
+//    function addClass (ele, newClass) {
+//        // newClass 可是能是一个'newClass'
+//        // 也可能是多个' class1 asdasd1 class2 ';
+//        var aryClass = newClass.replace(/(^ +| +$)/g,'').split(/ +/g);
+////        ary=(newClass.replace(/ +/g,' ')).replace(/^ | $/g,'').split(' '); // 先将所有的空格都换成一个空格,然后将开头和结束的空格替换掉,注:在第二个正则中,没有进行分组,直接是大正则进行的匹配替换
+//        // replace(/^ | $/g,'').split(' ');
+//        for (var i = 0; i < aryClass.length; i++) {
+//            var itemClass = aryClass[i];
+//            if (!hasClass(ele,itemClass)) {
+//                ele.className+= '' + itemClass
+//            }
+//        }
+//    }
+//    addClass('',' asd1 asd2   ad3    ')
+    console.log(utils.getElementsByClassName('','item'));
+
+</script>

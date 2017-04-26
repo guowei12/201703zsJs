@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            width: 500px;
+            height: 400px;
+            margin:  20px auto;
+            list-style: none;
+            background: lightyellow;
+            text-align: center;
+        }
+        ul li {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            margin: 20px auto;
+            font-size: 20px;
+            background: lightgreen;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id="child" class="big">
+        <li class="item">欢迎两位美女参观珠峰培训</li>
+        <li class="item">珠峰培训专注前端</li>
+        <li class="item">我们是三班</li>
+        <li class="item">挨着最近的是张盛尧童鞋</li>
+        <li class="item">他是3三组组长单身强悍</li>
+    </ul>
+</body>
+</html>
+<script src='../../jquery-3.2.1.js'></script>
+<script>
+    // jq就是一个js封装的组件库/方法库,很简单
+    // 标签选择器
+    // $('我们的标签')  语法和css的规范是一样的
+    // JS
+    var uls = document.getElementsByTagName('ul');
+    var ulId = document.getElementById('child');
+//    console.log(uls,ulId);
+    // JQ 获取页面标签节点的方式
+//    console.log($('ul'));
+//    console.log($('#child')); // JQ 返回的都是数组
+//    console.log($('.big')); // JQ 返回的都是数组
+//    console.log($('#child li')); // JQ 返回的都是数组
+
+//    console.log($('#child').css('background', 'red'));
+//    console.log($('#child').css('width', '1000px'));
+    console.log($('#child').children());
+
+
+</script>

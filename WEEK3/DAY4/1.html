@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div class="red box clearfix" id="divFir"></div>
+
+<script>
+    var divFir = document.getElementById('divFir'),
+            classDiv = divFir.className;//->"red box clearfix"
+    var c1 = 'box';
+
+    //=>验证当前DIV的样式类名中是否包含C1变量存储的样式名称值
+    //1、/box/：这样的正则只能验证包含这几个字母即可,但是不能验证是否是这个样式类名,例如："red box1 clearfix"
+    //2、/^box$/：只能是box的字符串,只要正则中加上了开头和结尾符，当前正则的意思就是只能是什么什么
+    //    var reg = /(^| +)box( +|$)/; //->划定左侧和右侧可能是什么
+    //    var reg = /\bbox\b/; //->设定只能是BOX这个单词,\b是边界,一个单词左边和右边都是边界
+    //    console.log(reg.test(classDiv));
+
+    var reg = /\b'+c1+'\b/g;//->这里不是在进行字符串拼接,而是代表本身意思,让单引号出现一到多次...
+    reg = new RegExp('\\b' + c1 + '\\b', 'g');//->new RegExp([元字符],[修饰符])
+    //->实例创建方式由于参数是字符串,这样可以使用字符串拼接的方式,把一个变量存储的值当做正则元字符的一部分拼接进来(字面量方式不可以)；
+    //->使用实例方式，第一个参数是字符串，所以最开始写入的内容都是字符，还不是元字符呢，只有初始化实例的时候才会转换，在这种方式下，\ 就是本身斜杠的意思，如果想让其变为具有特殊意义的转译符，需要前面在加一个\才可以；\
+    console.log(new RegExp('.').test('a'));//->TRUE 任意字符
+    console.log(new RegExp('\\.').test('a'));//->FALSE 点
+    console.log(new RegExp('\\\\').test('\\'));
+</script>
+</body>
+</html>

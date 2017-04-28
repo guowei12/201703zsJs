@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <p class="item"></p>
+    <p class="item"></p>
+    <p class="item"></p>
+    <p class="item"></p>
+    <p class="item"></p>
+</div>
+</body>
+</html>
+<script src="./课件/js/utils.js"></script>
+<script>
+    // 宋其斌 2组
+    function getElementsByClassName(strClass, context) {
+        context = context || document;
+        if ('getComputedStyle' in window) {
+            return [].slice.call(context.getElementsByClassName(strClass));
+        }
+        var ary = [], nodeList = context.getElementsByTagName('*');
+        var strClassAry = strClass.replace(/(^ +| +$)/g, '').split(/ +/g);
+        for (var i = 0; i < nodeList.length; i++) {
+            var curNode = nodeList[i];
+            var flag = true;
+            for (var k = 0; k < strClassAry.length; k++) {
+                var curClass = strClassAry[k];
+                var reg = new RegExp('\\b' + curClass + '\\b');
+                if (!reg.test(curNode.className)) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                ary[ary.length] = curNode;
+            }
+        }
+        return ary;
+    }
+    var box = document.getElementById('box');
+    console.log(getElementsByClassName('item', box));
+
+
+    // 5组 炳欣
+    function getElementClass(str, strClass) {
+        str = str || document;
+        if ('getComputedStyle' in window) {
+            return utils.listToArray(str.getElementsByClassName(strClass));
+        }
+        var ary = [];
+        var nodeAll = str.getElementsByTagName('*');
+        var strAll = strClass.replace(/(^ +| +$)/g, '').split(' '); // 正则匹配拆分
+        for (var i = 0; i < nodeAll.length; i++) {
+            var curNode = nodeAll[i];
+            var flag = 1;
+            for (var k = 0; k < strAll.length; k++) {
+                var reg = new RegExp('(^| +)' + strAll[k] + '( +|$)');
+                if (!reg.test(curNode.className)) {
+                    flag = 0;
+                    break;
+                }
+            }
+            if (flag) {
+                ary[ary.length] = curNode;
+            }
+        }
+        return ary;
+    }
+    // 5组 郭位
+    function toArray(arry) {
+        var ary = [];
+        if ("getComputedStyle" in window) {
+            return Array.prototype.slice.call(arry, null);
+        }
+        for (var i = 0; i < arry.length; i++) {
+            ary[ary.length] = arry[i];
+        }
+        return ary;
+    }
+    function hasClass(curle, newclass) {
+        var reg = new RegExp("(/^| +)" + newclass + "( +|$/)");
+        return reg.test(curle.className);
+    }
+    function get(context, newclass) {
+        var context = context | document;
+        if ('getCoumputedStyle' in window) {
+            return this.toArray(context.getElementsByClassName(newclass));
+        }
+        var ary = [], tclass = newclass.replace(/^ +| +$/g, '').split(/ +/g);
+        var contextt = context.getElementsByTagName('*');
+        for (var i = 0; i < contextt.length; i++) {
+            var flg = true;
+            if (!hasClass(contextt[i], tclass)) {
+                var flg = flase;
+                return;
+            }
+        }
+        if (flg) {
+            ary.push(tclass);
+        }
+        return ary;
+    }
+
+
+    // 1组 何健
+    function getElementsByClassName(context, className) {
+        context = context || document;
+        if (flag) {
+            return toArray(context.getElementsByClassName(className));
+        } else {
+            var a = context.getElementsByTagName('*'),
+                    b = className.replace(/(^ +| +$)/g, '').split(/ +/g),
+                    ary = [];
+            for (var i = 0; i < a.length; i++) {
+                var c = 1;
+                for (var j = 0; j < b.length; j++) {
+                    if (!hasClass(a[i], b[j])) {
+                        c = 0;
+                        break;
+                    }
+                }
+                if (c) {
+                    ary[ary.length] = a[i]
+                }
+            }
+            return ary
+        }
+    }
+    // 3组 阴悦
+    var div = document.getElementById("div");
+    var utils = (function () {
+        var compatibleFlag = 'getComputedStyle' in window;//->IE6~8和标准浏览器的对比
+
+        function getEleByClass(context, className) {
+            context = context || document;
+            if ('getComputedStyle' in window) {
+                return listToArray(context.getElementsByClassName(className));
+            } else {
+                var ary = [];
+                var allTag = context.getElementsByTagName("*");
+                var className_ = className.replace(/(^ +| +$)/g, '').split(/ +/g);
+                for (var i = 0; i < allTag.length; i++) {
+                    var flag = true;
+                    for (var j = 0; j < className_.length; j++) {
+                        if (!hasClass(allTag[i], className_[j])) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (flag) {
+                        ary.push(allTag[i]);
+                    }
+                }
+                return ary;
+            }
+
+        }
+
+
+        function listToArray(likeAry) {
+            if (compatibleFlag) {
+                return Array.prototype.slice.call(likeAry);
+            }
+            var ary = [];
+            for (var i = 0; i < likeAry.length; i++) {
+                ary.push(likeAry[i]);
+            }
+            return ary;
+        }
+
+        function hasClass(curEle, strClass) {
+            return new RegExp('\\b' + strClass + '\\b').test(curEle.className);
+        }
+
+
+        return {
+            getEleByClass: getEleByClass,
+            listToArray: listToArray,
+            hasClass: hasClass
+        }
+    })();
+
+
+    var result = utils.getEleByClass(div, 'apple');
+    console.log(result);
+
+    // 6组 高宇宙
+    function getElementByClassName(context, className) {
+        context = context || document;
+        if ('getComputedStyle' in window) {
+            return [].slice.call(context.getElementsByClassName(className))
+        } else {
+            var ary = [];
+            var aryClass = className.replace(/^ +| +$/, '').split(/ +/g);
+            var allTag = context.getElementsByTagName('*');
+            for (var i = 0; i < allTag.length; i++) {
+                var aaa = allTag[i];
+                var flag = true;
+                for (var j = 0; j < aryClass.length; j++) {
+                    var bbb = aryClass[j];
+                    if (!hasClass(aaa, aryClass[j])) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    ary.push(aaa)
+                }
+            }
+            return ary
+        }
+
+    }
+
+    // 1组除了何健 每人5遍
+    // 2组 小路 军辉 王彪 翔羽每人5遍
+    // 3组 每人5遍
+    // 4组 每人5遍
+    // 5组 冬冬 明哲 长闯 调bug 3遍
+    // 6组 李楠 张磊 葛猛 5遍
+
+
+    function getClass(classGroup, context) {
+        context = context || document;
+        var classGroupAry = Array.prototype.slice.call(classGroup.replace(/^(\s+|\s+)$/g, '').split(/\s+/g)),
+                otaNames = context.getElementsByTagName('*'), ary = [];
+        for (var i = 0; i < otaNames.length; i++) {
+            var otaName = otaNames[i];
+            var itok = true;
+            for (var j = 0; j < classGroupAry.length; j++) {
+                var nameclass = classGroupAry[j];
+                var reg = new RegExp('(^|\s)'+nameclass+'(\s|$)');
+                if (!(reg.test(otaName.className))) {
+                    itok = false;
+                    break
+
+                }
+
+            }
+            itok ? ary[ary.length] = otaName : void 0;
+        }
+        return ary
+    }
+    console.log(getClass('w1 w2'));
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            background: red;
+        }
+
+        .btnRow {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            margin: 0px auto;
+            position: absolute;
+            top: 200px;
+            text-align: center;
+        }
+
+        .btn {
+            width: 200px;
+            height: 45px;
+            line-height: 45px;
+            display: inline-block;
+            text-align: center;
+            font-size: 18px;
+            text-decoration: none;
+            border: 1px solid green;
+        }
+
+        .btn:hover {
+            background: lightslategrey;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+</body>
+</html>
+<script src="js/utils.js"></script>
+<script>
+    // 多方向的动画
+    var box = document.getElementById('box');
+    var time = 5000;
+    var step = 5;
+    var topTarget = 500;
+    var beginTop = utils.css(box, 'top');
+
+
+    var changeTop = topTarget - beginTop;
+    var leftTarget = 600;
+    var beginLeft = utils.css(box, 'left');
+    var changeLeft = leftTarget - beginLeft;
+    // 计算多少时间应该到达多少距离 线性渐进算法
+    function boxRunLength(loadTime, time, changeWidth, begin) {
+        return loadTime / time * changeWidth + begin;
+    }
+    var currentLeft = 0;
+    var currentTop = 0;
+    var loadTime = null;
+    var timer = window.setInterval(function () {
+        loadTime += 10;
+        currentLeft +=1;
+        currentTop +=1;
+        if (loadTime == 2000) {
+            clearInterval(timer);
+            return;
+        }
+        utils.css(box,{
+            top:currentTop,
+            left:currentLeft
+        })
+    }, 50)
+
+</script>

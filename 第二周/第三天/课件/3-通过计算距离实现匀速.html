@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #one {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: red;
+            left: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div id="one">
+
+</div>
+</body>
+</html>
+<script src="./js/utils.js"></script>
+<script>
+    var box = document.getElementById('one');
+    var leftMax = utils.win('clientWidth') - box.offsetWidth;
+    var begin = utils.css(box, 'left');// 开始
+    var changes = leftMax - begin;// 总改变
+    var time = 2000;// 总时间
+    var loadTime = null;
+    // (loadTime/time)*changes +begin
+    function boxRun(t, l, b, c) {
+        return (l / t) * c + b;
+    }
+    var timer = window.setInterval(function () {
+        loadTime += 10;
+        if (loadTime >time) {
+            return;
+        }
+        var loadLength = boxRun(time, loadTime, begin, changes);
+        utils.css(box, 'left', loadLength);
+    }, 10)
+
+</script>

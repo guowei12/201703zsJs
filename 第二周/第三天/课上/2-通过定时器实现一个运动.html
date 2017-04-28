@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script src="js/utils.js"></script>
+<script>
+    var box = document.getElementById('box');
+    var maxLength = utils.win('clientWidth') - box.offsetWidth;
+    var time = 3000;
+    var step = maxLength/time*10;
+    var curLeft = utils.css(box,'left');
+    var timer = setInterval(function () {
+        curLeft += step;
+        if (curLeft >= maxLength) {
+            clearInterval(timer);
+            return;
+        }
+        utils.css(box,'left',curLeft);
+    },10)
+
+
+
+
+
+</script>

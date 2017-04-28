@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="js/utils.js"></script>
+<script>
+    // 通过变化的距离来实现匀速
+    var box = document.getElementById('box');
+    var t = 2000;
+    var maxLength = utils.win('clientWidth') - utils.css(box, 'left')-box.offsetWidth;
+    var loadTime = null;
+    var begin = utils.css(box, 'left');
+    function move(t, l, maxl, begin) {
+        return l / t * maxl + begin;
+    }
+    var timer = window.setInterval(function () {
+        loadTime += 10;
+        var distance = move(t,loadTime,maxLength,begin);
+        if (loadTime > 2000){
+            window.clearInterval(timer);
+            return;
+        }
+        utils.css(box,'left',distance)
+    }, 10)
+
+
+</script>

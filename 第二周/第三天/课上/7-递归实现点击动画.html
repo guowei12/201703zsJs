@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            background: red;
+        }
+
+        .btnRow {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            margin: 0px auto;
+            position: absolute;
+            top: 200px;
+            text-align: center;
+        }
+
+        .btn {
+            width: 200px;
+            height: 45px;
+            line-height: 45px;
+            display: inline-block;
+            text-align: center;
+            font-size: 18px;
+            text-decoration: none;
+            border: 1px solid green;
+        }
+
+        .btn:hover {
+            background: lightslategrey;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div class="btnRow">
+    <a href="javascript:;" id="left" class="btn">向左</a>
+    <a href="javascript:;" id="right" class="btn">向右</a>
+</div>
+</body>
+</html>
+<script src="js/utils.js"></script>
+<script>
+
+    // 有两个按钮点击左向左 点击右向右
+    // 递归思想
+    var box = document.getElementById('box');
+    var timer = null;
+    var maxLength = utils.win('clientWidth') - box.offsetWidth;
+    var step = 5;
+    function move(param) {
+        smallMove(param);
+        function smallMove(par) {
+            window.clearTimeout(timer);
+            var current = utils.css(box, 'left');
+            if (par == 'right') {
+                current += step;
+                if (current > maxLength) {
+                    clearTimeout(timer);
+                    utils.css(box, 'left', maxLength);
+                    return;
+                }
+                utils.css(box, 'left', current);
+            } else if (par == 'left') {
+                current -= step;
+                if (current < 0) {
+                    clearTimeout(timer);
+                    utils.css(box, 'left', 0);
+                    return;
+                }
+                utils.css(box, 'left', current);
+            }
+            timer = window.setTimeout(function () {
+                smallMove(par)
+            }, 10)
+        }
+
+        // 定时器都是异步的, 我们的执行体,在回调函数中执行.
+    }
+    var toRight = document.getElementById('right');
+    toRight.onclick = function () {
+        move('right')
+    };
+    var toLeft = document.getElementById('left');
+    toLeft.onclick = function () {
+        move('left')
+    };
+    // 性能问题的解决
+
+
+
+</script>

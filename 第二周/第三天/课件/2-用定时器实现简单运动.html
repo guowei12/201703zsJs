@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #one {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: red;
+            left: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div id="one">
+
+</div>
+</body>
+</html>
+<script src="./js/utils.js"></script>
+<script>
+    var box = document.getElementById('one');
+    var maxLeft = utils.win('clientWidth') - box.offsetWidth;
+    var time = 2000;// 总时间
+    var step = (maxLeft / time) * 10; // 每一步的距离,10秒一步,一步多少距离
+
+    var timer = window.setInterval(function () {
+        var left = utils.css(box, 'left');
+        if (left >= maxLeft) {
+            window.clearInterval(timer);
+            return;
+        }
+        left += step;
+        utils.css(box, 'left', left)
+    }, 10)
+</script>

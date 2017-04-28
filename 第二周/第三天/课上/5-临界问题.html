@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="js/utils.js"></script>
+<script>
+    // 临界问题
+    var maxLength = utils.win('clientWidth') - box.offsetWidth;
+    var step = 50;
+    var current = null;
+    window.setInterval(function () {
+            // 这就是判断这是不是最后一步
+        if (current + step + box.offsetWidth > utils.win('clientWidth')) {
+            utils.css(box,'left',maxLength);
+            clearInterval(timer);
+            return;
+        }
+        current += step;
+        utils.css(box,'left',current)
+    },100)
+
+
+
+
+
+
+</script>

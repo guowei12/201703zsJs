@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #win {
+            width: 500px;
+            height: 300px;
+            line-height: 300px;
+            margin: 20px auto;
+            text-align: center;
+            border: 1px solid greenyellow;
+            overflow: hidden;
+        }
+
+        #box {
+            list-style: none;
+            width: 2500px;
+            text-align: center;
+        }
+
+        #box li {
+            display: inline-block;
+            float: left;
+            width: 500px;
+        }
+
+        #box li:nth-child(odd) {
+            background: red;
+        }
+
+        #box li:nth-child(even) {
+            background: yellow;
+        }
+
+    </style>
+</head>
+<body>
+<div class="win" id="win"><!--这是显示的窗口-->
+    <ul id="box"><!--这是里边的盒子-->
+        <li class="item">1</li> <!--这是里边的每一张图-->
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+        <li class="item">5</li>
+    </ul>
+</div>
+</body>
+</html>
+<script src="js/utils.js"></script>
+<script>
+    var box = document.getElementById('box');
+    var step = 0;
+    var step2 = 0;
+    function move(ele) {
+        var n = 0;
+        var timer2 =  setInterval(function () {
+            var tt = utils.css(ele,'marginLeft');
+            tt += -10;
+            ele.style.marginLeft = tt + "px";
+            if (tt%500 == 0){
+                window.clearInterval(timer2);
+            }
+            if(tt == -2500) {
+                tt = 0;
+                ele.style.marginLeft = tt + "px";
+            }
+        }, 10)
+    }
+    var timer = window.setInterval(function () {
+        move(box)
+    }, 1000);
+
+    box.onclick = function () {
+        if (this.stop == true) {
+            this.stop = false;
+            timer = window.setInterval(function () {
+                move(box)
+            }, 1000);
+            return;
+        }
+        this.stop = true;
+        window.clearInterval(timer);
+    };
+
+
+
+</script>

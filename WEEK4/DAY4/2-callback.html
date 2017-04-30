@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>回调函数</title>
+</head>
+<body>
+<script>
+    /*
+     * ->回调函数根据具体的需求,可以在另外的函数中执行零到多次
+     * ->回调函数中的THIS一般都指向WINDOW(严格模式下是UNDEFINED),但是我们可以自己根据需求把THIS指向为我们所需要的
+     * ->我们可以给回调函数传递实参值,在回调函数中可以使用形参或者ARGUMENTS接收
+     * ->我们还可以接收回调函数的返回值,然后进行后续的操作
+     */
+    function fn(callback) {
+        for (var i = 0; i < 10; i++) {
+            //callback();
+            var res = callback.call('哈哈', 100, 200);
+            //->res:'ok'
+        }
+    }
+    fn(function (a, b) {
+        //->this:window
+        //->a:100 b:200
+        return 'ok';
+    });
+
+    //    window.setInterval(function () {
+    //        //->this:window
+    //    }, 1000);
+    //    [].sort(function () {
+    //        //->this:window
+    //    });
+    //    "".replace(/.+/g, function () {
+    //        //->this:window
+    //    });
+
+    var num = 100;
+    var obj = {
+        num: 10,
+        fn: function () {
+            //->this:obj
+
+            window.setTimeout(function () {
+                //->this:window
+                console.log(this.num);//->100
+            }, 1000);
+
+            var _this = this;
+            window.setTimeout(function () {
+                //->this:window
+                //->_this:obj
+                console.log(_this.num);//->10
+            }, 2000);
+
+//            window.setTimeout(function () {
+//                //->this:obj
+//                console.log(this.num);//->10
+//            }.call(obj), 3000);//=>在给定时器传递回调函数的时候，我们是先把函数执行，把函数中的THIS变为OBJ，把函数的返回结果undefined赋值给定时器，当3s后执行的是undefined
+//            window.setTimeout(function () {
+//                //->this:obj
+//                console.log(this.num);//->10
+//            }.bind(obj), 3000);//->BIND是预先把函数中的THIS改变为OBJ,函数没有执行,当定时器到达时间(3S)后在执行回调函数，此时函数中的THIS变为了OBJ；CALL是改变THIS的同时把函数也执行了；BIND不兼容IE低版本浏览器(BIND预先处理的机制,我们把它称之为柯里化函数思想 )；
+            //->this:obj
+//            window.setTimeout(function () {
+//                //->this:obj
+//                var _this = this;
+//                return function () {
+//                    console.log(_this.num);//=>10
+//                }
+//            }.call(this), 3000);
+        }
+    };
+    //obj.fn();
+</script>
+</body>
+</html>

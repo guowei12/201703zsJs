@@ -1,7 +1,7 @@
 'use strict';
 var utils = (function () {
     var isSupport = 'getComputedStyle' in window;
-    
+
     /*
      * toArray：Converts an array of classes to an array
      * @parameter：

@@ -72,7 +72,7 @@ var utils = (function () {
                     val = curEle.currentStyle[attr];
             }
         }
-        reg = /^-?\d+(\.\d+)?(px|rem|em|pt)$/i;
+        reg = /^-?\d+(\.\d+)?(px|rem|em|pt)?$/i;
         val = reg.test(val) ? parseFloat(val) : val;
         return val;
     }

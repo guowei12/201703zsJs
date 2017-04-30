@@ -67,6 +67,7 @@
         }
     })();
 
+    /*--Animation Formula--*/
     //->http://old.zhufengpeixun.cn/tween/
     var tweenEffect = {
         Linear: function (t, b, c, d) {
@@ -242,19 +243,17 @@
      *   target[object]：target location set
      *   duration[number]：total time of movement (milliseconds)
      *   effect[string]：current animation formula
-     *   callBack[function]：callback function that executes this method when the animation is over
      *
      * By Team on 2017/04/30 11:17:00
      */
-    function animate(curEle, target, duration, effect, callBack) {
+    function animate(curEle, target, duration, effect) {
         //->init parameter
         if (typeof effect === 'undefined') {
             effect = tweenEffect.Linear;
         } else if (typeof effect === 'string') {
+            //var effectAry = effect.split('.');
+            //effect = effectAry.length === 1 ? tweenEffect.Linear : tweenEffect[effectAry[0]][effectAry[1]];
             effect = eval('tweenEffect.' + effect);
-        } else if (typeof effect === 'function') {
-            callBack = effect;
-            effect = tweenEffect.Linear;
         }
 
         //->init options
@@ -269,15 +268,16 @@
         }
 
         //->moving
-        window.clearInterval(curEle.animateTimer);
+        window.clearInterval(curEle.animateTimer);//->Remove the previous animation before executing the next animation
         curEle.animateTimer = window.setInterval(function () {
             times += 17;
             if (times >= duration) {
+                //->move end
                 tool.css(curEle, target);
-                callBack && callBack.call(curEle);
                 window.clearInterval(curEle.animateTimer);
                 return;
             }
+            //->moving
             for (var attr in target) {
                 if (target.hasOwnProperty(attr)) {
                     var curP = effect(times, begin[attr], change[attr], duration);

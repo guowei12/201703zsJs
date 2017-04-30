@@ -274,8 +274,9 @@
             times += 17;
             if (times >= duration) {
                 tool.css(curEle, target);
-                callBack && callBack.call(curEle);
                 window.clearInterval(curEle.animateTimer);
+                //->callBack
+                typeof callBack === 'function' ? callBack.call(curEle) : null;//->callBack && callBack();
                 return;
             }
             for (var attr in target) {

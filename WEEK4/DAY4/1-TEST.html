@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <style>
+        #box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script src="js/utils.min.js"></script>
+<script src="js/animate.js"></script>
+<script>
+    var oBox = document.getElementById('box');
+    zhufengAnimate(oBox, {
+        width: 50,
+        height: 50,
+        top: 200,
+        left: 500,
+        opacity: 0.2
+    }, 2000, 'Bounce.easeOut', function () {
+        //->this:curEle(oBox)
+        utils.css(this, 'background', 'green');
+
+        zhufengAnimate(this, {
+            opacity: 1,
+            width: 300,
+            height: 300
+        }, 1000, function () {
+            utils.css(this, 'background', 'red');
+        });
+
+    });
+
+
+    //->回调函数：把一个函数作为实参(值)，传递给其它函数，并且在其它函数中可能会把回调的函数执行
+    //    function fn(callback) {
+    //        console.log(2);
+    //        callback();
+    //        console.log(3);
+    //    }
+    //    fn(function () {
+    //        console.log(1);
+    //    });
+
+    //    window.setInterval(function () {
+    //
+    //    }, 1000);
+    //    ary.sort(function () {
+    //
+    //    });
+    //    ary.forEach(function () {
+    //
+    //    });
+    //    ary.map(function () {
+    //        return 1;
+    //
+    //    });
+    //    str.replace(reg,function () {
+    //
+    //    });
+</script>
+</body>
+</html>

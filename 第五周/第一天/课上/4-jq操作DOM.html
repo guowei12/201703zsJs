@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 30px auto;
+            list-style: none;
+            width: 500px;
+            border: 1px solid lime;
+        }
+        #box li {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .bg {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div style="position: relative">
+<ul id="box">
+    <li data-onefirst="First" beauty = '闯姐' class="one two three"><input type="text">11</li>
+    <li class="one"><input type="text">11</li>
+    <li class="one"><input type="text">11</li>
+    <li class="one"><input type="text">11</li>
+    <li class="one"><input type="text">11</li>
+</ul>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    // $('#box').empty(); // 清空匹配元素的子节点
+    // $('li').remove(); // 删除匹配的元素
+    // $('#box').detach(); // 删除匹配的元素
+
+
+
+    //    html()	设置或返回匹配的元素集合中的 HTML 内容。
+    //    val()	    设置或返回匹配元素的值。
+    //    text()	设置或返回匹配元素的文本内容。
+
+
+    $('li').click(function () {
+        $(this).addClass('bg')
+    });
+    $('li').dblclick(function () {
+        console.log($(this).hasClass('bg1'));
+    });
+
+    $('#box').offsetParent()
+
+</script>

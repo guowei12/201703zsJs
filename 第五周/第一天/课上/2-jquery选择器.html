@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 30px auto;
+            list-style: none;
+            width: 500px;
+            border: 1px solid lime;
+        }
+        #box li {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        #box li:nth-child(even) {
+            background: lightcoral;
+        }
+        #box li:nth-child(odd) {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+<ul id="box">
+    <li><input type="text">11</li>
+    <li><input type="text">11</li>
+    <li><input type="text">11</li>
+    <li><input type="text">11</li>
+    <li><input type="text">11</li>
+</ul>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    // jq 的选择器
+    // $('标签')  遵循我们的css命名准则
+    // ID 选择器 $('#od')
+    // 类 选择器 $('.xxx')
+    // 标签 选择器 $('ul')
+    // 伪类 选择器 $(':disabled') // 代表他的状态的属性
+    // 属性选择器  $('[属性]')
+    // 关系选择器
+    // 鼠标滑过盒子,除了倒数第一位标签,其他的所有标签都变色
+
+</script>

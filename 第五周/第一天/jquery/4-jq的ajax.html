@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $.ajax({
+        type: "POST", // 请求的类型
+        url: './one.json', // 请求的链接
+        data: {name:1}, // 请求的数据
+        dataType: "json", // 返回数据类型
+        async: true,// 是否异步
+        cache: false, // 防止IE缓存,
+        success:function () {
+            alert(3)
+        }
+    }).error(function (res) {
+        alert('错了')
+    }).success(function () {
+        alert(2)
+    });
+
+
+    // ajax 常用的方法
+    // $.param()
+    // .serialize()	将表单内容序列化为字符串。
+    // .serializeArray() 将表单元素序列换 返回json格式$.ajax({
+    type: "POST", // 请求的类型
+            url: './one.json', // 请求的链接
+            data: {name:1}, // 请求的数据
+    dataType: "json", // 返回数据类型
+            async: true,// 是否异步
+            cache: false, // 防止IE缓存,
+            success:function () {
+        alert(3)
+    }
+    }).error(function (res) {
+        alert('错了')
+    }).success(function () {
+        alert(2)
+    });
+
+
+    // ajax 常用的方法
+    // $.param()
+    // .serialize()	将表单内容序列化为字符串。
+    // .serializeArray() 将表单元素序列换 返回json格式
+</script>

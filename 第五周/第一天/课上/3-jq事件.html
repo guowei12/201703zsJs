@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 30px auto;
+            list-style: none;
+            width: 500px;
+            border: 1px solid lime;
+        }
+        #box li {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        #box li:nth-child(even) {
+            background: lightcoral;
+        }
+        #box li:nth-child(odd) {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+<ul id="box">
+    <li><input type="text">11</li>
+    <li><input type="text">11</li>
+    <li><input type="text">11</li>
+    <li><input type="text">11</li>
+    <li><input type="text">11</li>
+</ul>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+//  $('#box').on('mouseenter',function () {
+//     alert('one click');
+//  });
+//  $('#box').mouseout(function () {
+//      console.log('mouseleave');
+//  })
+//document.ready(function () {
+//
+//})
+
+</script>

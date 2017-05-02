@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    // JQ 的深浅拷贝对象
+    // JQ 浅拷贝是引用地址
+    //  深拷贝是创建一个新的地址,把值赋值过来
+    $.extend(true,{that2:function () {
+        console.log(1)
+    }},{that:function () {
+        console.log(1)
+    }});
+    $.that2()
+</script>

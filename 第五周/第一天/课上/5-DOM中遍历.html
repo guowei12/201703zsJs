@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            margin: 30px auto;
+            list-style: none;
+            width: 500px;
+            border: 1px solid lime;
+        }
+
+        #box li {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        div, ul, li, p, span {
+            font-family: "Microsoft YaHei UI";
+        }
+
+        .bg {
+            background: red;
+        }
+
+        #box.full {
+            border: 5px solid black;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="one" style="position: relative">
+        <ul id="box">
+            <li data-onefirst="First" beauty='闯姐' class="one two three"><input id="oneOne" type="text" value="1">11</li>
+            <li class="one"><input type="text" value="1">11</li>
+            <li class="one"><input type="text" value="1">11</li>
+            <li class="one"><input type="text" value="1">11</li>
+            <li class="one"><input type="text" value="1">11</li>
+            <ul>
+
+            </ul>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    //    $('li').each(function (i, item){
+    //            // 在jq实例中调用jq方法, 通过原型链的查找,找到jq原型上的each方法
+    //        console.log(i,$(item))
+    //    });
+    //    $.each($('li'),function (i,item) {
+    //          // 这种是在jq对象中直接调用jq的方法
+    //    });
+    //   结束当前链  找到前一次对象
+    //    $("#one").find("li").filter('[data-onefirst="First"],.one').css('color','red');
+
+
+    //$("ul").append("<li>" + ($("ul").has("li").length ? "Yes" : "No") + "</li>");
+    //$("ul").has("li").addClass("full");
+
+//    // 直接在JQ对象调用map
+//    var res = $.map([1,2,3],function (n) {
+//        return n+1;
+//    });
+//    console.log(res);
+////    // 通过jq的实例来调用我们原型上的map方法
+//    var res2 = $('input').map(function () {
+//        return $(this).val();
+//    });
+//    console.log(res2);
+    $('li').click(function (i,item) {
+       var index =  $(this).index();
+        $(this).
+    })
+
+</script>

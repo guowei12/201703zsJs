@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    // 对象的拷贝作用
+    // 在第一个参数为true的时候,返回值是一个全新的对象
+    // 在第一个参数为false的时候,返回值是一个引用地址
+    var now = {
+        name: {age:2,name:'刘昭'},
+        brother: '振兴弟弟'
+    };
+    var old = {name: {age:1,name:'闵琳'}};
+    var obj2 = $.extend(true,now); //深拷贝
+    console.log($.brother);
+    console.log(obj2);
+    var obj  = $.extend(false,now,old); //浅拷贝
+
+    //console.log(obj); // 把第二个实参,赋值给了第一个(创建里一个新对象,然后遍历了第二对象的属性和值,写入到新创建的对象中)
+
+
+
+//    old.house = '北京';
+//    console.log(now,old);
+
+
+</script>

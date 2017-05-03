@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            margin:  20px auto;
+            text-align: center;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 15px;
+            border: 1px solid blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <a href="" id="item">1</a>
+    <a href="">2</a>
+    <a href="">3</a>
+    <a href="">4</a>
+    <a href="">5</a>
+    <input type="submit" id="one">
+    <select name="" id="two">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>
+</div>
+
+</body>
+</html>
+<script>
+    var item = document.getElementById('two');
+    item.onclick = function (event) {
+        event = event || window.event;
+        event.preventDefault();// 标准浏览器的阻止默认行为
+        event.returnValue = false; // ie浏览器的阻止默认行为
+        event.target.style.background = 'red'
+    }
+
+</script>

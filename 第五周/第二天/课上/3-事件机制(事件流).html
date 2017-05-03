@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            margin:  0 auto;
+        }
+        #center {
+            padding: 50px;
+            background: red;
+        }
+        #inner {
+            padding: 80px;
+            background: yellow;
+        }
+        #outer {
+            padding: 100px;
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var center = document.getElementById('center'),inner = document.getElementById('inner'),outer = document.getElementById('outer');
+
+
+
+    center.onclick = function(event) {
+        event = event || window.event;
+        event.stopPropagation();//阻止事件的冒泡传播
+        window.event.cancelBubble = true;
+        console.log(event.currentTarget,this); //事件绑定对象;
+    };
+    inner.onclick = function(event) {
+
+        console.log(event.currentTarget,this); //事件绑定对象;
+    };
+    outer.onclick = function(event) {
+
+        console.log(event.currentTarget,this); //事件绑定对象;
+    };
+
+    // 事件流的传播机制
+    // 分为三个阶段: 1/事件捕获阶段 2/捕获到事件源(事件目标) 3/冒泡传播
+    // 事件冒泡:我们触发子元素的事件绑定,同时会触发父元素事件监听
+    // DOM0级事件,事件的处理函数都是在冒泡阶段运行的
+    // 在DOM0级事件中,currentTarget事件绑定对象 和this相等
+    // event.target 具体触发事件的事件源(事件目标),事件源是具体的文档元素(DOM元素)
+</script>

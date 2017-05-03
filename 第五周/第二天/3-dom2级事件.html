@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        div {
+            margin: 20px auto;
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+<script src="../../jquery-3.2.1.js"></script>
+<script>
+    var odiv = document.getElementsByTagName('div')[0];
+    console.dir(odiv);
+    // dom2级事件 是对dom0级事件的一次完善和升级
+    // 我们说了dom0级事件,处理事件的函数都是在冒泡阶段执行的,而dom2级事件我们可以控制,处理事件的函数的执行时间.再冒泡阶段执行,还是在捕获阶段执行
+    // DOM2级事件的事件监听,是通过DOM元素的原型链找到事件对象的原型上的addEventListener实现的监听事件
+    // 移出事件监听,是通过removeEventListener实现的移除事件监听 (标准浏览器)
+    // 在ie浏览器中是有不同的,ie中的DOM2级事件,是通过attachEvent()实现的事件监听 和 detachEvent()事件移出监听,ie浏览器计ie8以前,即使是dom2级事件,也只是支持,事件的处理函数,在冒泡阶段执行.ie中的事件处理程序的作用域是window
+    // 如果第三个参数不传 我们默认的是false 冒泡阶段发生的
+    odiv.addEventListener('click',function (){
+        alert(1)
+    },false);
+    odiv.addEventListener('click',function (){
+        alert(2)
+    },false);
+    odiv.removeEventListener('click',function () {
+
+    },false)
+
+
+
+
+
+</script>

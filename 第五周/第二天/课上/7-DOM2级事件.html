@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            margin:  0 auto;
+        }
+        #center {
+            padding: 50px;
+            background: red;
+        }
+        #inner {
+            padding: 80px;
+            background: yellow;
+        }
+        #outer {
+            padding: 100px;
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    // DOM2级事件,就是DOM0级事件的优化.
+    // DOM2级事件,同一个文档对象同一个事件,可以绑定多个事件处理程序.
+    // DOM2级事件,我们还可以控制,事件处理程序的运行阶段, 可以控制在捕获或者冒泡阶段,任意阶段执行
+    var center = document.getElementById('center'),inner = document.getElementById('inner'),outer = document.getElementById('outer');
+    //'事件类型(type)','事件处理程序','boolean值  true 代表在捕获阶段执行, false代表在冒泡阶段执行'
+
+
+
+    // 同一个文档对象,同一个事件的事件处理程序,可以绑定多个
+    // 标准浏览器的写法
+//    center.addEventListener('click',function () {
+//        console.log('红');
+//    }, true);
+//    inner.addEventListener('click',function () {
+//        console.log('黄');
+//    }, false);
+
+//    inner.addEventListener('click',function () {
+//        console.log('冒泡');
+//    }, false);
+//    inner.addEventListener('click',function () {
+//        console.log('捕获');
+//    }, true);
+    // 特例
+    // 如果直接触发的是事件源的监听事件,没有事件委托的情况下,则冒泡和捕获函数会同时执行,但是这时候会根据函数的书写先后顺序执行.
+    // IE中的DOM2级事件
+    // IE中是用attachEvent进行的事件监听
+    // IE中的DOM2级事件的事件处理程序,都是在冒泡阶段执行的
+//    outer.attachEvent('onclick',function () {
+//        console.log('ie监听');
+//        alert('ie监听-o');
+//    });
+//    inner.attachEvent('onclick',function () {
+//        console.log('ie监听');
+//        alert('ie监听-i');
+//    });
+    function handle  () {
+        console.log('ie监听');
+        alert('ie监听-c');
+    }
+    // 我们dom2级事件如果不手动定义事件处理程序的运行阶段,默认是冒泡阶段,默认传值是false
+    center.addEventListener('click',handle,false);
+    center.addEventListener('click',handle,true);
+    center.removeEventListener('click',handle,true);
+    center.removeEventListener('click',handle);
+    // IE的DOM2级事件监听的移除
+//    center.attachEvent('onclick',handle);
+//    center.detachEvent('onclick',handle)
+// 在移除文档对象的DOM2级事件的时候,我们需要注意,事件类型和事件处理程序,必须一模一样,如果不传发生阶段的值,我们默认移出的是捕获阶段的,想移除捕获阶段的,需要添加第三个参数true
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        div {
+            margin: 20px auto;
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>
+<script src="../../jquery-3.2.1.js"></script>
+<script>
+    var odiv = document.getElementsByTagName('div')[0];
+//    odiv.onclick = function (event) {
+//        console.log(event)
+//    };
+    odiv.attachEvent('onclick',function (e){
+//        console.log(this);
+//        console.log(window.event);
+        console.log(e.srcElement);
+    });
+    // 讲了这么多事件了, 那这些事件在js这么语言中是一什么形式存在的呢,是以一个event类的形式存在的,所有的事件都是event类的一个实例,在触发事件的时候,我们会执行事件的处理方法(也叫事件的处理程序). 在事件的处理程序函数中,浏览器会默认传入一个参数(事件对象的实例),保存着当前事件的所有信息,我们可以在形参中直接访问.
+    // 在ie中的dom2事件,的事件处理程序是在全局作用域中运行的,里面的this是window;所以说我们在获取事件对象的时候得通过window.event获取
+    // 我们要记住的事件对象上的属性有type 表示 事件的类型
+    // event.currentTarget 保存的是当前绑定事件的对象
+    // event.target 保存的是当前触发事件的对象标准浏览器下
+    // event.srcElement
+
+
+
+</script>

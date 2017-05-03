@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            margin:  0 auto;
+        }
+        #center {
+            padding: 50px;
+            background: red;
+        }
+        #inner {
+            padding: 80px;
+            background: yellow;
+        }
+        #outer {
+            padding: 100px;
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var center = document.getElementById('center'),inner = document.getElementById('inner'),outer = document.getElementById('outer');
+//    outer.addEventListener('click',function(event) {
+//        console.log(this);//标准浏览器下,this是当前绑定事件的文档对象.
+//        console.log(this === event.target);// 这个不一定
+//        console.log(this === event.currentTarget);//恒等于的
+//
+//    });
+    // IE中的dom2级事件,事件的处理程序是绑定在全局(window)下,所以this是window
+    outer.attachEvent('onclick',function () {
+        console.log(this === window);
+        console.log(window.event)
+    })
+
+
+
+
+
+</script>

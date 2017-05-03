@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background: greenyellow;
+            position: fixed;
+            top:200px;
+        }
+        p {
+            margin-top: 1000px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<input type="text" id="inp">
+<p></p>
+</body>
+</html>
+<script>
+    // JS中的事件,其实是以一个类的形式存在的, 每个绑定的事件其实都是这个类的一个实例(引用数据类型的对象),浏览器会给我们的所有的事件触发函数中,默认传入一个实参,就是当前事件的事件对象(event),在这个事件对象中,保存着当前事件所有信息.
+    // 事件对象,存在于所有的事件的触发处理函数中.
+    var box = document.getElementById('box');
+    box.onclick = function (event) {
+        // event 事件对象
+        console.log(window.event);
+        console.log(event);
+    };
+    // clientX
+    // clientY 鼠标点击的点对应屏幕左上角的位置信息
+
+    // pageX
+    // pageY 鼠标点击的点对应body左上角的位置信息
+    var inp = document.getElementById('inp');
+    inp.onkeydown = function (event) {
+        console.log(arguments)
+        console.log(event)
+    };
+    // 键盘事件 KeyboardEvent
+    // 删除键 Backspace code:'Backspace' keyCode:8
+    // 回车键 enter     code:'enter'  keyCode: 13
+    // 空格键 space     code:'space' keyCode: 32
+    // 小键盘 上        code:'arrowUp' keyCode:38
+    // 小键盘 下        code:'arrowDown' keyCode :40
+    // 小贱盘 左        code:'arrowLeft' keyCode : 37
+    // 小贱盘 右        code:'arrowRight'keyCode : 39
+
+    // event 事件对象
+    // 兼容性:在标准浏览器下他的事件对象存在于当前函数的作用域中.
+    // 而在ie中存在于window作用域下
+
+    box.onclick = function (event) {
+        // event 事件对象
+         event = event || window.event;//兼容写法
+        alert('打我打我啊')
+    };
+    box.onclick = null;// 移除事件的监听(事件绑定)
+
+
+
+
+
+
+
+
+</script>

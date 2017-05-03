@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 阻止事件冒泡
+    document.onclick = function (event) {
+        event.stopPropagation();//阻止事件冒泡;
+        event.preventDefault();//阻止事件默认行为
+        event.cancelBubble = true;// IE阻止事件的冒泡传播
+        event.returnValue = false;// IE中阻止事件的默认行为
+    };
+    // 阻止事件默认行为
+    // 获取事件源
+
+
+
+</script>

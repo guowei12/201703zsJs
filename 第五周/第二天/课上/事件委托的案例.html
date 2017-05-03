@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        p {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            margin: 10px;
+            display: inline-block;
+        }
+        span {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            margin: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <span></span><span></span><span></span><span></span><span></span>
+
+    </div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box');
+    box.onclick = function (event) {
+        event = event || window.event;
+        var e = event.target || event.srcElement;
+        if (e.alreadyClick === true) {
+            e.style.background = '';
+            e.alreadyClick = false;
+            return ;
+        }
+        if(e.nodeName.toLowerCase() === 'p') {
+            e.style.background = 'red';
+            e.alreadyClick = true;
+        }else if (e.nodeName.toLowerCase() === 'span') {
+            e.style.background = 'blue';
+            e.alreadyClick = true;
+        }
+    };
+    // 处理事件对象的兼容性写法
+    // event类的一个实例, 保存当前事件的所有信息
+     one.onclick = function (event) {
+         event = event || window.event;
+         // 处理事件源的兼容性写法
+         event.target = event.target || event.srcElement;
+         // 处理事件冒泡的兼容性写法
+         event.stopPropagation();
+         event.cancelBubble = true;
+         // 阻止默认行为的兼容写法
+         event.preventDefault();
+         event.returnValue = false;
+     };
+
+    // 事件委托的思想
+    /*根据事件的流的传播机制,我们在父级标签上监听事件,通过捕获和冒泡机制,在触发子集的事件的时候,冒泡传播给父级,来触发父级的事件处理函数.我们还可以通过判断事件源(事件目标)来处理不同的逻辑*/
+    // 事件流的机制
+    /*
+    * 三个阶段
+    * 先捕获,捕获到事件源(事件目标),然后进行冒泡传播.
+    * */
+    // dom0级事件,事件处理函数运行的阶段,都在冒泡阶段
+
+
+</script>

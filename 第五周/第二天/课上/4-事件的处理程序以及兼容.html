@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            margin:  0 auto;
+        }
+        #center {
+            padding: 50px;
+            background: red;
+        }
+        #inner {
+            padding: 80px;
+            background: yellow;
+        }
+        #outer {
+            padding: 100px;
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+        <div id="inner">
+            <div id="center"></div>
+        </div>
+</div>
+</body>
+</html>
+<script>
+    var center = document.getElementById('center'),inner = document.getElementById('inner'),outer = document.getElementById('outer');
+    
+//    center.onclick = function(event) {
+//        event = event || window.event;
+//        event.target = event.target || event.srcElement;// 查找事件源(事件目标的兼容性写法)
+//        // event.stopPropagation();//阻止事件的冒泡传播
+//        // event.cancelBubble = true; // ie中阻止事件冒泡的写法
+//    };
+    center.onclick = function (event) {
+        event = event || window.event;
+        event.target = event.target || event.srcElement;
+        if (event.target.id === 'center') {
+            this.style.background = '#cecece'
+        }
+    };
+
+    // 元素事件的默认行为
+    console.dir(inner)
+
+
+
+
+</script>

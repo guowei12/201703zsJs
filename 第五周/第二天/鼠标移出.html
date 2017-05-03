@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrap {
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+            background:red;
+        }
+        #inner {
+            padding: 50px;
+            margin: 0 auto;
+            background: green;
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="inner"></div>
+</div>
+</body>
+</html>
+<script>
+
+    var inner = document.getElementById('inner');
+    var wrap = document.getElementById('wrap');
+    inner.onmouseenter = function () {
+        alert(1)
+    };
+    wrap.onmouseenter = function () {
+        alert(2)
+    }
+</script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+</body>
+</html>
+<script>
+    // 事件: 就是文档和浏览器的瞬间交互行为
+    // 延伸: 文档是DOM,dom和浏览器的交互行为,所以所有的DOM都可以触发事件.
+    // DOM事件:点击click 滚轮scroll  滑动move  进入 enter 加载load
+    // JS中的语义规范:click  mouseenter
+
+    // 事件机制
+    // js中的事件分为:1/事件的监听(事件的绑定)  2/事件的触发,触发事件时候运行绑定的处理函数
+//    var box = document.getElementById('box');
+//    box.onclick = function () {
+//
+//    };
+//    box.onmouseover = function () {
+//
+//    };
+//    box.onmousedown = function  () {
+//
+//    };
+    // 通过on+事件名 这种类型绑定的事件都叫做DOM0级事件
+    // 监听事件,不仅是浏览器的一种机制,也是浏览器赋予DOM文档元素的属性
+//    console.dir(box);
+//    box.onclick = function () {
+//        alert(1)
+//    };
+//    box.onclick = function () {
+//        alert(2)
+//    }
+
+
+//    var box = {
+//        click: '1'
+//    };
+//    box.click = '2';
+//    console.log(box.click);
+    //DOM0级事件,同一个元素的同一个事件监听,绑定的触发运行函数,不能重复绑定,有且只能绑定一回,下一次绑定的会将上一次的给覆盖掉
+
+    // JS中的事件,其实是以一个类的形式存在的, 每个绑定的事件其实都是这个类的一个实例(引用数据类型的对象),浏览器会给我们的所有的事件触发函数中,默认传入一个实参,就是当前事件的事件对象(event),在这个事件对象中,保存着当前事件所有信息.
+
+
+
+
+
+
+</script>

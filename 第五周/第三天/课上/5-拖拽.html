@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            background: green;
+            cursor: move;
+        }
+        html,body {
+            height: 100%;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box');
+    var _left = ((document.documentElement.clientWidth || document.body.clientWidth)/2 - (box.offsetWidth/2))+ 'px';
+    var _top = ((document.documentElement.clientHeight || document.body.clientHeight)/2 - (box.offsetHeight/2))+'px';
+    box.style.left = _left;
+    box.style.top = _top;
+    /*
+    * 我们的拖拽分为几个步骤:
+    * 1/鼠标摁下  记录当前鼠标和位移的位置信息
+    * 2/鼠标拖动  计算鼠标的移动距离,来计算设置元素的位置偏移量(top/left)
+    * 3/鼠标抬起  鼠标UP时候删除mousedown事件处理程序
+    * */
+    document.onmousedown = function (e) {
+        e = e || window.event;
+        //this.setCapture();// 让当前的dom元素形成鼠标粘连行为 只有火狐和ie浏览器支持.谷歌他是不支持的
+        var curMx = e.clientX;
+        var curMy = e.clientY;
+        var curBoxL = e.target.offsetLeft;
+        var curBoxT = e.target.offsetTop;
+        document.onmousemove = function (e) {
+            e = e || window.event;
+            e.target = e.target || e.srcElement;
+            var nowMx = e.clientX;
+            var nowMy = e.clientY;
+            var nowL =  curBoxL-(curMx-nowMx);
+            var nowT =  curBoxT-(curMy-nowMy);
+            box.style.left = nowL + 'px';
+            box.style.top = nowT + 'px';
+        }
+    };
+    document.body.onmouseup = function (e) {
+        document.onmousemove = null;
+        //box.realeaseCapture();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

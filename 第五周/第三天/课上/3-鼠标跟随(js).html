@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid red;
+            background: yellow;
+            position: relative;
+        }
+
+        #small {
+            width: 100px;
+            height: 100px;
+            background: greenyellow;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box');
+    box.onmouseenter = function (e) {
+        e = e || window.event;
+        var cur = document.createElement('div');
+        cur.id = 'small';
+        box.appendChild(cur);
+        var curL = e.clientX - box.offsetLeft;
+        var curT = e.clientY - box.offsetTop;
+        cur.style.left = curL + 10 + 'px';
+        cur.style.top = curT + 10 + 'px';
+    };
+    box.onmousemove = function (e) {
+        var cur = document.getElementById('small');
+        var curL = e.clientX - box.offsetLeft;
+        var curT = e.clientY - box.offsetTop;
+        cur.style.left = curL + 10 + 'px';
+        cur.style.top = curT + 10 + 'px';
+    };
+    box.onmouseleave = function (e) {
+        var cur = document.getElementById('small');
+        this.removeChild(cur);
+    };
+
+    // 第一步先写我们静态
+    // 鼠标进入大盒子的时候先创建一个小盒子给大盒子
+    // 鼠标在大盒子中移动的时候,我们不断的计算小盒子的定位参数
+    // 鼠标离开大盒子的时候,我们清除小盒子
+</script>

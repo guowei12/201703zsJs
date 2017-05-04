@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 400px;
+            height: 400px;
+            margin: 20px auto;
+            border: 1px solid red;
+            background: yellow;
+        }
+        #small {
+            width: 100px;
+            height: 100px;
+            background: greenyellow;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="small"></div>
+</div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box');
+    box.onmouseenter = function () {
+        console.log(1)
+    };
+    box.onmouseover =function (e) {
+        console.log(e)
+    }
+    box.onmouseout =function () {
+        console.log(3)
+    }
+    box.onmouseleave=function () {
+        console.log(4)
+    }
+    box.onmousemove=function () {
+        console.log(5)
+    }
+
+
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 150px;
+            height: 150px;
+            top:0;
+            left: 0;
+            bottom:0;
+            right: 0;
+            position: absolute;
+            background: green;
+            cursor: move;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+
+    var box = document.getElementById('box');
+    box.onmousedown = function (e) {
+        e = e || window.event;
+        var curL = e.clientX - e.target.offsetLeft;
+        var curT = e.clientY - e.target.offsetTop;
+        box.onmousemove = function (e) {
+            e = e || window.event;
+            var curX = e.clientX - curL;
+            var curY = e.clientY - curT;
+            box.style.left = curX + 'px';
+            box.style.top = curY + 'px';
+        };
+        box.onmouseup = function () {
+            box.onmousemove = null;
+        }
+    };
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #item{
+            width:100px;
+            height:100px;
+            background: #f09;
+            position: absolute;
+            cursor:move;
+        }
+    </style>
+</head>
+<body>
+<div id="item"></div>
+<script>
+    var item = document.getElementById('item');
+    //  鼠标拖拽效果
+    function drag(event) {
+        event = event || window.event;
+        event.target = event.target || event.srcElement;
+        event.target.className = 'down';
+        var curleft = event.clientX - event.target.offsetLeft,
+                curtop = event.clientY - event.target.offsetTop,
+                wl = (document.documentElement.clientWidth || document.body.clientWidth) - event.target.offsetWidth,
+                ht = (document.documentElement.clientHeight || document.body.clientHeight) - event.target.offsetHeight;
+        document.onmousemove = function (e) {
+            e = e || window.event;
+            var L = (e.clientX - curleft), T = (e.clientY - curtop);
+
+            L < 0 ? L = 0 : null;
+            T < 0 ? T = 0 : null;
+            L > wl ? L = wl : null;
+            T > ht ? T = ht : null;
+            event.target.style.left = L + 'px';
+            event.target.style.top = T + 'px';
+        };
+        event.target.onmouseup = function (e) {
+            document.onmousemove = null;
+            e.target.className = '';
+        }
+    }
+
+    item.onmousedown = function () {
+        drag(event);
+    };
+</script>
+</body>
+</html>

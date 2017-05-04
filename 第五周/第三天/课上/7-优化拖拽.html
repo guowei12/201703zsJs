@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            background: green;
+            cursor: move;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box');
+    var _left = ((document.documentElement.clientWidth || document.body.clientWidth) / 2 - (box.offsetWidth / 2)) + 'px';
+    var _top = ((document.documentElement.clientHeight || document.body.clientHeight) / 2 - (box.offsetHeight / 2)) + 'px';
+    box.style.left = _left;
+    box.style.top = _top;
+
+    box.onmousedown = down;
+
+    function down(e) {
+        e = e || window.event;
+        this['curMx'] = e.clientX;
+        this['curMy'] = e.clientY;
+        this['curBoxL'] = parseFloat(this.style.left);
+        this['curBoxT'] = parseFloat(this.style.top);
+        document.onmousemove = function (e) {
+            move.call(box, e)
+        };
+        document.onmouseup = function (e) {
+            up();
+        }
+    }
+    function move(e) {
+        var maxW = (document.documentElement.clientWidth || document.body.clientWidth) - this.offsetWidth;
+        var maxT = (document.documentElement.clientHeight || document.body.clientHeight) - this.offsetHeight;
+        var nowMx = e.clientX;
+        var nowMy = e.clientY;
+        var nowL = this['curBoxL'] - (this['curMx'] - nowMx);
+        var nowT = this['curBoxT'] - (this['curMy'] - nowMy);
+        nowL = nowL <= 0 ? 0 : (nowL >= maxW ? maxW : nowL);
+        nowT = nowT <= 0 ? 0 : (nowT >= maxT ? maxT : nowT);
+        this.style.left = nowL + 'px';
+        this.style.top = nowT + 'px';
+    }
+    function up(e) {
+        document.onmousemove = null;
+    }
+
+    // jq 写一个拖拽
+
+
+</script>

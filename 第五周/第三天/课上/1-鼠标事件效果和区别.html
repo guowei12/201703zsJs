@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid red;
+            background: yellow;
+        }
+        #item {
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+            background: greenyellow;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+</body>
+</html>
+<script>
+    var box = document.getElementById('box'),item = document.getElementById('item');
+
+    // onmouseover  会受到事件冒泡的影响 当鼠标滑过
+    // 相当于鼠标紧贴着当前绑定文档对象(元素的事件)
+//    box.onmouseover = function (e) {
+//        console.log(1);
+//    };
+//    item.onmouseover  = function (e) {
+//        e.stopPropagation();
+//    };
+//    // onmouseout 会受到事件冒泡的影响 当鼠标滑出
+//    // 相当于鼠标紧贴着当前绑定文档对象(元素的事件),不在紧贴着就触发了onmouseout事件
+//    box.onmouseout = function (e) {
+//        console.log(2);
+//    };
+//    item.onmouseout = function (e){
+//        e.stopPropagation()
+//    };
+
+    // onmouseenter 当鼠标进入, 鼠标进入,是刹那间的行为,进入只可能有一次,只要在这个绑定事件的文档内容中,都算进入.无论是子集还是自己.浏览器默认切断了整个onmouseenter的冒泡传播
+//    box.onmouseenter = function (e) {
+//        console.log('enter')
+//    };
+
+    // onmouseleave 当鼠标离开, 鼠标离开,也00是刹那间的行为,只要在这个绑定事件的文档内容中,无论子集还是自己,都算处于进入状态,只有彻底离开了这个盒子.才会触发mouseleave事件.浏览器默认切断了整个onmouseleave的冒泡传播
+//    box.onmouseleave = function (e) {
+//      console.log('leave')
+//    };
+
+    // onmousemove 浏览器没有默认阻止他的冒泡.
+    box.onmousemove = function (e) {
+        console.log('move')
+    };
+    item.onmousemove =function (e) {
+          console.log('驴');
+//        e.stopPropagation();
+    }
+
+
+
+</script>

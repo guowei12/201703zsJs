@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid red;
+            background: yellow;
+            position: relative;
+        }
+
+        #small {
+            width: 100px;
+            height: 100px;
+            background: greenyellow;
+            position: absolute;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="small"></div>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    //    $('#box').on('mouseenter',function (e) {
+    //        e = e || window.event;
+    //        var curL = e.clientX - $(this).offset().left + 5 + 'px';
+    //        var curT = e.clientY - $(this).offset().top + 5+ 'px';
+    //        $('#small').show().css({left:curL,top:curT})
+    //    }).on('mousemove',function (e) {
+    //        e = e || window.event;
+    //        var curL = e.clientX - $(this).offset().left + 5 +'px';
+    //        var curT = e.clientY - $(this).offset().top + 5+ 'px';
+    //        $('#small').css({left:curL,top:curT})
+    //    }).on('mouseleave',function (e) {
+    //        $('#small').hide();
+    //    })
+    $('#box').on({
+        mouseenter: function (e) {
+            e = e || window.event;
+//          console.log(this);
+//          console.log($(this).get(0));
+//            console.log($(e).get(0).clientX);
+//            console.log(window.event);
+
+            // 加了$()的返回的都是jquery实例,发回值是数组格式的
+//            console.log(e);
+//            console.log($(e.target).css('background','blue'));
+//            console.log($(e.currentTarget).css('background','green'));
+            console.log($(e.target) == $(this));
+            var $obj = $('#box');// 这是jq创建了一个box实例,然后我们创建了一个变量,让变量的指针指向我们的这个实例.
+            console.log($obj);
+
+
+            var curL = e.clientX - $(this).offset().left + 5 + 'px';
+            var curT = e.clientY - $(this).offset().top + 5 + 'px';
+            $('#small').show().css({left: curL, top: curT})
+        },
+        mousemove: function (e) {
+            e = e || window.event;
+            var curL = e.clientX - $(this).offset().left + 5 + 'px';
+            var curT = e.clientY - $(this).offset().top + 5 + 'px';
+            $('#small').css({left: curL, top: curT})
+        },
+        mouseleave: function (e) {
+            $('#small').hide();
+        }
+    })
+
+
+</script>

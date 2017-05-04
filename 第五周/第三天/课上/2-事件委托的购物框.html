@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+        }
+        #box {
+            width: 500px;
+            height: 500px;
+            margin: 20px auto;
+            text-align: left;
+        }
+        #title {
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: black;
+            background: greenyellow;
+            cursor: pointer;
+        }
+        #car {
+            width:400px;
+            height: 200px;
+            line-height: 200px;
+            color: white;
+            background: cornflowerblue;
+            text-align: center;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p id="title">购物车</p>
+        <p id="car">当前购物车为空</p>
+    </div>
+</body>
+</html>
+<script>
+    var car = document.getElementById('car');
+    document.body.onclick = function (e) {
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+        if (e.target.id === 'title'|| e.target.id ==='car') {
+            car.style.display = 'block';
+        }else{
+            car.style.display = 'none';
+        }
+    }
+
+
+
+
+</script>

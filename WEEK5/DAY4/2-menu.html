@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-精简菜单</title>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-size: 16px;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+        }
+
+        .container {
+            margin: 20px auto;
+            width: 600px;
+        }
+
+        .container li {
+            float: left;
+            width: 200px;
+            line-height: 35px;
+        }
+
+        .container li a, .container li span {
+            display: inline-block;
+        }
+
+        .container li span {
+            margin-left: 5px;
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        .container li a {
+            color: blue;
+        }
+
+        .container .btn {
+            position: relative;
+            margin: 20px auto;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid red;
+        }
+
+        .container .btn i {
+            display: block;
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            margin-top: -7px;
+            width: 12px;
+            height: 12px;
+            border: 1px solid red;
+            border-radius: 2px;
+        }
+
+        .container .btn i.down:after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -3px 0 0 -6px;
+            width: 0;
+            height: 0;
+            font-size: 0;
+            border: 6px solid transparent;
+            border-top-color: red;
+        }
+
+        .container .btn i.up:after {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -9px 0 0 -6px;
+            width: 0;
+            height: 0;
+            font-size: 0;
+            border: 6px solid transparent;
+            border-bottom-color: red;
+        }
+
+        .container .btn a {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="clear">
+        <li><a href="#">苹果</a><span>(2156)</span></li>
+        <li><a href="#">小米</a><span>(5126)</span></li>
+        <li><a href="#">华为</a><span>(2388)</span></li>
+        <li><a href="#">锤子</a><span>(12)</span></li>
+        <li><a href="#">OPPO</a><span>(1203)</span></li>
+        <li><a href="#">VIVO</a><span>(3201)</span></li>
+        <li><a href="#">黑莓</a><span>(1377)</span></li>
+        <li><a href="#">HTC</a><span>(1698)</span></li>
+        <li><a href="#">联想</a><span>(999)</span></li>
+        <li><a href="#">诺基亚</a><span>(8556)</span></li>
+        <li><a href="#">乐视</a><span>(1567)</span></li>
+        <li><a href="#">三星</a><span>(568)</span></li>
+        <li><a href="#">金立</a><span>(666)</span></li>
+        <li><a href="#">其他品牌</a><span>(1458)</span></li>
+    </ul>
+    <div class="btn">
+        <i class="down"></i>
+        <a href="javascript:;">显示全部品牌</a>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    //->1、热销品牌显示成为红色(苹果、小米、VIVO、黑莓是热销品牌)
+
+    /*
+     * 解决方案一：
+     * 先获取所有LI中的A,然后循环遍历,找出A标签中包含这些文字的,让A标签的文字颜色变为红色
+     */
+    //    var regHot = /^(苹果|小米|VIVO|黑莓)$/i;
+    //    $('.container li a').each(function (index, item) {
+    //        //->JQ的原型上有一个EACH方法,这个方法和数组的FOR EACH类似,用来遍历JQ对象(类数组集合),回到函数中传递参数的顺序和数组的FOR EACH恰好相反
+    //        //->THIS：当前遍历的这个A标签<=>ITEM
+    //        //console.log(this === item);//->TRUE
+    //        //console.log($(this) === $(item));//->FALSE 他们是两个不同的JQ实例
+    //        regHot.test($(this).html()) ? $(this).css('color', 'red') : null;
+    //    });
+
+    /*
+     * 解决方案二：
+     * 直接找到所有包含热销品牌文字的A,然后让其设置颜色是红色
+     */
+    //->JQ中存在内置循环机制,当我们使用JQ集合(可能包含多项)去调取一个方法的时候,它默认是集合中的每一项都在调取这个方法执行,例如：$('*').css(...)它的意思是分别给所有的标记标签都设置样式
+    var $container = $('.container'),
+            $conList = $container.find('li'),
+            $links = $conList.children('a');
+    $links.filter(':contains("苹果"),:contains("黑莓"),:contains("小米"),:contains("VIVO")').css('color', 'red');
+
+
+    //->2、开始进入页面，把部分品牌隐藏(第07~13个隐藏)
+
+    //方案一:
+    //    $conList.each(function () {
+    //        var n = $(this).index();
+    //        if (n >= 6 && n <= 12) {
+    //            //$(this).hide();//->HIDE/SHOW... [number(ms)|slow(fast)]
+    //            //$(this).stop().hide();//->STOP:结束当前正在运行的动画,从结束的位置继续下一个动画,FINISH结束当前正在执行的动画,然后让元素快速运动到目标位置,下一次从第一次的目标结尾位置出发；以后在使用JQ动画的时候，为了防止当前元素多动画共存，我们都使用STOP把上一次动画先清除，然后在执行下一次动画；
+    //            $(this).css('display', 'none');
+    //        }
+    //    });
+
+    //->解决方案二：
+    var $curLi = $conList.filter(':gt(5)').filter(':not(:last)');
+    $curLi.css('display', 'none');
+
+    //->3、当点击显示全部品牌的时候，展开隐藏的LI，让按钮变为“精简显示品牌”，再次点击回到初始收缩隐藏状态
+    var isBlock = false;
+    $container.find('.btn').on('click', function () {
+        var $i = $(this).children('i'),
+                $a = $(this).children('a');
+
+        if (isBlock) {
+            //->当前显示我们让其隐藏
+            $curLi.css('display', 'none');
+            $i.addClass('down').removeClass('up');
+            $a.html('显示全部品牌');
+            isBlock = false;
+            return;
+        }
+        //->当前隐藏我们让其显示
+        $curLi.css('display', 'block');
+        $i.addClass('up').removeClass('down');
+        $a.html('精简显示品牌');
+        isBlock = true;
+    });
+</script>
+</body>
+</html>

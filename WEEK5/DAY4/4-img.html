@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-鼠标更随</title>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <style>
+        .box {
+            margin: 20px auto;
+            width: 448px;
+        }
+
+        .box li {
+            position: relative;
+            float: left;
+            margin-right: 10px;
+            width: 100px;
+            height: 75px;
+            border: 1px solid #AAA;
+        }
+
+        .box li div {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            width: 400px;
+            border: 2px solid #000;
+            color: #FFF;
+            background: #555;
+        }
+
+        .box li div img {
+            display: block;
+            width: 100%;
+        }
+
+        .box li div span {
+            display: block;
+            padding-left: 10px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<ul class="box clear">
+    <li>
+        <img src="img/apple_1.jpg" alt="">
+        <div>
+            <img src="img/apple_1_bigger.jpg" alt="">
+            <span>苹果IPOD</span>
+        </div>
+    </li>
+    <li>
+        <img src="img/apple_2.jpg" alt="">
+        <div>
+            <img src="img/apple_2_bigger.jpg" alt="">
+            <span>苹果IPOD</span>
+        </div>
+    </li>
+    <li>
+        <img src="img/apple_3.jpg" alt="">
+        <div>
+            <img src="img/apple_3_bigger.jpg" alt="">
+            <span>苹果IPOD</span>
+        </div>
+    </li>
+    <li>
+        <img src="img/apple_4.jpg" alt="">
+        <div>
+            <img src="img/apple_4_bigger.jpg" alt="">
+            <span>苹果IPOD</span>
+        </div>
+    </li>
+</ul>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    function fn(e) {
+        //->JQ已经把E的兼容处理完成了,我们按照标准浏览器的操作方式使用即可
+        //->THIS:当前进入的LI
+        var $div = null,
+                offsetObj = null;
+        if (!offsetObj) {
+            $div = $(this).children('div');
+            offsetObj = $(this).offset();
+        }
+
+        var curX = e.clientX - offsetObj.left + 10,
+                curY = e.clientY - offsetObj.top + 10;
+        $div.css({
+            top: curY,
+            left: curX
+        });
+    }
+    $('.box li').on('mouseenter', function (e) {
+        $(this).children('div').stop().show(300);
+        fn.call(this, e);
+    }).on('mousemove', fn).on('mouseleave', function () {
+        $(this).children('div').css('display', 'none');
+    });
+</script>
+</body>
+</html>

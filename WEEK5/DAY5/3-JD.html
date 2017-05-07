@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-放大镜</title>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <style>
+        .small, .big {
+            position: absolute;
+            top: 50px;
+            width: 300px;
+            height: 300px;
+            box-shadow: 3px 3px 10px 0 #AAA;
+            overflow: hidden;
+        }
+
+        .small {
+            left: 50px;
+        }
+
+        .small img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .small .mark {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100px;
+            height: 100px;
+            background: #000;
+            opacity: 0.4;
+            filter: alpha(opacity=40);
+            cursor: move;
+            border-radius: 50%;
+        }
+
+        .big {
+            display: none;
+            left: 360px;
+        }
+
+        .big img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300%;
+            height: 300%;
+        }
+
+        /*
+         * SMALL中的IMG和SMALL一般大小
+         * 1)如果SMALL === BIG
+         *   MARK和SMALL的宽高比例，正好是右侧大图和左侧小图的一个宽高比例，只有这样才能保证MARK在左侧SMALL中走完一圈，正好右侧的大图也在BIG区域中展示完成一圈
+         *
+         * 2)如果SMALL!==BIG
+         *  两个方向都按照如下公式计算：
+         *  SMALL/MARK/(BIG/SMALL)
+         *
+         *  根据公式我们同样可以根据真实大图比上小图的比例，计算出BIG盒子的大小，不同的图片，右侧BIG盒子大小也是不太一样的
+        */
+    </style>
+</head>
+<body>
+<div class="small">
+    <img src="img/iphone.jpg" alt="">
+    <div class="mark"></div>
+</div>
+<div class="big">
+    <img src="img/iphone_big.jpg" alt="">
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/JD.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 发布订阅模式  不是一个死的机制 他是一种思想,一种写代码的形式;主要为了处理一对多的场景, 应用于不同情况下的不同函数的调用. this的理解很重要
+    // 发布订阅根本就不难
+    // 发布  订阅
+    // 手动进行模拟浏览器事件机制
+    
+    
+    
+    // 1-订阅 定阅一个事件绑定多个方法
+    function on (ele, type, fn) {
+        // 一个动作可以绑定多个处理程序,我们要把多个处理程序放在一个盒子里边
+        if (!ele[type]) { // 在做监听放进事件池的时候我们先创建对应事件的盒子,把我们对应事件的,处理程序放进去
+            ele[type] = [];
+        }
+        ele[type].push(fn);
+    }
+    // 2-发布 发布一个事件的多个方法
+    function run  (ele,type) {
+        var box = ele[type];
+        for (var i = 0; i<box.length;i++) {
+            box[i]();
+        }
+    }
+    
+    
+    
+    
+    var person = {
+        name:'裴振兴'
+    };
+    on(person,'marry',fn1);
+    on(person,'marry',fn2);
+    on(person,'break',fn3);
+    on(person,'break',fn4);
+
+
+
+
+
+    function fn1 () {
+        console.log(person.name+'结婚了')
+    }
+    function fn2 () {
+        console.log(person.name+'请喝喜酒了,变向给大家要钱了')
+    }
+    function fn3 () {
+        console.log(person.name + '把钱都给了媳妇,净身去了')
+    }
+    function fn4 () {
+        console.log(person.name + '步步高升,推翻了朝廷')
+    }
+
+    // 我们移出谁得知道吧
+    // 移出什么事情得知道吧
+    // 移出事情对应的方法得知道吧
+    function off (ele,type,fn) {
+        var ary = ele[type];
+        for (var i = 0; i<ary.length;i++) {
+            if (ary[i] === fn) {
+                ary.splice(i,1);
+                return
+            }
+        }
+    }
+    off (person,'marry',fn2);
+    run (person,'marry');
+    run (person,'break');
+
+
+
+
+
+
+
+</script>

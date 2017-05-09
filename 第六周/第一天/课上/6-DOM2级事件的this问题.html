@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #one {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+</body>
+</html>
+<script src="js/index.js"></script>
+<script>
+    var div = document.getElementById('one');
+//    //    function fn () {
+//    //        console.log(this === window)
+//    //    }
+//    //    function  callBackFn  () {
+//    //        fn.call(div);
+//    //    }
+//    //    div.attachEvent('onclick',callBackFn);
+//    //    div.detachEvent('onclick',callBackFn);
+//    // 1 创建一个小工具盒
+//    // 2 把我们的方法放到了小工具盒里边
+//    // 3 当我们在想用这个方法的时候,直接就知道到这个小工具盒变量就可以
+    function fn1() {
+        console.log(1)
+    }
+    function fn2() {
+        console.log(2)
+    }
+    function fn3() {
+        console.log(3)
+    }
+    function fn4() {
+        console.log(4)
+    }
+    function fn5() {
+        console.log(5)
+    }
+    function fn6() {
+        console.log(6)
+    }
+    function fn7() {
+        console.log(7)
+    }
+    function fn8() {
+        console.log(8)
+    }
+    function fn9() {
+        console.log(9)
+    }
+
+    function fn10() {
+        console.log(10)
+    }
+    function fn11() {
+        console.log(11)
+    }
+    function fn12() {
+        console.log(this.tagName)
+    }
+    function fn13() {
+        console.log(13)
+    }
+
+//    function fn2() {
+//        console.log(2);
+//        console.log(this.tagName);
+//    }
+//    // div.attachEvent('onclick',undefined);
+//
+//    function fnBack () {
+//        fn1.call(div);
+//    }
+//    div.attachEvent('onclick',fnBack); // 让fn1执行,改变fn1的this指向.  但是现在绑定的是fn1执行的发回值undefined
+//    div.detachEvent('onclick',fnBack); // 让fn1执行,改变fn1的this指向.  但是现在绑定的是fn1执行的发回值undefined
+on(div,'click',fn1);
+on(div,'click',fn2);
+on(div,'click',fn3);
+on(div,'click',fn4);
+on(div,'click',fn5);
+on(div,'click',fn6);
+on(div,'click',fn7);
+on(div,'click',fn8);
+on(div,'click',fn9);
+on(div,'click',fn10);
+on(div,'click',fn11);
+on(div,'click',fn11);
+on(div,'click',fn11);
+on(div,'click',fn11);
+on(div,'click',fn11);
+on(div,'click',fn12);
+
+
+
+
+</script>

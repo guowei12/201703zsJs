@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 事件池机制
+    // 标准浏览器下, 事件池里边是按顺序存储我们的事件监听信息
+    // 监听(订阅) 触发(发布)
+    // 事件的绑定对象都有对应的事件池
+    // type(事件类型)  function(事件处理程序) 布尔(事件流阶段的事件处理程序的触发)
+    // click            fn1                false
+    // click            fn2                false
+    // click            fn3                true
+
+    // mouseover      fn4                false
+    // mouseover      fn5                true
+    // mouseover      fn6                false
+
+
+    // 改变ie低版本浏览器的事件池机制,帮助我们处理顺序问题
+    // onclick            fn2               false
+    // onclick            fn1               false
+    // onclick            fn3               false
+    // onclick            fn7               false
+
+
+
+
+</script>

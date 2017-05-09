@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        div {
+            width: 200px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="one"></div>
+</body>
+</html>
+<script src="js/index.js"></script>
+<script>
+    // 我们处理兼容,就得模拟浏览器的事件思想 这就利用到了订阅发布模式思想
+    // 下面我们所写的东西多,代码长但是不难
+    var div = document.getElementById('one');
+    function fn1 () {
+        console.log(this === window)
+    }
+    function fn2 () {
+        console.log(2)
+    }
+//    div.attachEvent('onclick',function(e) {
+//        fn1.call(div,e); // 这样写不行,这样虽然解决了this问题,但是我们怎么去移出呢
+//    });
+    // 上面我们绑定的是一个匿名函数,这个地址没有名字我们找不到,所以删除不了,那我们就给他一个名字,写一个实名函数
+//    function tempFn () {
+//        fn1.call(div)
+//    }
+//    div.attachEvent('onclick', tempFn);
+//    div.detachEvent('onclick', tempFn);
+
+    // 回归到我们的this问题的解决
+    bind(div,'click',fn1);
+    bind(div,'click',fn1);
+
+</script>

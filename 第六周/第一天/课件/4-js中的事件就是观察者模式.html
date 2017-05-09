@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        div {
+            width: 200px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="one"></div>
+</body>
+</html>
+<script>
+    // 什么是 订阅发布模式,(观察者模式),其实只是一种思想.也可以理解为一种写代码的方式
+    // 其实js中的事件就是订阅发布模式思想实现的
+    // 订阅 就相当于监听事件并制定方法
+    // 发布 当监听的事件触发时候,将他定制的方法执行.发布出结果来.
+
+    // 我们手动模拟一下浏览器的事件的实现
+
+    // 订阅发布模式的关键在于对this
+    var div = document.getElementById('one');
+    // 监听对象  监听对象的什么事件  事件上绑定方法
+    function on(ele, type, fn) {
+        if(!ele[type]){
+            ele[type] = [];
+        }
+        var events =  ele[type];
+        events.push(fn);
+    }
+
+    // 发布 通知
+    function run(ele,type) {
+        var events = ele[type];
+        if(events&&events.length){
+            for(var i = 0; i < events.length; i++){
+                events[i]();
+            }
+        }
+    }
+
+    // 退订
+    function off(ele, type, fn) {
+        var events = ele[type];
+        if(events&&events.length){
+            for(var i = 0; i < events.length; i++){
+                if(events[i] === fn){
+                    events.splice(i,1);
+                    break;
+                }
+            }
+        }
+    }
+    function fn1 () {
+        console.log(1);
+    }
+    function fn2 () {
+        console.log(2);
+    }
+    on (div,'marry',fn1);
+    on (div,'marry',fn2);
+    off(div, 'marry', fn1);
+    run(div,'marry');
+
+
+</script>

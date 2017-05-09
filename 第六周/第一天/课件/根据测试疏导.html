@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+        ul {
+            width:  100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script src="../jquery-1.11.3.js"></script>
+<script>
+    // 1/jq中的each  1-each方法都定义在哪里   2-他干什么的
+    /*$('li').each()
+    这是先创建一个jq实例, 利用jq上的init方法创建.我们再通过原型链机制查找我们的jq原型上的each方法
+    $.each()
+    这是调用jq类本身的属性each方法
+    $('li').each(function (i, item) {
+
+    });
+    $.each($('li'), function (i, item) {
+
+    })*/
+
+    //2 jq中的事件绑定  事件绑定方法的区别
+    // 3.0 都是通过on实现的
+    // 3.0  bind on live delegate trigger(利用的就是我们的观察者模式的思想(发布订阅))
+    // on bind live delegate的区别?(自己查下)
+    // live delegate 事件委托思想
+    // on bind 绑定对象的方式不一样,on找到对应的dom对象之直接绑定,bind找到dom集合中所有的对象,都进行事件监听绑定
+    // jq的实现其实就是考验我们的面向对象思想的继承\
+    // $.extend   $.fn.extend 拓展插件的方法  还是深浅拷贝对象的方法
+    // 优化: 定义变量赋值jq实例 不用每次都进行jq实例的创建
+
+
+   //  6/获取事件对象的兼容写法
+    // 标准浏览器下,我们的事件在触发的时候,浏览器会默认在执行程序中添加一个实参事件对象,(事件对象是添加在事件绑定对象上的)
+    // e =  e || window.event
+    // 在ie浏览器下,在触发事件的时候,我们是把事件对象赋给了window
+
+
+    // 获取事件源的兼容写法
+    // 找到具体的事件触发的dom对象,dom元素.
+    // 所有的关于事件的信息,都存在事件对象上. e.target || e.srcElement
+    var ul = document.getElementsByTagName('ul')[0];
+    ul.onclick = function (e) {
+        console.log(e);
+        e.stopPropagation();// 标准浏览器下他是一个方法
+       // e.cancelBubble = true; // ie 他是事件对象的一个属性;
+        if (!'addEventListener' in window ) {
+            e.stopPropagation = function () {
+                e.cancelBubble = true;
+            };
+            e.preventDefault = function () {
+                e.returnValue = false;
+            }
+        }
+        e.stopPropagation();
+        // 阻止默认
+        e.preventDefault();
+        e.returnValue = false;
+    }
+</script>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #one {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+</body>
+</html>
+<script>
+    // DOM2级事件的兼容问题处理
+    var one = document.getElementById('one');
+
+
+//    one.attachEvent('onclick', function () {
+//        console.log(this === window);
+//    });
+
+    // 事件池的顺序
+    function fn1() {
+        console.log(1)
+    }
+    function fn2() {
+        console.log(2)
+    }
+    function fn3() {
+        console.log(3)
+    }
+    function fn4() {
+        console.log(4)
+    }
+    function fn5() {
+        console.log(5)
+    }
+    function fn6() {
+        console.log(6)
+    }
+    function fn7() {
+        console.log(7)
+    }
+    function fn8() {
+        console.log(8)
+    }
+    function fn9() {
+        console.log(9)
+    }
+    function fn10() {
+        console.log(10)
+    }
+    function fn11() {
+        console.log(11)
+    }
+    function fn12() {
+        console.log(12)
+    }
+    function fn13() {
+        console.log(13)
+    }
+    /**
+     * 标准浏览器
+    **/
+//    one.addEventListener('click', fn1, false);
+//    one.addEventListener('click', fn2, false);
+//    one.addEventListener('click', fn3, false);
+//    one.addEventListener('click', fn4, false);
+//    one.addEventListener('click', fn5, false);
+//    one.addEventListener('click', fn6, false);
+//    one.addEventListener('click', fn7, false);
+//    one.addEventListener('click', fn8, false);
+
+    /*
+    * ie 浏览器
+    * */
+    one.attachEvent('onclick',fn1);
+    one.attachEvent('onclick',fn2);
+    one.attachEvent('onclick',fn3);
+    one.attachEvent('onclick',fn4);
+    one.attachEvent('onclick',fn5);
+    one.attachEvent('onclick',fn6);
+    one.attachEvent('onclick',fn7);
+    one.attachEvent('onclick',fn8);
+    one.attachEvent('onclick',fn9);
+    one.attachEvent('onclick',fn10);
+    one.attachEvent('onclick',fn11);
+    one.attachEvent('onclick',fn12);
+    one.attachEvent('onclick',fn13);
+</script>

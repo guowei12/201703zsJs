@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        div {
+            width: 200px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="one"></div>
+</body>
+</html>
+<script>
+    var div = document.getElementById('one');
+    function on(ele, type, fn) {
+        if(!ele['self' + type]){
+            ele['self' + type] = [];
+        }
+        var events =  ele['self' + type];
+        if(events && events.length) {
+            for(var i = 0; i < events.length; i++){
+                if(events[i] === fn){
+                    return;
+                }
+            }
+        }
+        events.push(fn);
+    }
+    // 发布 通知
+    function run(ele, type) {
+        var events = ele['self' + type];
+        if(events&&events.length){
+            for(var i = 0; i < events.length; i++){
+                events[i].call(ele);
+            }
+        }
+    }
+    // 退订
+    function off(ele, type, fn) {
+        var events = ele['self' + type];
+        if(events&&events.length){
+            for(var i = 0; i < events.length; i++){
+                if(events[i] === fn){
+                    events.splice(i,1);
+                    break;
+                }
+            }
+        }
+    }
+    div.onclick = function () {
+        run(this,'marry');
+        run(this,'break');
+    };
+    on(div,'marry',fn1);
+    on(div,'break',fn2);
+    function  fn1 () {
+        console.log(this+'结婚了')
+    }
+    function fn2 () {
+        console.log(this+'离婚了')
+    }
+
+
+
+</script>

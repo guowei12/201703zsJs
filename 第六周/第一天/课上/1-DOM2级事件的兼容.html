@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        #one {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+</body>
+</html>
+<script>
+    // DOM2级事件的兼容问题处理
+    var one = document.getElementById('one');
+    // this问题
+    // 在标准浏览器下的,他的事件处理程序中的this是当前绑定事件的对象
+    // 在IE浏览器下的,他的事件处理程序中的this是window
+//    one.addEventListener('click',function (e) {
+//        console.log(this);
+//    },false);
+//    one.attachEvent('onclick',function () {
+//      console.log(this === window);
+//    });
+
+    // 事件池的顺序
+    // 重复问题
+    one.addEventListener('click',function () {console.log(1)},false);
+    one.removeEventListener('click',function () {console.log(1)},false);
+
+
+
+
+
+
+
+
+
+</script>

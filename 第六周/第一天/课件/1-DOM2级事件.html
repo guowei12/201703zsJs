@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        div {
+            width: 200px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="one"></div>
+</body>
+</html>
+<script>
+    // 兼容问题
+    var div = document.getElementById('one');
+    // this 指向
+    // 顺序
+    // 事件池
+//    div.onclick = function () {};
+//    div.addEventListener('click');
+//    div.attachEvent('onclick',function () {});
+    function fn1 (){
+        console.log(1)
+    }
+    div.addEventListener('click',fn1);
+    div.addEventListener('click',fn1);
+
+</script>

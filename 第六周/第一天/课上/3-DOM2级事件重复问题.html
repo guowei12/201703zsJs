@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #one {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+</body>
+</html>
+<script>
+    // DOM2级事件的 事件处理程序的重复问题
+    var one = document.getElementById('one');
+//    one.addEventListener('click',fn1,false);
+//    one.addEventListener('click',fn1,false);
+//    one.addEventListener('click',fn1,false);
+    function fn1 () {
+        console.log(1)
+    }
+    // 在标准浏览器下,一个元素同一个事件类型,可以绑定多个不同的事件处理程序;如果绑定多个事件处理程序相同,我们只会触发一次,不会重复触发;
+
+    one.attachEvent('onclick', fn1);
+    one.attachEvent('onclick', fn1);
+    one.attachEvent('onclick', fn1);
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训-导航</title>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <style>
+        html, body {
+            font-size: 14px;
+        }
+
+        .nav {
+            margin: 20px auto;
+            width: 200px;
+            border: 1px solid #00A5FF;
+            border-top: none;
+        }
+
+        .nav h2 {
+            padding-left: 15px;
+            font-size: 16px;
+            line-height: 35px;
+            background: #C4D5DF;
+            border-top: 1px solid #00A5FF;
+            cursor: pointer;
+        }
+
+        .nav .detail {
+            display: none;
+            padding-left: 20px;
+        }
+
+        .nav .detail li {
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<ul class="nav">
+    <li>
+        <h2>HTML</h2>
+        <ul class="detail" style="display: block">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>HTML5</li>
+            <li>CSS3</li>
+        </ul>
+    </li>
+    <li>
+        <h2>JavaScript</h2>
+        <ul class="detail">
+            <li>JS</li>
+            <li>jQuery</li>
+            <li>编程思想</li>
+            <li>设计模式</li>
+        </ul>
+    </li>
+    <li>
+        <h2>NODE</h2>
+        <ul class="detail">
+            <li>NODE</li>
+            <li>EXPRESS</li>
+            <li>VUE</li>
+            <li>REACT</li>
+        </ul>
+    </li>
+</ul>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    /*
+     * 需求：点击当前的H2，控制当前列表展开或者收缩(最好有动画效果)，同时控制其他的列表隐藏收起即可
+     */
+    $('.nav>li>h2').click(function () {
+        $(this).next().stop().slideToggle().parent().siblings().children('.detail').stop().slideUp();
+    });
+</script>
+</body>
+</html>

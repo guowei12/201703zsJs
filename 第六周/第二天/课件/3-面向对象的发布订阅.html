@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Listener() {
+        this.handle = {};
+    }
+    Listener.prototype.on = function (type, fn) {
+        if (!this['box' + type]) {
+            this['box' + type] = [];
+        }
+        var ary = this['box' + type];
+        for (var i = 0; i < ary.length; i++) {
+            if (ary[i] === fn) {
+                return;
+            }
+        }
+        this['box' + type].push(fn);
+    };
+    Listener.prototype.run = function (type) {
+        var ary = this['box' + type];
+        for (var i = 0; i < ary.length; i++) {
+            ary[i]()
+        }
+    };
+    Listener.prototype.off = function (type, fn) {
+        var ary = this['box' + type];
+        for (var i = 0; i < ary; i++) {
+            if (ary[i] === fn) {
+                ary.splice(i, 1);
+                break;
+            }
+        }
+    };
+    var obj = new Listener();
+    obj.on('休息',fn1);
+    obj.on('休息',fn2);
+    // obj.run('休息');
+    obj.say = function () {
+        console.log('休息');
+        return this.run('休息')
+    };
+    obj.say();
+    function fn1 () {
+        console.log('休息了,好爽')
+    }
+    function fn2() {
+        console.log('又休息了,好爽')
+    }
+</script>

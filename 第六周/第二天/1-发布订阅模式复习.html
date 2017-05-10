@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #one {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+</body>
+</html>
+<script>
+    var div = document.getElementById('one'); // 找到元素
+    // 先找到绑定事件的元素
+    // 给他做事件的监听(订阅)
+    div.addEventListener('click', function () {
+        alert('点击我了1')
+    });
+    div.addEventListener('click', function () {
+        alert('点击我了2')
+    });
+    function fn () {
+        alert('点击我了3')
+    }
+    div.addEventListener('click',fn);
+    div.removeEventListener('click,',fn);
+    // 我们通过点击触发三个函数,但是我只点击了一次
+    // 1对多 实时执行
+
+
+    // on 其实就是事件监听的模拟
+    function on(ele, type, fn) {
+        if (!ele['my' + type]) {
+            ele['my' + type] = []; // 模拟创建元素的事件池
+        }
+        var ary = ele['my'+ type];
+        for (var i=0;i<ary.length;i++) { // 去重
+            if (ary[i] === fn){
+                return;
+            }
+        }
+        ele['my' + type].push(fn); // 往事件池里边添加方法
+    };
+
+
+    // 我模拟的是事件的触发(发布); 我触发的是谁 我触发的是什么事件
+    function run (ele,type) {
+        var ary = ele['my' + type];
+        for (var i= 0;i<ary.length;i++) {
+//            ary[i].call(ele);
+            ary[i]();
+        }
+    }
+    function fn1 () {
+        alert('上课了')
+    }
+    function fn2 () {
+        alert('讲js')
+    }
+    function fn3 () {
+        alert('学发布订阅')
+    }
+
+    function off (ele,type,fn) {
+        var ary = ele['my'+type];
+        for (var i = 0; i < ary.length; i++) {
+            if(ary[i] === fn) {
+                ary.splice(i,1); // 删除数组中的某一项
+                break;
+            }
+        }
+    }
+    on(div,'begin',fn1);
+    on(div,'begin',fn2);
+    on(div,'begin',fn3);
+    off(div,'begin',fn3);
+    run(div,'begin')
+
+
+</script>

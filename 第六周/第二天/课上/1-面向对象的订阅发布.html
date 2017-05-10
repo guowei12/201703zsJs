@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 面向对象的订阅发布\
+    function Listener() {
+
+    }
+    Listener.prototype.on = function (type, fn) {
+        if (!this['my' + type]) {
+            this['my' + type] = [];
+        }
+        var ary = this['my' + type];
+        for (var i = 0; i < ary.length; i++) {
+            var obj = ary[i];
+            if (obj === fn) {
+                return
+            }
+        }
+        ary.push(fn);
+    };
+    Listener.prototype.run = function (type) {
+        var ary = this['my' + type];
+        for (var i = 0; i < ary.length; i++) {
+            var obj = ary[i];
+            obj();
+        }
+    };
+    Listener.prototype.off = function (type, fn) {
+        var ary = this['my' + type];
+        for (var i = 0; i < ary.length; i++) {
+            var obj = ary[i];
+            if (obj === fn) {
+                ary.splice(i, 1);
+                break
+            }
+        }
+    };
+    var teacher = new Listener();
+    function fn1() {
+        console.log('考轮播图');
+    }
+    function fn2() {
+        console.log('估计好多人考不过');
+    }
+    // 临时
+//    Listener.prototype.girl = function () {
+//        var _this = this;
+//        console.log('估计都能考过');
+//        return this.run;
+//    };
+    // 面向对象思想实现发布订阅
+    teacher.on('test', fn1);
+    teacher.on('test', fn2);
+    teacher.run('test');
+
+    // 练习面向对象思想
+//    teacher.girl();  // 返回的是run这个方法的引用地址;
+//    teacher.girl().call(teacher,'test');   // run();
+
+</script>

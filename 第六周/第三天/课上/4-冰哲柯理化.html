@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>柯理化</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+    //柯理化思想就是预先处理思想
+    //bin功能的实现：预先处理函数的this指向，还预先处理了
+
+     box.attachEvent('onmouseover',fn1);/1中的this->window
+     box.addEventListener('mouseover',band1)/1中的this->box
+
+     function fn() {
+         fn1.call(sib)
+     console.log(this)//如果想通过box控制其他的元素
+     }
+     //函数的闭包
+     box.attachEvent('onmouseover',function (e) {
+     fn1.call('box', 参数1,参数2,参数3)
+     });
+    function bind1(fn, context) {//统一接口，让不同的函数都可以进行闭包操作
+        context = context || window;
+        var arg = [];
+        if (context === window) {
+            arg = Array.prototype.slice.call(arguments, 1);
+        } else {
+            arg = Array.prototype.slice.call(arguments, 2);
+        }
+        fn.apply(context, arg)
+    }
+    function bind2(fn  , context) {sib window//统一接口，让不同的函数都可以进行闭包操作
+        context = context || window;
+        var arg = [];
+        if (context === window) {
+            arg = Array.prototype.slice.call(arguments, 1);
+        } else {
+            arg = Array.prototype.slice.call(arguments, 2);
+        }
+        return function (e) {//实现对事件的执行函数的闭包，e参数的接受问题
+            e = e || window.event;
+            arg.concat(e);
+            fn.apply(context, arg)
+        };
+    }
+    /********************************面向对象*******************************/
+    //统一接口，让不同的函数都可以进行闭包操作
+    function myBind(context) {window
+        context = context || window;
+        var arg = [], _this = this;
+        if (context === window) {
+            arg = Array.prototype.slice.call(arguments, 0);
+        } else {
+            arg = Array.prototype.slice.call(arguments, 1);
+        }
+        //函数的闭包操作
+        return function (e) {
+            //如果是进行事件绑定的函数则执行里面的代码，否则认为是普通的函数绑定this
+            if (e) {
+                e = e || window.event;
+                arg = arg.concat(e);
+            }
+            _this.apply(context, arg)
+        };
+    }
+    //将这个bind方法放在Function类的原型，让所有的函数都可以调用这个方法，这是属于函数的方法
+    Function.prototype.myBind = myBind;
+</script>
+</body>
+</html>

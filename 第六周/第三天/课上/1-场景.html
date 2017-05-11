@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width:200px;
+            height: 200px;
+            margin: 20px auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+<div id="two"></div>
+</body>
+</html>
+<script>
+
+    var div = document.getElementById('one');
+    var two = document.getElementById('two');
+    //div.addEventListener('click',fn1);
+    // 用call的话是让函数直接执行,并改变this的指向;
+    // 作为回调函数,不是要立即执行的,是当事件触发的我们的回调函数在执行.\
+
+
+    // 我们函数的执行环境是栈内存, 保存环境是对内存,所以我们不然函数直接执行,我们可以把他保存在一个堆内存里,对内存不被调用的时候,我们的函数fn1.call(two),就相当于以字符串的格式保存
+
+    // call
+//    div.addEventListener('click',function () {
+//        fn1.call(two)
+//    });
+//
+//    function fn1 () {
+//        this.style.background = 'blue';
+//    }
+
+    // bind 改变函数中this的指向,但是不让函数执行
+
+
+
+
+
+</script>

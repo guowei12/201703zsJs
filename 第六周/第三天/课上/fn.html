@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+</body>
+</html>
+<script src="newEvent.js"></script>
+<script>
+    var ary = [1, 2, 3, 4, 5];
+    var obj = {
+        name:'xiaomengmeng'
+    };
+    var newAry = ary.filter(function (item, i) {
+        console.log(this);
+        return item > 3;
+    })
+    one.onclick = function () {
+        console.log(1)
+    }
+
+</script>

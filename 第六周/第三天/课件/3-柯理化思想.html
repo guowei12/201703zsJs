@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 颗粒话  函数 利用函数执行  创建一个不销毁的作用域 把我们预先处理的内容都存储在这个不销毁的作用域当中,并且返回一个小函数,以后我们执行的都是小函数,在小函数中把之前预存贮的值进行相关操作
+//    function bind (fn,context) {
+//        var arg = Array.prototype.silce.call(arguments,2);
+//        context = context || window;
+//        return function  () {
+//            fn.call(context,arg);
+//            //fn.apply(context,arg)
+//        }
+//    }
+    var obj = {name: 'ha'};
+    function fn (num1, num2) {
+        console.log(this)
+    }
+    window.setTimeout(bind(fn,obj),100);
+
+
+    // 如果我这个fn里边我需要一个定时器
+
+    function bind (fn,context) {
+        var arg = Array.prototype.slice.call(arguments,2);
+        context = context || window;
+        return function  (e) {
+            var arg = Array.prototype.slice.call(arguments,0);
+            fn.call(context,arg.concat(arg));
+            //fn.apply(context,arg)
+        }
+    }
+    function fn (num1, num2) {
+        console.log(arguments)
+    }
+    document.body.onclick = fn.bind(box,1,2);
+    box.body.onclick = (function () {
+        return function  (e) {
+
+        }
+    })();
+
+
+ Function.prototype.myBind = function (context) {
+     var _this = this;
+     var outerArg = Array.prototype.slice.call(arguments,1);
+//     if ('bind' in Function.prototype){
+//         return this.bind.apply(this,[context].concat(outerArg))
+//     }
+     return function  () {
+         var arg = Array.prototype.slice.call(arguments,0);
+        arg.length  === 0 ? arg[arg.length] = window.event : null;
+         var argAll = outerArg.concat(arg);
+         _this.apply(context,argAll);
+     }
+ };
+    // ie 6-8下并没有传递这个event
+
+
+
+</script>

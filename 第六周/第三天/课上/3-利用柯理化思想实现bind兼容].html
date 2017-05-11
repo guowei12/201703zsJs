@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+<div id="two"></div>
+</body>
+</html>
+<script>
+
+    var div = document.getElementById('one');
+    var two = document.getElementById('two');
+    //div.addEventListener('click',fn1.bind(two,'black',500));
+
+    function bind(fn, context) { // 目前我们没有定义形参位置接收实参
+        // 虽然没有定义形参位置,但是我们在函数内部依然可以拿到我们的实参,通过arguments
+        // arguments 是一个类数组,我们可以先将他转化成数组,然后再截取数组中的某一段
+        var ary = Array.prototype.slice.call(arguments, 2);
+        context = context || window;
+        return function (e) {
+            e = e || window.event;
+            fn.apply(context, ary.concat(e));// apply 接收实参的时候,是以数组的形式接收的
+            //在我们事件中,浏览器会给我们的事件处理程序,默认传入一个事件对象.那么我们的fn在执行的时候必须也获得这个实参(事件对象)
+        }
+    }
+    // bind 在执行的时候,返回值需要是一个函数,返回的函数会作为事件的回调函数,当我们的事件触发的时候,我们这个函数再执行.
+
+    Function.prototype.myBind = function (context) {
+        // this 当前的this是实例
+        var _this = this;
+        var ary = Array.prototype.slice.call(arguments, 1);
+        return function (e) {
+            e = e || window.event;
+            if (e) {
+                _this.apply(context, ary.concat(e));
+                return;
+            }
+            _this.apply(context, ary)
+        }
+
+    };
+    // div.attachEvent('onclick',fn1.myBind(two,'black',700));
+    div.addEventListener('click',fn1.myBind(two,'black',700));
+    window.setTimeout(fn1.myBind(two, 'black', 700), 3000);
+    function fn1(clo, num, e) {
+        this.style.background = clo;
+        this.style.width = num + 'px';
+        console.log(e);
+        //console.log(e.srcElement.id === 'one'); // this就是two
+    }
+    //创建一个接口,可以让不同的函数进行闭包操作
+    function myBind(fn,context){
+        context=context||window
+        var arg=[],_this=this;
+        //判断第一个参数是否为context,如果不是则所有的arguments的项00
+        if(context===window){
+            arg=Array.prototype.slice.call(arguments,0)
+        }else{
+            arg=Array.prototype.slice.call(arguments,1)
+        }
+        //执行闭包操作
+        return function (e){
+            //判断是否是绑定事件的函数,如果是执行里面的代码,如果不是,则为普通的函数,也可以进行bind操作
+            if(e){
+                e=e|| e.event;
+                arg=arg.concat(e)
+            }
+            _this.apply(context,arg)//->_this->某个具体的函数
+        }
+    }
+    //将这个方法放在Function类的原型上,让所有的函数度可以调用这个方法,和内置的bind方法是同样的原理
+    Function.prototype.myBind=myBind;
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width:200px;
+            height: 200px;
+            margin: 20px auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+<div id="two"></div>
+</body>
+</html>
+<script>
+
+    var div = document.getElementById('one');
+    var two = document.getElementById('two');
+    div.addEventListener('click',fn1.bind(two,'black',500));
+    // 减少了回调函数的书写,避免冗余,但是不兼容
+    function fn1 (col,num) {
+        this.style.background = col;
+        this.style.width = num + 'px';
+    }
+    // bind 不仅将this的上下文改变了(this的指向),而且给我们形参直接赋值了
+
+    // 柯理化思想 就是预先处理思想
+
+    // bind的功能实现: 预先处理了函数的this指向, 还预先处理了,给形参赋值
+</script>

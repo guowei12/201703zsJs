@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    #box {
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    // 柯理化函数理想:js 预先处理的思想
+    function bind () {
+
+    }
+    function fn () {
+        this.style.background = 'blue';
+        console.log(this)
+    }
+    var obj = {
+        name : '珠峰培训'
+    };
+    // window.setTimeout(fn.bind(obj),10);
+    var box = document.getElementById('box');
+    box.addEventListener('click',fn.bind(box))
+
+
+</script>

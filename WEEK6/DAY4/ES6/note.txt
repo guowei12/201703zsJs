@@ -1,0 +1,141 @@
+ES6
+ ->不是所有的浏览器都兼容,低版本浏览器就不兼容
+ ->目前项目中使用ES6非常多(React大部分开发者都是基于ES6写的)，因为ES6非常的方便
+
+ ->我们需要把不兼容的ES6转换为兼容的ES3/5代码 =>"Babel"
+
+====================================
+为什么会存在浏览器兼容?
+[PC]
+  谷歌Chrome      (webkit=>V8引擎)  Safari也是基于V8引擎的
+  火狐Firefox     (Gecko)
+  欧朋Opera       (Presto)
+  IE(6~11、Edge)  (Trident)
+
+  [国产浏览器]
+    360浏览器
+    QQ浏览器
+    搜狗浏览器
+    猎豹浏览器
+    百度浏览器
+    ...
+    基于主流浏览器的内容进行二次开发的，目前经常套用的内核是webkit内核(之前是Trident内核)
+
+[移动端]
+  安卓系统(谷歌,大部分手机都是安卓系统的) =>浏览器的内核都是webkit内核的
+  IOS系统(苹果) =>浏览器的内核都是webkit内核的
+  WIN PHONE(老诺基亚,新版诺基亚是安卓系统=>淘汰 浏览器都是IE内核)
+
+  UC
+  谷歌
+  QQ
+  360
+  百度
+  ...
+
+内核和引擎是做什么用的?
+  浏览器运行我们编写的HTML/CSS/JavaScript代码，运行代码使用的东西就是浏览器的引擎和内核
+  W3C：万维网联盟，用来制定开发规范和标准的“非盈利组织”
+    ->开发者按照标准开发代码
+    ->浏览器开发商在制作浏览器的时候，也会按照标准使用电脑的GPU(显卡)把我们编写的代码绘制成页面和图形等
+
+兼容问题的由来?
+  webkit在实现获取元素的样式的时候，提供的方法是getComputedStyle，Trident内核实现这个需求提供的是currentStyle...
+
+====================================
+1、先安装NODE 再配置Babel
+
+  http://babeljs.cn/ (在线把ES6转换为ES5)
+
+  [验证NODE]
+   打开DOS命令(WIN+R -> 运行窗口中输入cmd)，输入node -v(node --version)查看NODE的版本号，如果有结果，则代表NODE安装成功了，用同样的方式在查看一下npm是否安装成功(一般情况下,NODE安装成功后,npm就有了)
+
+  [NPM]
+   包管理器(模块管理器)，我们需要使用的Babel不是一个标准的工具而是一个包(模块)，这样需要通过NPM来进行安装卸载等管理
+
+   安装到全局
+     npm install babel-cli -g  /  npm uninstall babel-cli -g
+
+     安装在全局后，会在全局的安装目录(安装成功就可以看到安装的目录)下生成babel.cmd这样的文件，说明babel将会成为一个可以执行的命令
+     babel -h  =>babel --help查看此命令的帮助
+        -w --watch    监听
+        -o --out-file 编译单独的文件
+        -d --out-dir  编译整个文件夹
+        -V --version  查看版本号
+        ...
+
+     安装到全局的好处：可以在当前电脑的任何一个项目目录中使用babel这个命令了
+     安装到全局的弊端：容易导致包的版本号冲突，A项目想使用6版本，B项目需要使用8版本，全局下只能保留一个，所以一般项目中，我们都不安装到全局，而是安装到当前的项目目录中
+
+===================================
+2、babel的使用
+  安装完成babel-cli还不可以，只能实现目录文件的创建，但是代码是转义不了的，需要我们安装转义规则和插件等
+
+  第一步：在当前项目的根目录中，创建一个 .babelrc 文件(没有名字只有后缀)
+  {
+    "presets": [
+        //->解析编译的语言规则(需要提前安装规则包)
+        /*
+         # ES2015转码规则
+         $ npm install --save-dev babel-preset-es2015
+
+         # ES2016转码规则
+         $ npm install --save-dev babel-preset-es2016
+
+         # ES2017转码规则
+         $ npm install --save-dev babel-preset-es2017
+
+         # react转码规则
+         $ npm install --save-dev babel-preset-react
+
+         # ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个
+         $ npm install --save-dev babel-preset-stage-0
+         $ npm install --save-dev babel-preset-stage-1
+         $ npm install --save-dev babel-preset-stage-2
+         $ npm install --save-dev babel-preset-stage-3
+
+         http://babeljs.io/docs/plugins/
+        */
+    ],
+    "plugins": [
+        //->插件(正常不需要使用插件,需要使用的话也需要提前安装)
+    ]
+  }
+
+  第二步：安装语言解析包(在本地根目录下安装)
+    npm install babel-preset-es2015 babel-preset-es2016
+
+  第三步：最后配置(.babelrc)
+    {
+      "presets": [
+        "es2015",
+        "es2016"
+      ],
+      "plugins": []
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

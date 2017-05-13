@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // ES6  javascript  bom  dom ECMAScript5
+    // ES6 其实就是对ES5，一个完善。
+    // 块级作用域  从字面量理解 {} 包含的就是一个块级作用域
+
+
+    // Let 声明只在当前块级作用域起作用的变量
+    // CONST 常量 - 一但定义了就不能改变的变量  --        不能改变有两种情况 1- 如果常量的值是基本数据类型的值就不能变
+    // 2 - 如果常量的值是引用数据类型它的引用指针就不能变
+    var a = 1;// 在es5中a 是一个全局变量，相当于给window自定义了一个属性a window.a, 在es6中，它对全局对象window和全局作用域实现分离，但是为了保证兼容性，依然保留var 声明的全局变量的特性， 利用let声明块级变量来实现的
+    //    let b = 2; // 只是相当于一个全局变量
+    //    console.log(a);  // 1
+    //    console.log(b);  // 2
+    //    console.log(window.a);// 1
+    //    console.log(window.b); //
+
+    // 根据块级作用域理解let
+    //    for (var i = 0; i<5; i ++) {
+    //        let n = 1
+    //    }
+    //    console.log(n);
+
+
+    //    for (var i = 0; i < 5; i++) {
+    //        window.setTimeout(function () {
+    //            console.log(i);//->输出五次5
+    //        }, 0);//->不是立马执行,浏览器有一个最小的等待时间(谷歌:5~6ms IE:10~13ms)
+    //    }
+
+    //    for (var i = 0; i < 5; i++) {
+    //        ~function (i) {
+    //            window.setTimeout(function () {
+    //                console.log(i);//->0 1 2 3 4
+    //            }, 0);
+    //        }(i);
+    //    }
+
+    for (let i = 0; i < 5; i++) {
+        window.setTimeout(function () {
+            console.log(i);//->0 1 2 3 4
+        }, 0);
+    }
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    var $plan = $.Callbacks();//->创建一个回调函数集合(相当于发布了一个计划表)
+
+    $plan.add(function (num1, num2) {//->ADD:向计划表中追加需要执行的方法 REMOVE:移除
+        console.log(1, num1, num2);
+    });
+    $plan.add(fn2);
+    function fn2() {
+        console.log(2);
+    }
+
+    window.setTimeout(function () {
+        $plan.fire(100, 200);//->通知计划表中的方法执行，而且还可以给每一个订阅的方法都传递一些实参
+    }, 2000);
+</script>
+</body>
+</html>

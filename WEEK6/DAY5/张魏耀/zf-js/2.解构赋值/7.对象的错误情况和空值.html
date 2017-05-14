@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+//    let {a} = {};
+//    console.log(a);
+
+    // 相当于
+//    let a = {}.a;
+//    console.log(a);
+
+    // 右侧如果是null或者undefined会出现什么问题
+    // 其他数据类型会被强制转换成对象 然后就会出现undefined的情况
+    let {n} = null;
+    console.log(n);
+
+</script>
+</html>

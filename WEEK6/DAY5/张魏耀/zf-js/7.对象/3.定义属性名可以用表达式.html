@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let obj = {};
+    let a = 'ccc';
+    obj[a] = 'c';
+    console.log(obj);
+    let syb = Symbol('123');
+
+    let obj2 = {
+        [a]: 'c',
+        [a + 'func'] () {
+            console.log(a + 'func');
+        },
+        [a + 'func2']: function () {
+            console.log(a + 'func2');
+        },
+        [syb]: 123
+    };
+    console.log(obj2);
+    obj2.cccfunc();
+    obj2.cccfunc2();
+
+</script>
+</html>

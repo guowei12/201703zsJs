@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    // i 会被共享,和选项卡需要用闭包解决是一个原理
+    for (var i = 0; i < 3; i++) {
+        setTimeout(function () {
+            alert(i);
+        }, 0);
+    }
+
+    // 如果不理解共享的道理,看下面
+    var a = "a";
+
+    // onclick 是N秒后用户触发,setTimeout也是N秒后触发
+    setTimeout(function () {
+        alert(a);
+    });
+
+    a = "b";
+
+    // 同时 下一个for循环会影响上一个for循环
+    for (var i = 0; i < 1; i++) {
+        setTimeout(function () {
+            alert(i);
+        });
+    }
+
+    for (var i = 0; i < 3; i++) {
+        ;
+    }
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    'use strict';
+    // 可以先演示下正常的字符是什么样子的
+
+    let emoji = "😂";
+    console.log(emoji, emoji.length, emoji.codePointAt(0));
+
+    let emojiCode = "\uD83D\uDE02";
+    console.log(emojiCode, emojiCode.length, emojiCode.codePointAt(0));
+
+    let es6EmojiCode = "\u{1f602}";
+    console.log(es6EmojiCode, es6EmojiCode.length, es6EmojiCode.codePointAt(0));
+</script>
+</body>
+</html>

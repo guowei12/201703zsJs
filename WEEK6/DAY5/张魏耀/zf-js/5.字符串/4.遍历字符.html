@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    'use strict';
+    // 1.遍历字符可以通过获得Unicode值,对比数值都否是双字节,如果是,再进行组合
+    // 2.使用 for of循环方法
+    // for of 是es6中的一种新的遍历器
+    let es6EmojiCode = "\u{1f602}A\u{1f602}B";
+
+    for (let charPoint of es6EmojiCode) {
+        console.log(charPoint, charPoint.codePointAt(0), charPoint.charCodeAt(0));
+    }
+
+    console.log("-----欧式分割线咯-----");
+
+    for (var i = 0, len = es6EmojiCode.length; i < len; i++) {
+        console.log(es6EmojiCode[i], es6EmojiCode[i].codePointAt(0), es6EmojiCode[i].charCodeAt(0));
+    }
+
+    // 可以用for of 循环计算字符串的真正的长度
+
+</script>
+</body>
+</html>

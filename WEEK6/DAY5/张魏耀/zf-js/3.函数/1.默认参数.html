@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    function calc (x = 0, y = 0) {
+        console.log(x, y);
+    }
+    // ajax 例子
+    calc(1);
+
+    function test ({x, y} = {x: 0, y: 0}) {
+        console.log(x, y);
+    }
+
+    function test2 ({x = 0, y = 0} = {}) {
+        console.log(x, y);
+    }
+
+    test({});
+    test2({});
+
+    // 不可省略中间参数,但是可以传undefined
+    function leave (x = 1, y = 2, z = 3) {
+        console.log(x, y, z);
+    }
+    leave(5, undefined, 8);
+</script>
+</html>

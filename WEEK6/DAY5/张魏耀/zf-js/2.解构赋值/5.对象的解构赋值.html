@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    // 从前的对象赋值
+//    let obj = {num: 213};
+//    console.log(obj);
+
+    // 对象的解构赋值
+    let obj = {
+        param1: "p1",
+        param2: "p2"
+    };
+
+//    let {param1, param2} = obj
+//    console.log(param1, param2);
+    // 相当于
+//    let param1 = obj.param1;
+//    let param2 = obj.param2;
+
+
+    // 如果这样 就会都是undefined
+//    let {p1, p2} = obj;
+//    console.log(p1, p2);
+
+    // 但是如果我非想叫p1和p2呢
+    let {param1: p1, param2: p2} = obj;
+    console.log(p1, p2);
+
+    // 总结,属性名一样的时候,可以直接写,属性名不同的时候,可以赋值
+
+</script>
+</html>

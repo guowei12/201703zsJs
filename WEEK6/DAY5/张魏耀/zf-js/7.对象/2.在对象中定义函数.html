@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let utils = {
+        add: (a, b) => {
+            console.log(a + b);
+            return a + b;
+        },
+        add2 (a, b) {
+            console.log(a + b);
+            return a + b;
+        }
+    }
+
+    utils.add(1,2);
+    utils.add2(1,2);
+
+    let Util = function () {
+
+    };
+
+    Util.prototype = {
+        getTime () {
+            console.log(new Date());
+        }
+    };
+
+    let u = new Util();
+    u.getTime();
+
+</script>
+</html>

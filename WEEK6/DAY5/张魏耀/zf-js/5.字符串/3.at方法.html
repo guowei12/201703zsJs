@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    'use strict';
+    // 这个方法并没有真正的实现,但是可以通过pollyfile实现
+    // https://github.com/es-shims/String.prototype.at
+    // 实现了 String.prototype.at
+
+    let es6EmojiCode = "\u{1f602}A";
+    console.log(es6EmojiCode.charAt(0), es6EmojiCode.charAt(1), es6EmojiCode.charAt(2));
+    console.log(es6EmojiCode.at(0), es6EmojiCode.at(1), es6EmojiCode.at(2));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let objKey = {objKey: 'objKey'};
+    let arrKey = [1, 2, 3];
+
+    // 参数是数组,数组每一项是key-value的长度为2的数组
+    let m = new Map([[objKey, 'kkk'], ['sss', 'sss']]);
+    m.set(arrKey, 'aaa');
+    m.set('str', 'str');
+    console.log(m, m.has([1, 2, 3]), m.has(arrKey));
+
+    console.log('---');
+    let res = m.forEach((value, key, map) => {
+        console.log(value, key, map);
+        return value;
+    });
+    console.log(res);
+
+    // 操作功能键
+    // set
+    // get
+    // delete
+    // has
+    // clear
+
+    // 遍历
+    // forEach
+    // keys
+    // values
+    // entries
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

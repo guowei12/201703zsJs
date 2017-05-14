@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    window. a = 'a';
+
+    var obj = {
+        a: 'obj_a',
+        func: function () {
+            setTimeout(function () {
+                console.log(this, this.a);
+            }, 1000);
+        },
+        func2: function () {
+            setTimeout(() => {
+                console.log(this, this.a);
+            }, 1000);
+        }
+    };
+
+    obj.func();
+    obj.func2();
+
+</script>
+</html>

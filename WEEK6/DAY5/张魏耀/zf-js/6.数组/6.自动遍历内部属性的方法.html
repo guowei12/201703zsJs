@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let arr = ['a', 'b', 'c', 'd'];
+//    console.log(arr.keys());
+//    console.log(arr.values());
+//    console.log(arr.entries());
+    let keys = arr.keys();
+
+//    for (let i = 0, len = keys.length; i < len; i++) {
+//        console.log(keys[i]);
+//    }
+//
+//    keys.forEach(function (item, index, arr) {
+//        console.log(item);
+//    });
+
+    for (let item of arr.entries()) {
+        console.log(item);
+    }
+
+    console.log(keys.next());
+    console.log(keys.next());
+    console.log(keys.next());
+    console.log(keys.next());
+    console.log(keys.next());
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    // 需要转义的字符 \ ` $ {
+    // 实际上只有${ 连接 在一起的时候需要转意
+    let str = `123\{213'"$}\`\`\${}\\`;
+    console.log(str);
+
+    // 字符串中插入变量
+    let name = `Weil`;
+    let age = 23;
+    let info = `My name is ${name}, age is ${age}`;
+    console.log(info);
+
+    // 换行
+    let oldLine = '<div>\
+                <span>123</span>\
+                </div>\
+                ';
+    console.log(oldLine);
+
+    let newLine = `<div>
+        <span>123</span>
+    </div>`;
+    console.log(newLine);
+
+    // 插入的可以是表达式
+    function calc(x, y) {
+        return x + y;
+    }
+    let num = `1 + 2 = ${calc(1, 2)}`;
+    console.log(num);
+
+    let isGril = `Sophia is a ${true ? 'girl' : "boy"}`;
+    console.log(isGril);
+
+    // 自动类型转换
+    let typeStr = `${[1, 2]}`;
+    console.log(typeStr);
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

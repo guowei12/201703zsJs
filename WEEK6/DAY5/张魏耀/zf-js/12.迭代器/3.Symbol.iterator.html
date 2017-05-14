@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let obj = {
+        0: 'a',
+        9: 'b',
+        2: 'c',
+        length: 3,
+    };
+
+    obj[Symbol.iterator] = Array.prototype[Symbol.iterator];
+    for (let item of obj) {
+        console.log(item);
+    }
+
+//    console.log(Symbol.iterator === Symbol.iterator);
+//    console.log(Symbol.iterator === Array.prototype[Symbol.iterator]);
+//    console.log(Set.prototype[Symbol.iterator] === Map.prototype[Symbol.iterator]);
+
+    let arr = [1, 2, 3, 4 ,5];
+    let arrIter = arr[Symbol.iterator]();
+
+    for (let item of arrIter) {
+        console.log(arrIter);
+    }
+
+    for (let item of arr) {
+        console.log(item);
+    }
+
+</script>
+</html>

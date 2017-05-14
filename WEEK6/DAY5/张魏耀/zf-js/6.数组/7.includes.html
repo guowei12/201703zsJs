@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    // 代替indexOf
+    // indeOf的问题
+    // NaN问题 使用了 === 误判
+    // 不够语义化 这个直接返回布尔值 不用再进行 -1 比较 +0 -0 0 不区分 以后可以不要纠结0 的问题
+    let arr = [NaN, Infinity, 'a', 1, -0];
+    console.log(arr.includes(Infinity));
+
+</script>
+</html>

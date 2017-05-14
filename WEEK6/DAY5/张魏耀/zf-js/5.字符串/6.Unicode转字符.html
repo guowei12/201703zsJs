@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    'use strict';
+    let es5Str = String.fromCharCode(0x1f602);
+    let es6Str = String.fromCodePoint(0x1f602);
+    console.log(es5Str, es6Str);
+
+    // fromCharCode 和 fromCodePoint 并不是字符串 prototype上的方法,而是String上面的,思考一下为什么呢.
+    // 因为在prototype上的方法每个字符串实例都能够调用,但是这两个方法并不需要也不能在字符串实体上调用
+</script>
+</body>
+</html>

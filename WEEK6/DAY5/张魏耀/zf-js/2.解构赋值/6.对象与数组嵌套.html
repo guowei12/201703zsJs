@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let obj = {
+        arr: [1, 2, {
+            third: 3
+        }],
+        param2: "p2"
+    };
+
+    let {param2: x, arr: [y, , {third: y3}], z} = obj;
+    console.log(x, y, z, y3);
+
+</script>
+</html>

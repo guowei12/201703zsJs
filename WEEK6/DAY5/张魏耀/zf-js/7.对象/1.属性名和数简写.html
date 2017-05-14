@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let a = 'is a';
+    let b = 'is b';
+
+    let obj1 = {
+        a,
+        b
+    };
+
+    let obj2 = {
+        a: a,
+        b: b
+    };
+
+    let obj3 = {
+        'a': a,
+        'b': b
+    };
+    console.log(obj1, obj2, obj3);
+
+    // 简单的函数返回值
+    let func = (num1, num2) => {
+        let x = num1 * num1;
+        let y = num2 * num2;
+
+        return {x, y};
+    }
+
+    let res = func(1, 3);
+    console.log(res);
+</script>
+</html>

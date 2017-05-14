@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let x = 2;
+    function test (x, y = x) {
+        console.log(x, y);
+    }
+    test(1);
+
+    // !
+    function test1 (b = c) {
+        let a = '9';
+        console.log(a, b);
+    }
+    test();
+</script>
+</html>

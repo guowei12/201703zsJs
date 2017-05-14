@@ -1,0 +1,22 @@
+@H: 180px;
+@c: red;
+
+.container {
+  height: @H;
+
+  .wrapper {
+    height: @H;
+
+    .slider {
+      height: unit(unit(@H,px)-20, px);
+    }
+  }
+
+  .tip {
+    background: @c;
+    &:hover {
+      background: darken(@c, 20%);
+    }
+  }
+}
+

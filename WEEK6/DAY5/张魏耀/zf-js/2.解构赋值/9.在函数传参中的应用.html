@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+
+    // 布尔类型需要有一个undefined判断才可靠
+    function ajax2 (params) {
+        var url = params.url || "";
+        var method = params.method || "get";
+        var data = params.data || {};
+        var success = params.success || function () {};
+        var error = params.error || function () {};
+    }
+
+    function ajax ({url = "", method = "get", data, success, error}) {
+        console.log(arguments, url, method, data, success, error);
+    }
+
+    ajax({
+        url: "http://www.baidu.com",
+        method: "post",
+        data: {
+            "keyword": "query"
+        },
+        success: function () {
+
+        },
+        error: function () {
+
+        }
+    });
+
+    // 还可以虚拟的实现函数的多重返回值
+    // 还可以使用使用解构导入模块
+
+</script>
+</html>

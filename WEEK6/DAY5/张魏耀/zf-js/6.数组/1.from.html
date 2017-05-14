@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    // 将一个数组或者类数组变成数组,会复制一份
+
+    // 复制一个数组可以用什么办法
+    let oldArr = [1, 2, 3];
+//    let newArr = oldArr.slice();
+    let newArr = Array.from(oldArr);
+    oldArr.push(4);
+    console.log(newArr, oldArr);
+
+    // 类数组对象都有哪些
+    // DomList argument Set
+//    let map = new Map([1, 3], [4, 5]);
+    let dom = document.getElementsByTagName('body');
+    let newMap = Array.from(dom || []);
+    console.log(newMap);
+
+    // 第二个参数可以是一个 方法可以对数据进行处理
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+
+    // 箭头函数在语法上是匿名函数的一种简写方式
+    let a = 123;
+    let func1 = a => a;
+
+    let func2 = function (a) {
+        return a;
+    };
+
+    // 多个参数
+    let func33 = (a, b) => a + b;
+
+    // 多个参数 还需要计算 就要用代码块包裹起来
+    let func3 = (a, b) => {
+        let res = a + b;
+        res = res * 5;
+        return res;
+    }
+
+    console.log(func1(5), func2(6), '---');
+
+    let f = x => console.log(x)+1;
+    var res = f(1);
+    console.log(res);
+</script>
+</html>

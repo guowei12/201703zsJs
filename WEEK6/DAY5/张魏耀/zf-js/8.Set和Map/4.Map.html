@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let objMap = {'objMap': 'objMap'};
+    let arrMap = ['a', 'r', 'r'];
+
+
+    let map = new Map([[objMap, 'o'], [arrMap, 'a'], [1, 2]]);
+    console.log(map);
+
+    // Map to Array
+    console.log([...map]);
+
+    // Array to Map 下标为key,value为value
+    let arr = ['a', 'b', 'c'];
+    let mapVla = [arr.map((item, index, array) => [index, item])]
+    let arrToMap = new Map(mapVla);
+    console.log(mapVla);
+    console.log(arrToMap);
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

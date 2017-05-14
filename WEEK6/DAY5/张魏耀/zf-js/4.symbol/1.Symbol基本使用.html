@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    // Symbol 接受的参数是对 Symbol 的描述
+
+    let s = Symbol();
+    console.log(typeof s);
+
+    let syb = Symbol('syb');
+    let syb2 = Symbol('syb');
+    console.log(syb, syb === 'Symbol(syb)', syb.toString() === 'Symbol(syb)', syb == syb2, syb.toString() == syb2.toString());
+
+    // 不可以参与运算
+    let str = 'str';
+    str += syb.toString();
+    console.log(str);
+
+    // 强制类型转换
+    let sybRe = Symbol(13);
+//    console.log(String(sybRe));
+//    console.log(Boolean(sybRe));
+//    console.log(Number(sybRe));
+
+</script>
+</html>

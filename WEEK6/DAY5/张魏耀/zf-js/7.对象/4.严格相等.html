@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    // == 和 === 是相等和严格相等
+    // Object.is 只是更严格更合理的值相等 两个对象依然是不相等的
+    console.log(+0 === -0);
+    console.log(Object.is(+0, -0));
+
+    console.log(NaN === NaN);
+    console.log(Object.is(NaN, NaN));
+
+    console.log({} === {});
+    console.log(Object.is({}, {}));
+
+</script>
+</html>

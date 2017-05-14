@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    let arr = [1, 2 ,3, 3, 4, 5];
+    let find = arr.find((item, index, arr) => {
+        return item === 3;
+    });
+    let findIndex = arr.findIndex((item, index, arr) => {
+        return item === 3;
+    });
+
+    console.log(find, findIndex);
+
+    // 没有找到会是9 和 undefined
+</script>
+</html>

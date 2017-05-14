@@ -1,0 +1,21 @@
+1、使用Babel把ES6转换成ES5
+ ->安装NODE(安装NPM包管理器)
+
+ ->使用NPM命令安装Babel：npm install babel-cli -g
+     babel xxx.js -o xxx.js
+     babel xxx -d xxx
+     babel xxx -d xxx -w
+     babel -h
+     babel -V
+     ...
+
+ ->使用NPM安装解析代码的规则包：npm install babel-preset-es2015 babel-preset-es2016 （我们需要把这些包安装到当前项目目录中，安装在全局下不起作用）
+
+ ->在当前项目的根目录中创建 .babelrc 文件，配置我们语言编译机制
+   {
+     "presets": [
+       "es2015",
+       "es2016"
+     ],
+     "plugins": []
+   }

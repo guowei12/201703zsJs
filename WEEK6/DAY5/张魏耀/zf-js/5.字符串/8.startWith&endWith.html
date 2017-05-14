@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    'use strict';
+    let str = "JavaScript is the best language!";
+
+    // 注意这里是4不是5, 用从0开始解释咯
+    let [isStartWith, isEndWith] = [str.startsWith("S", 4), str.endsWith("!")];
+
+    console.log(isStartWith, isEndWith, str.endsWith("s", 13));
+</script>
+</body>
+</html>

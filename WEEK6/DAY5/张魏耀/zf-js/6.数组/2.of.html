@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    // of 是为了将一组数值,转换为数组 和Array的功能类似,但是功能更友好一些
+    console.log(Array(), Array().length);
+    console.log(Array(3), Array(3).length);
+    console.log(Array(3, 4), Array(3, 4).length);
+    console.log(Array(3, 4, 5), Array(3, 4, 5).length);
+
+    console.log('---');
+
+    console.log(Array.of(), Array.of().length);
+    console.log(Array.of(3), Array.of(3).length);
+    console.log(Array.of(3, 4), Array.of(3, 4).length);
+    console.log(Array.of(3, 4, 5), Array.of(3, 4, 5).length);
+
+    // pollyFile
+    if (typeof Array.of != 'function') {
+        Array.of = function () {
+            return [].slice.call(arguments);
+        }
+    }
+</script>
+</html>

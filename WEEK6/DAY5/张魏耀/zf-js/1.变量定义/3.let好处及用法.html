@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 用了严格模式let相关的报错才会显示
+    'use strict';
+
+    // 在自己的作用域中不会被其他人访问
+//    if (true) {
+//        let a = "a";
+//    }
+//    a = "b";
+//    console.log(a);
+
+//    let e = 1;
+//    switch (e) {
+//        case 1 :
+//            let a = "1";
+//    }
+//
+//    console.log(a);
+
+    //
+    {
+        s
+        let s = "s";
+    }
+    console.log(s);
+
+    // 不会影响window
+    let win = "win";
+    console.log(window.win);
+
+    // 嵌套循环不会相互影响
+    for (let i = 0; i < 3; i++) {
+        console.log("out", i);
+        for (let i = 0; i < 2; i++) {
+            console.log("in", i);
+        }
+        console.log("");
+    }
+</script>
+</html>

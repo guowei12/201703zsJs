@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    if (true) {
+        var a = "a"; // 期望a是某一个值
+    }
+
+    // 运行了一段其他的代码 其他代码是可以修改a的
+    if (true) {
+        a = "b";
+        var a = "b";
+    }
+
+    a = a + 1;
+    console.log(a);
+</script>
+</html>

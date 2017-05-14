@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+
+    let syb = Symbol('s');
+
+    let obj = {};
+    obj[syb] = 'syb value';
+    // .运算符 和 []运算符后面都是字符串, 但是我们的属性名是一个Symbol, 是一种极其特殊的字符串
+    console.log(obj, obj[syb], obj['Symbol(s)'], obj.syb);
+
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+    console.log(1, 3,...[5, 7], 9);
+
+    var nums = [1, 3, 5, 6, 7];
+    function calc (x, y) {
+        let sum = x + y;
+        console.log(sum);
+    }
+    calc(...nums);
+    // 拓展运算符可以在传参的时候使用,可以使用在任何位置,因为就是直接把数组转换成飞数组,所以并没有必须是最后一个的限制.
+
+    // 可以替代apply
+    var m = Math.max.apply(null, [8, 9, 10, 33]);
+    var m2 = Math.max(...[8, 9, 10, 33]);
+    console.log(m, m2);
+
+    // 可以替代concat
+    var arr1 = [1, 3];
+    var arr2 = [3, 5];
+    var arr3 = [];
+    var arr3 = arr1.concat(arr2);
+    var arr4 = [...arr1, ...arr2];
+    console.log(arr3, arr4);
+
+    // 识别字符穿长度
+    var str = "😂123";
+    console.log(str.length, [...str].length);
+    console.log(str.split('').reverse().join(''), [...str].reverse().join(''))
+
+    // 类数组的转化 arguments nodelist
+
+    function a () {
+        console.log([...arguments]);
+    }
+    a(1, 3, 4)
+</script>
+</html>

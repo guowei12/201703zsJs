@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课件照片墙</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        #box {
+            width: 312px;
+            height: 312px;
+            background: #cccccc;
+            padding: 5px;
+            position: relative;
+            margin: 60px auto;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border: 2px solid white;
+            background: red;
+            text-align: center;
+            font-size: 24px;
+            color: white;
+            float: left;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="box">
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <li class="item">4</li>
+    <li class="item">5</li>
+    <li class="item">6</li>
+    <li class="item">7</li>
+    <li class="item">8</li>
+    <li class="item">9</li>
+</ul>
+
+</body>
+</html>
+<script src="newEvent.js"></script>
+<script src="drag.js"></script>
+<script>
+    var oList = document.getElementsByTagName('li');
+    for (var i = oList.length - 1; i >= 0; i--) {
+        var item = oList[i];
+        item['l'] = item.offsetLeft;
+        item['t'] = item.offsetTop;
+        item.style.top = item['t'] + 'px';
+        item.style.left = item['l'] + 'px';
+        item.style.position = 'absolute';
+        item.style.margin = '0px';
+        item.addEventListener('mousedown', function (e) {
+            var that = this;
+            on(that,'selfDraging',getCrashEle);
+            down.call(that, e);
+            toTop.call(that, e);
+            //getCrashEle.call(that);
+
+        });
+        item.addEventListener('mouseup',changePosition);
+    }
+    var zIndex = 1;
+    function toTop() {
+        this.style.zIndex = ++zIndex;
+    }
+    function toBack() {
+        this.style.background = 'red';
+        this.style.left = this['l'] + 'px';
+        this.style.top = this['t'] + 'px';
+    }
+    function isCrash(a, b) {
+        if ((a.offsetLeft + a.offsetWidth) < b.offsetLeft || (a.offsetTop + a.offsetHeight) < b.offsetTop || a.offsetLeft > (b.offsetLeft + b.offsetWidth) || a.offsetTop > (b.offsetHeight + b.offsetTop)) {
+            return false;
+        } else {
+            b.style.background = 'blue';
+            return true;
+
+        }
+    }
+
+    function getCrashEle() {
+        this['crashed'] = [];
+        for (var i = 0; i < oList.length; i++) {
+            var that = oList[i];
+            if (this == that) {
+                continue;
+            }
+            if (isCrash(this, that)) {
+                this['crashed'].push(that);
+            }
+        }
+    }
+    function changePosition() {
+        var arr = this['crashed'];
+        if (arr && arr.length) {
+            var min = {};
+            for (var i = 0; i < arr.length; i++) {
+                var item = arr[i];
+                if (!min.ele) {
+                    min.min = Math.sqrt(Math.pow(this.offsetLeft - item.offsetLeft,2) + Math.pow(this.offsetTop - item.offsetTop,2));
+                    min.ele = item;
+                } else {
+                    var distance = Math.sqrt(Math.pow(this.offsetLeft - item.offsetLeft,2) + Math.pow(this.offsetTop - item.offsetTop,2));
+                    if (min.min > distance) {
+                        min.min = distance;
+                        min.ele = item;
+                    }
+                }
+            }
+            min.ele.style.left = this.l +'px';
+            min.ele.style.top = this.t + 'px';
+            this.style.left = min.ele.l + 'px';
+            this.style.top = min.ele.t + 'px';
+            var obj = {l:this.l,t:this.t};
+            this.l = min.ele.l;
+            this.t = min.ele.t;
+            min.ele.l = obj.l;
+            min.ele.t = obj.t;
+        }
+    }
+</script>

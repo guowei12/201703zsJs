@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background:red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+</body>
+</html>
+<script src="课上/drag.js"></script>
+<script>
+    var box = document.getElementById('box');
+    box.style.left = box.offsetLeft + 'px';
+    box.style.top = box.offsetTop + 'px';
+    box.addEventListener('mousedown',function (e) {
+        down.call(this,e)
+    } );
+
+    box.addEventListener('mousemove',function (e) {
+        console.log(1)
+    } )
+
+
+</script>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            list-style: none;
+            width: 312px;
+            height: 312px;
+            margin: 60px auto;
+            background: #cccccc;
+            padding: 5px;
+            position: relative;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 24px;
+            color: white;
+            background: red;
+            float: left;
+            border: 2px solid white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul id="box">
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <li class="item">4</li>
+    <li class="item">5</li>
+    <li class="item">6</li>
+    <li class="item">7</li>
+    <li class="item">8</li>
+    <li class="item">9</li>
+</ul>
+</body>
+</html>
+<script src="../../../jquery-3.2.1.js"></script>
+<script src="newEvent.js"></script>
+<script src="newDrag.js"></script>
+<script>
+    //  1 - 拖拽 拖拽方法,给所有的单元块绑定拖拽的方法
+    //  2 - 拖拽到某一位置, 两个照片位置互换
+    var oList = document.getElementsByTagName('li');
+    for (var i = 0; i < oList.length; i++) {
+        // 1 - 如果可以拖拽,我在设置样式的时候我们,我们拖拽的对象的位置,是可以任意改变的(脱离文档流)
+        var item = oList[i];
+        item['t'] = item.offsetTop; // 是在js的DOM对象上设置自定义属性 (他是一个js对象,不能再页面中看到效果)
+        item['l'] = item.offsetLeft;
+        // $(item).attr('l','1'); 直接设置在行内属性上
+//        item.style.position = 'absolute'; //如果在这里设置position属性,我们只是当前遍历到的这一项设置定位属性,只有当前项自己是脱离文档流的
+
+
+        item.style.left = item['l'] + 'px';
+        item.style.top = item['t'] + 'px';
+
+        item.addEventListener('mousedown', function (e) {
+            down.call(this, e); //  this = item
+            toTop.call(this);
+            // 在碰撞阶段找到我们碰撞的元素
+
+            // 第一点 事件是异步的
+            // 利用我们的发布订阅思想,在move阶段触发我们的函数,不再做系统事件监听,
+            on(this, 'selfDrag', getCrashed);
+
+        });
+        item.addEventListener('mouseup', function (e) {
+            changePosition.call(this);
+        })
+    }
+    for (var n = 0; n < oList.length; n++) {
+        // 1 - 如果可以拖拽,我在设置样式的时候我们,我们拖拽的对象的位置,是可以任意改变的(脱离文档流)
+        var itemN = oList[n];
+        itemN.style.position = 'absolute'
+    }
+    var zIdenx = 1;
+    function toTop() {
+        this.style.zIndex = ++zIdenx;
+    }
+    function toBack() {
+        this.style.left = this['l'] + 'px';
+        this.style.top = this['t'] + 'px';
+    }
+    // 替换位置
+    // 1 - 拖拽中,需要知道当前拖拽的对象跑到了哪里,跟哪一个格子进行了碰撞
+    // 2 - 开始交换位置,需要知道交换位置的盒子的初始位置在哪里,还要知道当前碰撞的盒子的位置属性
+    // 3-  什么时候是开始碰撞的
+    function unCrash(a, b) {
+        //
+        if ((a.offsetLeft + a.offsetWidth) < b.offsetLeft || (a.offsetTop + a.offsetHeight) < b.offsetTop || a.offsetLeft > (b.offsetLeft + b.offsetWidth) || a.offsetTop > (b.offsetHeight + b.offsetTop)) {
+            // 通过反向论证判断 除了没有碰到的 其他的都是碰到的
+            return false;
+        } else {
+            b.style.background = 'blue';
+            return true;
+        }
+    }
+    // 获取碰撞的元素
+    function getCrashed() {
+        this['crashed'] = [];
+        for (var j = 0; j < oList.length; j++) {
+            var item = oList[j];
+            if (this == item) { // 避免获得去是当前项,因为当前项符合规则,如果是当前项我们就略过
+                continue;
+            }
+            if (unCrash(this, item)) {
+                this['crashed'].push(item)
+            }
+        }
+    }
+    // 在移动碰撞阶段判断碰到的项,并且在up时候比较碰撞项和我们当前项的作用的距离
+    function changePosition() {
+        var arr = this['crashed'];
+        var min = {};
+        for (var i = 0; i < arr.length; i++) {
+
+            var item = arr[i];
+            if (!min['len']) {
+                // 假设一个最小项,把最小先过的长度 和 元素是谁都给记录下来
+                min['len'] = Math.sqrt(Math.pow(this.offsetLeft - item.offsetLeft, 2) + Math.pow(this.offsetTop - item.offsetTop, 2));
+                min['ele'] = item
+            } else {
+                // 让每一项和最小项进行对比, 如果比最小项的值还小那我们就把最小的值进行改变
+                var l = Math.sqrt(Math.pow(this.offsetLeft - item.offsetLeft, 2) + Math.pow(this.offsetTop - item.offsetTop, 2));
+                if (min['len'] > l) {
+                    min['len'] = l;
+                    min['ele'] = item;
+                }
+            }
+        }
+        //  最近的 和我们的当前项交换位置
+        // 交换位置以后 改变我们的初始值(记录元素初始位置的值)
+
+        // 这是位置互换
+        min['ele'].style.left = this['l'] + 'px';
+        min['ele'].style.top = this['t'] + 'px';
+        this.style.left = min['ele']['l'] + 'px';
+        this.style.top = min['ele']['t'] + 'px';
+        // 初始值的互换
+        var temp = {l:this['l'],t:this['t']};
+        this['l'] = min['ele']['l'];
+        this['t'] = min['ele']['t'];
+        min['ele']['l'] = temp['l'];
+        min['ele']['t'] = temp['t'];
+
+    }
+</script>

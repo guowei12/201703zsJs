@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            width: 100px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        li {
+            width: auto;
+            height: 30px;
+            text-align: center;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+</body>
+</html>
+<script>
+    /*
+    *   css3 的选择器
+    *   element1~element2 p~div 同一个父级选择器下,p后边的所有div标签
+    *
+    *   [attribute^=value] a[src^="https"]  行内属性的属性值以指定字母开头
+    *   [attribute$=value]	a[src$=".pdf"]	选择每一个src属性的值以".pdf"结尾的元素
+    *   [attribute*=value]	a[src*="44lan"]	选择每一个src属性的值包含子字符串"44lan"的元素
+    *
+    *   ele:first-of-type     p:first-of-type        父级元素中的第一个p元素
+    *   ele:last-of-type	  p:last-of-type	     父级元素中的最后一个p元素
+        ele:only-of-type	  p:only-of-type	     选择每个p元素是其父级的唯一p元素
+        ele:only-child 	      p:only-child	         选择每个p元素是其父级的唯一子元素
+           :nth-child(n) odd奇数索引 even偶数索引 an+b 	  p:nth-child(2)	正数选择每个父级中的第二个元素为p元素
+           不但是p元素而且是父元素正数第二个子元素
+           :nth-last-child(n)
+    *
+    *   :nth-of-type(n)	      p:nth-of-type(2)	      正着数选择每个父级中的第二个p元素
+        :nth-last-of-type(n)  p:nth-last-of-type(2)	  倒着数选择每个父级中的第二个p元素，从最后一个子项计数
+    *   :last-child 选取最后一个元素 并且规定最后一个元素必须是特定元素
+    *
+    *
+    *   :root 根元素 也就是html元素
+    *
+    *   :empty	p:empty	选择每个没有任何子级的p元素（包括文本节点）
+    *   :target 锚点目标元素
+    *
+    *
+    *   :enabled 每一个可用的表单元素
+    *   :enabled	input:enabled	选择每一个已启用的输入元素
+        :disabled	input:disabled	选择每一个禁用的输入元素
+        :checked    input:checked	选择每个选中的输入元素
+
+        :not(selector)	:not(p)	选择每个并非p元素的元素
+        ::selection	::selection	匹配元素中被用户选中或处于高亮状态的部分
+
+        :out-of-range	:out-of-range	匹配值在指定区间之外的input元素
+        :in-range	:in-range	匹配值在指定区间之内的input元素
+
+        :read-write	:read-write	用于匹配可读及可写的元素
+        :read-only	:read-only	用于匹配设置 "readonly"（只读） 属性的元素
+
+
+
+        :optional	:optional	用于匹配可选填写的输入元素
+        :required	:required	用于匹配设置了 "required" 属性的元素
+
+        :valid	    :valid	     用于匹配输入值为合法的元素
+        :invalid	:invalid	 用于匹配输入值为非法的元素
+    * */
+</script>

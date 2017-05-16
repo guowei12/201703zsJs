@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        p#box {
+            width: 500px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 auto;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        p#box a {
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 20px;
+            background: red;
+            color: white;
+            text-decoration: none;
+        }
+
+        div {
+            width: 500px;
+            height: 500px;
+            line-height: 500px;
+            margin: 0 auto;
+        }
+        .item {
+            display: none;
+
+        }
+        #one:target {
+            width: 100%;
+            height: 100%;
+            line-height:500px ;
+            text-align: center;
+            background: red;
+            display: block;
+        }
+        #two:target {
+            width: 100%;
+            height: 100%;
+            line-height:500px ;
+            text-align: center;
+            background: green;
+            display: block;
+        }
+        #three:target {
+            width: 100%;
+            height: 100%;
+            line-height:500px ;
+            text-align: center;
+            background: yellow;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<p id="box">
+    <a href="#one">第一个</a>
+    <a href="#two">第二个</a>
+    <a href="#three">第三个</a></p>
+<div>
+    <p class="item" id="one">1</p>
+    <p class="item" id="two">2</p>
+    <p class="item" id="three">3</p></div>
+</body>
+</html>
+<script>
+    window.location.href += "#one";
+</script>

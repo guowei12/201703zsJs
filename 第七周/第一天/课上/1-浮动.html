@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            margin: 50px 50px;
+            background: red;
+            width: 100px;
+            height: 100px;
+            /*display: block; 转化成块状模式,让我们元素具有块状元素的属性 */
+            /*display: inline-block; 转化成既具有块状元素也具有行内元素的属性,可以设置宽高,而且在一行显示*/
+            float: left; /*给元素设置浮动*/
+            /*position: fixed;
+            position: absolute; 给元素设置定位布局*/
+            overflow: hidden;
+            clear: both;
+        }
+        p {
+            width: 300px;
+            height: 300px;
+            background: yellow;
+        }
+        div {
+            height: 100px;
+            background: green;
+            margin:50px;
+            display: inline-block;
+        }
+        div#one {
+            margin: 60px;/*左右的margin值是相加的,上线的margin值是取最大的*/
+        }
+        .one {
+            color: red;
+        }
+        .two {
+            line-height: 50px;
+        }
+        .three {
+            background: blue;
+            width: 200px;
+            height: 300px;
+            line-height: 300px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+<!--<a id="one" href="javascript:void(0)">这是第一个</a>
+<a id="two" href="javascript:;">这是第二个
+    <p></p></a>-->
+<div id="one" class="one two three">这是第一个</div>
+<div id="two">这是第二个</div>
+<!--1/我们给行内元素,在不转化成块状元素的前提下,添加的上下margin值不起作用,作用的margin值是有效果的-->
+<!--2/将行内元素转化成块状元素-->
+<!--bfc机制-->
+<!--在我们的元素设置了浮动的时候,会默认触发我们的浏览器的bfc机制,这时候,当前的元素会脱离文档流, 脱离文档流的元素,会重新计算他的上下文范围,重新计算渲染它的样式(宽高)值,而且我们还可以设置他的盒模型样式-->
+<!--盒模型-->
+</body>
+</html>

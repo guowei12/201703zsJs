@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--[if IE]>
+    <script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
+    <![endif]-->
+</head>
+<body>
+<!--ie的注释判断-->
+<!--lt 小于 gt 大于 lte小于等于 gte大于等于-->
+<!--[if lt IE 9]>
+<div class="section">1</div><![endif]-->
+<!--[if IE 9]>
+<section class="section">2</section><![endif]-->
+<!--IE10 就不支持条件注释了 所以gte IE 9是不起作用的-->
+<!--[if (gte IE 9)]><section class="section">3</section><![endif]-->
+<input type="email">  <!--邮箱类型-->
+<input type="url">  <!--链接-->
+<input type="number"> <!--数字-->
+<input type="range" max="10" min="0" value="8"> <!--滑动条-->
+<input type="search"> <!--跟text类似,查找表单-->
+<input type="tel"> <!--电话-->
+
+
+<!--<input type="date Picker">  代表时间的-->
+
+
+
+
+
+
+
+<form action="http://www.baidu.com" id="one">
+    <input type="text" required="required" form="one"><!--在提交的必须有内容-->
+    <input type="submit" form="one">
+    <input type="text" pattern="[A-z]{3}" value="验证" title="输入有误">
+</form>
+
+</body>
+</html>
+<script>
+    // 表单元素
+    /*
+     * email 在移动端中手机会改变触摸屏键盘来配合它（添加 @ 和 .com 选项）。
+     url
+     number 可以控制他的值 max min step 设置数字调整间隔 -3 0 3 6 value
+     range 滑条 可以设置他的 最大值max 最小值min 还可以设置默认值value 位置
+
+     Date pickers
+     date - 选取日、月、年
+     month - 选取月、年
+     week - 选取周和年
+     time - 选取时间（小时和分钟）
+     datetime - 选取时间、日、月、年
+     datetime-local - 选取时间、日、月、年（本地时间）
+     search  语义化的搜索框
+     * */
+
+    /*
+     * h5中表单新增加的属性
+     *placeholder 使用元素的JS处理IE下placeholder不兼容
+     autocomplete 是否自动完成
+     autofocus 自动获得焦点
+     required  必须填写值
+     pattern 正则判断我们的书写内容
+     *
+     * */
+
+
+</script>

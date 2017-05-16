@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*span {*/
+            /*display: block;*/
+            /*height: 30px;*/
+            /*background: red;*/
+        /*}*/
+
+        /*p {*/
+            /*height: 30px;*/
+        /*}*/
+
+        /*:only-child {*/
+            /*background: red;*/
+        /*}*/
+        /*p:nth-child(odd) {*/
+            /*background: deeppink;*/
+        /*}*/
+        /*p:nth-child(3n+1) { !*an+b a倍数+b值的和(n是从0开始的),使我们要选择的第几个标签*!*/
+            /*background: blue;*/
+        /*} */
+        /*p:nth-child(2){ !*选取第二个标签,而且第二标签为p标签*!*/
+            /*background: orangered;*/
+        /*}*/
+        /*p:nth-of-type(2) { !*对于同一级统一类中的第二标签  同一级的p第二个p*!*/
+            /*background: orangered;*/
+        /*}*/
+        /*p:nth-last-child(2) {*/
+            /*background: green;*/
+        /*}*/
+        /*p:nth-last-of-type(2){*/
+            /*background: green;*/
+        /*}*/
+        /*html body :last-child { !*位置关系对应的是同一级的所有子标签*!*/
+            /*background: red;*/
+        /*}*/
+        /*:root {
+            background: blue;
+        }*/
+        /*p:empty {*/
+            /*background: green;*/
+        /*}*/
+        p {
+            display: none;
+        }
+        :target { /*给目标锚点添加样式*/
+            width: 100px;
+            height: 100px;
+            display: block;
+            background: red;
+        }
+        a {
+            margin: 20px;
+        }
+        input:disabled {
+            background: red;
+        }
+        /*input:checked {*/
+            /*width: 100px;*/
+            /*height: 100px;*/
+            /*background: red;*/
+            /*border: 1px solid red;*/
+        /*}*/
+        /*div :not(p) {*/
+            /*background: red;*/
+        /*}*/
+        ::selection {
+            background: greenyellow;
+        }
+    </style>
+
+</head>
+<body>
+
+<div>
+    我叫小张伟,大家要爱我,我是个好银
+    <p>1111</p>
+    <a href="">11111</a>
+    <input type="date" class="one">
+    <input type="text" class="one">
+    <input type="number" class="one" checked="checked">
+</div>
+
+</body>
+</html>
+<script>
+    // id  class  tag  伪类  并集 交集  属性
+    // ele1~ele2 同一父级元素,获取ele1后的所有ele2元素,在html中元素之间只要符合这种关系的都能匹配到
+    // [attribute^=value] 指定行内属性中属性值以特定字符开头的标签
+    // [attribute$=value] 指定行内属性中属性值以特定字符结尾的标签
+    // [attribute*=value] 指定行内属性中属性值包含一定值的标签
+    //  伪类选择
+    //  ele:first-of-type 在同一级父级的前提下找到指定元素的最后一元素
+    //  ele:last-of-type  在同一级父级的前提下找到指定元素的最后一元素
+    //  ele:only-of-type  在同一级父级中,唯一只有一个p元素
+    //  ele:only-child   唯一的子元素并且符合指定的元素类型
+    //  ele:nth-child(odd) 同一父级元素下 , 进行选择匹配,索引为奇数 索引是从1开始.个数开始
+    //  ele:nth-child(even) 同一父级元素下 , 进行选择匹配,索引为偶数
+    //  ele:nth-child(an) 选择是a倍数
+
+</script>

@@ -1,0 +1,4 @@
+<!--[if lte IE 6]>我是版本号大于5小于等于6的IE！<![endif]-->
+<!--[if IE 7]>我是IE 7！<![endif]-->
+<!--[if IE 8]>我是IE 8！<![endif]-->
+<!--[if IE 9]>我是IE 9！<![endif]-->

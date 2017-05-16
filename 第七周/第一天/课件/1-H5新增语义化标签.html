@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        nav {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        article {
+            width: 1000px;
+            height: 300px;
+            background: blue;
+        }
+
+        aside {
+            width: 100px;
+            height: 200px;
+            background: green;
+        }
+
+        figure {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+
+        figcaption {
+            width: 500px;
+            height: 50px;
+            color: red;
+            border: 10px solid blue;
+        }
+
+        time {
+            width: 200px;
+            height: 50px;
+            padding: 50px;
+            color: orangered;
+            border: 1px dashed slateblue;
+        }
+
+        mark {
+            width: 1000px;
+            height: 50px;
+            background: red;
+        }
+
+        datalist {
+            width: 300px;
+            height: 200px;
+            border: 2px solid red;
+        }
+
+        progress {
+            color: white;
+            background: white;
+        }
+
+        progress::-moz-progress-bar {
+            background: white;
+        }
+
+        progress::-webkit-progress-bar {
+            background: white;
+        }
+
+        progress::-webkit-progress-value {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<!--H5 新增语义化标签-->
+<time>2016 -2 -2</time>
+<header>这是一个头部</header>
+<nav>
+    <a href=""></a><a href=""></a><a href=""></a><a href=""></a><a href=""></a>
+</nav>
+<article>asdasdasdadasdasdadasd</article>
+<aside>这是一个侧栏</aside>
+<figure>
+    <figcaption>这是一个标签</figcaption>
+</figure>
+
+<mark>啊实打实大阿萨德ass多阿萨德阿萨德</mark>
+
+<progress max="100" value="10"></progress>
+
+
+<input list="subjects" id="list" value="">
+<datalist id="subjects">
+    <option value="@qq.com"></option>
+    <option value="@baidu.com"></option>
+    <option value="@yahoo.com"></option>
+</datalist>
+
+<select name="" id="">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+
+
+<div style="margin: 1000px"></div>
+<auto></auto>
+<canvas id="vas" width="200" height="100" style="border:1px solid #000000;"></canvas>
+</body>
+</html>
+<script>
+    /*
+     * 什么是语义化
+     * */
+    /**
+     * 1/根据内容的结构化（内容语义化），选择合适的标签（代码语义化）便于开发者阅读和写出更优雅的代码;的
+     * 2/同时相应的会增强客户的浏览体验
+     * 3/有利于SEO:和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；让浏览器的爬虫和其他设备很好地解析。
+     * */
+    /*
+     * 新增的语义化标签
+     * 我们之前无论写头部还是写底部都用的是div
+     *
+     * header  头部       块级
+     * section 文档的区段   块级
+     * footer  头部       块级
+     * nav     导航       块级
+     * article 文章       块级
+     * aside   文章之外的内容  <aside> 标签定义其所处内容之外的内容。 块级
+     * figure  <figure> 标签规定独立的流内容（图像、图表、照片等等）。
+     * figcaption  定义元素的标题 配合 figure使用,放在我们figure内部  块级
+     * time    时间      块级
+     * mark    定义有记号的文本  行内元素
+     * progress 进度条 value max 可以设置宽高但是不能自定义渲染样式,会出现扁平化效果  不规范的块级 浏览器的支持度不够
+     * datalist 可输入的下拉列表  配合input 使用 具有模糊搜索的功能
+     * wbr  在文本适合的地方(文本超出的情况下)添加换行
+     * audio  支持mp3 和 ogg 格式
+     * autoplay	autoplay	如果出现该属性，则音频在就绪后马上播放。
+     controls	controls	如果出现该属性，则向用户显示音频控件（比如播放/暂停按钮）。
+     loop	loop	如果出现该属性，则每当音频结束时重新开始播放。
+     muted	muted	如果出现该属性，则音频输出为静音。
+     *
+     * video
+     *
+     属性	值	描述
+     autoplay	autoplay	如果出现该属性，则视频在就绪后马上播放。
+     controls	controls	如果出现该属性，则向用户显示控件，比如播放按钮。
+     height	pixels	设置视频播放器的高度。
+     loop	loop	如果出现该属性，则当媒介文件完成播放后再次开始播放。
+     muted	muted	规定视频的音频输出应该被静音。
+     poster	URL	    规定视频下载时显示的图像，或者在用户点击播放按钮前显示的图像。
+     preload	preload
+     如果出现该属性，则视频在页面加载时进行加载，并预备播放。
+     如果使用 "autoplay"，则忽略该属性。
+     src	url	要播放的视频的 URL。
+     width
+
+
+     * canvas 画布
+     * */
+    var c = document.getElementById("vas"); // 首先获取我们定义的canvas画布
+    var cxt = c.getContext("2d"); // 定义我们画图的内容; 2d 平面的图;
+    cxt.moveTo(0, 0);//moveTo(x,y)  //定义画图起点坐标线条开始坐标
+    cxt.lineTo(150, 50);// lineTo(x,y) 定义线条结束坐标
+    cxt.lineTo(10, 50);
+    cxt.strokeStyle = 'red';
+    cxt.stroke(); // 绘画 默认颜色是黑色'
+
+
+</script>

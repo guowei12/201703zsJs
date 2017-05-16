@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            outline: none;
+        }
+        /*:out-of-range {*/
+            /*border: 2px solid red;*/
+        /*}*/
+        /*:in-range {*/
+            /*border: 2px solid lightgreen;*/
+        /*}*/
+        /*body form :read-only {*/
+            /*border: 2px solid deeppink;*/
+        /*}*/
+     /*   :optional { !*没有设置必须选填的元素,只对表单元素起作用*!
+            width: 100px;
+            height: 100px;
+        }*/
+        form input:valid { /*可以把表单元素的对应状态都拿到*/
+            border: 2px solid lightgreen;
+            background: lightgreen;
+        }
+         form input:invalid { /*也可以拿到所有(判断条件)状态不对的元素*/
+            border: 2px solid deeppink;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div style="background: red"></div>
+<form action="http://www.baidu.com">
+    <input type="text" pattern="[A-z]*" required>
+    <input type="number"  max="9" min="1">
+    <input type="submit">
+</form>
+
+</body>
+</html>
+<script>
+
+
+    /*
+    *
+    * :out-of-range	:out-of-range	匹配值在指定区间之外的input元素
+     :in-range	:in-range	匹配值在指定区间之内的input元素
+
+     :read-write	:read-write	用于匹配可读及可写的元素
+     :read-only	:read-only	用于匹配设置 "readonly"（只读） 属性的元素
+
+
+
+     :optional	:optional	用于匹配可选填写的输入元素
+     :required	:required	用于匹配设置了 "required" 属性的元素
+
+     :valid	    :valid	用于匹配输入值为合法的元素	3
+     :invalid	:invalid	用于匹配输入值为非法的元素
+    *
+    *
+    * */
+</script>

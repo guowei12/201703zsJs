@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /*img {*/
+            /*!*filter:grayscale(1%) ;灰度*!*/
+            /*!*filter: brightness(90%);!*亮度对比*!*!*/
+            /*!*filter:blur(5px) ;模糊度*!*/
+            /*!*filter: contrast(220%);*!!*对比度 所有色调*!*/
+           /*!* filter: drop-shadow(8px 8px 10px red); 阴影类似于box-shadow*!*/
+            /*!*filter: hue-rotate(360deg);色度翻转*!*/
+           /*!* filter: invert(90%);翻转输入图像,达到曝光效果胶片效果*!*/
+            /*!*filter: opacity(0.3);!*透明度*!*!*/
+            /*!*filter: saturate(100%); 色温饱和度*!*/
+           /*!* filter: sepia(20%);!*将图像转化为深褐色*!*!*/
+/*!*            filter: contrast(200%) brightness(150%);!*多个函数可以复合使用*!*!*/
+        /*}*/
+        /*filter:opacity(30%)*/
+        img {
+            filter: contrast(200%) brightness(150%);
+            /*filter: grayscale(0.9); !*灰度效果*!*/
+           /* filter: brightness(90%);!*亮度调试*!*/
+            /*filter:blur(5px)  增加模糊度*/
+           /* filter: contrast(100%) 调整对比度 调整整体色调*/
+           /* filter: drop-shadow(8px 8px 10px yellow);*/
+           /* filter: hue-rotate(360deg) 翻转我们的色调*/
+           /* filter: invert(90%) 胶卷效果*/
+          /*  filter: opacity(0.3) 透明度*/
+         /*   filter: saturate(100%); 热饱和度 热成像*/
+            /*filter: sepia(120%); 整体的褐色效果 跟沙尘暴天似的*/
+        }
+
+
+
+
+
+       /* div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 1px solid green;
+            filter: drop-shadow(8px 8px 10px yellow);
+            !*对所有元素起作用但是需要配和使用我们的background*!
+        }
+*/
+
+
+
+    </style>
+</head>
+<body>
+<!--css3的filter函数-->
+<img src="bg.jpg" alt="珠峰">
+<div></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #one {
+            width: 200px;
+            height: 200px;
+            border-style: solid solid solid dashed;
+            border-width: 5px 5px 5px 5px;
+            border-color: red yellow green purple;
+            border-radius: 50%;
+            background: white;
+            transform: translate(220px,330px) rotateZ(3600deg);
+            transition: all 2s ease-in-out;
+             /*所有的过渡过程加一个完成时间*/
+        }
+        #one:hover {
+            width: 260px;
+            height:260px;
+            transform: translate(420px,430px) rotateZ(3600deg);
+        }
+    </style>
+</head>
+<body>
+<!--CSS3 过渡是元素从一种样式逐渐改变为另一种的效果-->
+
+<!--transition	简写属性，用于在一个属性中设置四个过渡属性。
+transition-property	规定应用过渡的 CSS 属性的名称。
+transition-duration	定义过渡效果花费的时间。默认是 0。
+transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"。
+    linear	规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+    ease	规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。
+    ease-in	规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。
+    ease-out	规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
+    ease-in-out	规定以慢速开始和结束的过渡效果（等于cubic-bezier(0.42,0,0.58,1)）。
+    cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
+transition-delay 延迟时间-->
+<div id="one"></div>
+</body>
+</html>

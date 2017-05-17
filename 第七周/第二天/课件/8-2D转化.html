@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+        2D 转换
+        translate()  通过控制x,y轴的距离移动元素
+        rotate(deg) 在一个给定度数顺时针旋转的元素。负值是允许的，这样是元素逆时针旋转。
+        scale() 该元素增加或减少的大小，取决于宽度（X轴）和高度（Y轴）的参数： 增大几倍; 只是占据的渲染区域变大,本身盒模型的数值不变
+        skew() 元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数：
+        matrix()  方法需要六个参数，包含数学函数，允许您：旋转、缩放、移动以及倾斜元素。
+        */
+        div#one {
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            background: green;
+            margin: 20px auto;
+            color: white;
+           /* transform: translate(50px,100px)*//*位移变化*/;
+        /*    transform: rotate(360deg);!*平面旋转*!*/
+           /* transform: scale(1,1)*//*x轴和y轴放大缩小 中线不变 等比按倍数扩大缩小*/
+            transform: translate(20px,20px) rotate(30deg) scale(1.1,1.1)
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="one">这是一个盒子</div>
+<!--transform 转换,让我们的元素装太真真实实的发生改变,他是一个真实的样式-->
+</body>
+</html>

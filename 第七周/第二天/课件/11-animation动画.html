@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #one {
+            animation: myAnimate 3s;
+            animation-iteration-count: 2;
+            animation-direction:alternate;
+        }
+        #two {
+            animation: myAnimate 6s;
+            animation-play-state:running;
+        }
+
+
+        @keyframes myAnimate {
+            10% {
+                width: 400px;
+                height: 400px;
+                background: green;
+            }
+            20% {
+                width: 100px;
+                height: 100px;
+                background: blue;
+            }
+            40% {
+                width: 20px;
+                height: 200px;
+                background: blue;
+            }
+            80% {
+                width: 20px;
+                height: 30px;
+                background: blue;
+            }
+            100% {
+                width: 120px;
+                height: 130px;
+                background: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+<!--
+@keyframes	规定动画。	
+animation	所有动画属性的简写属性，除了 animation-play-state 属性。	
+animation-name	规定 @keyframes 动画的名称。	
+animation-duration	规定动画完成一个周期所花费的秒或毫秒。默认是 0。	
+animation-timing-function	规定动画的速度曲线。默认是 "ease"。
+
+    值	描述	测试
+    linear	动画从头到尾的速度是相同的。
+    ease	默认。动画以低速开始，然后加快，在结束前变慢。
+    ease-in	动画以低速开始。
+    ease-out	动画以低速结束。
+    ease-in-out	动画以低速开始和结束。
+    cubic-bezier(n,n,n,n)
+animation-delay	规定动画何时开始。默认是 0。	
+animation-iteration-count	规定动画被播放的次数。默认是 1。	
+animation-direction	规定动画是否在下一周期逆向地播放。默认是 "normal"。	
+animation-play-state	规定动画是否正在运行或暂停。默认是 "running"。	
+animation-fill-mode	规定对象动画时间之外的状态。	-->
+<div id="one"></div>
+<div id="two"></div>
+</body>
+</html>
+<!--animation动画,的生成通过两部分,第一步 给我们的元素绑定animation属性  第二步想描述定义我们的animation动画-->

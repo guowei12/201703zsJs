@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #one {
+            height: 100px;
+            width: 200px;
+            padding: 10px;
+            box-sizing:border-box; /*我们计算盒模型的方式有变化,我们会根据给定的宽高,自动调节我们各部分所占的宽高*/
+            border: 10px solid lightgreen;
+            background: red;
+            /*定义的宽高,受我们的盒模型sizing属性的影响,是否包含border和padding*/
+        }
+    </style>
+</head>
+<body>
+    <div id="one"></div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #one {
+            width: 600px;
+            height: 600px ;
+            border: 20px solid transparent;
+            background:url("bg.jpg") no-repeat ,url('bg2.jpg') no-repeat, green;
+            background-size:50% 50%,50% 50%;
+            background-position: right bottom, left top;
+            background-origin:content-box,border-box;/*!*背景在盒模型开始位置*!*/
+            background-clip:content-box,border-box; /*!*图片绘制开始*!*/
+        }
+        /*#two {
+            width: 200px;
+            height: 200px;
+            background: url("bg2.jpg")  no-repeat center center ,red;
+        }*/
+/*        #one {
+            width: 600px;
+            height: 600px;
+            background: url("bg.jpg")!*背景图路径*!  bottom !*背景图在盒模型中的上偏移*! right !*左便宜*! repeat!*背景的显示方式*!,url('bg2.jpg') top left no-repeat;
+            background-size: 50% 50% , 10% 10%;
+            !*每套背景用,进行分隔, 每套中不同的属性 用 空格分开*!
+        }*/
+/*        #two {
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+            border: 10px solid transparent;
+            background-clip:content-box;
+            background-origin:content-box;
+            background: green;
+        }*/
+    </style>
+</head>
+<body>
+<div id="one"></div>
+<div id="two"></div>
+
+</body>
+</html>

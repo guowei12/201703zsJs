@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #one {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background: red;
+            perspective:10px;
+            transform-style: preserve-3d;
+            /*我们给我们的元素设置了3d属性以后，我们的元素就具有3d场景，
+            我们xzy轴会根据我们的3d场景的变化而变化*/
+            transform: rotateX(10deg) translateZ(10px);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="one"></div>
+</div>
+</body>
+</html>

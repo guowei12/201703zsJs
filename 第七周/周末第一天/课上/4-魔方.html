@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #main {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            perspective: 1200px;
+            /*我们设置的视距是个最外面的盒子设置视距，我们现实中的视距是从我们的视野参照物中来的*/
+        }
+        #box {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            /*前提我们z轴还是默认的针对我们屏幕*/
+            /*我们想看谁的展现出3D形态，就让谁的父亲设置3d的属性（就有3d空间模拟状态），而且我们必须有参照视距*/
+            transform: rotateY(0deg);
+            /*当我们rotateY（值为正数的时候我们的图形是逆时针翻转，负数的时候是顺时针翻转）*/
+            /*rotateX （值为正的时候我们，我们的图像是向后倒的，值为负数的时候，我们的图像是向前趴的）*/
+
+            /*animation: move 21s linear infinite;*/
+        }
+        @keyframes move {
+            from   {
+                transform: rotateY(0deg) rotateX(0deg)  rotateZ(0deg);
+            }
+            to {
+                transform: rotateY(3600deg) rotateX(360deg) rotateZ(180deg);
+            }
+        }
+
+        .item {
+            width: 300px;
+            height: 300px;
+            line-height: 300px;
+            font-size: 42px;
+            opacity: 0.5;
+            text-align: center;
+            border: 5px solid red;
+            box-sizing: border-box;
+            position: absolute;
+        }
+        .six {
+            transform: translateZ(150px);
+            /*前提 z轴还是在默认位置*/
+
+            /*translateZ沿着z轴进行位移，我们值是正数的时候，我们的图像是向前推的，值为负数的时候我们的图像是向后推的*/
+            /*translateX|Y 当我们的值为正数的时候，我们是在元点的基础上左右加上位移，为负数的时候是左右减少位移*/
+        }
+        .one {
+            transform: translateZ(-150px);
+        }
+        .five {
+            transform: rotateY(90deg) translateZ(150px);
+        }
+        .four {
+            transform: rotateY(90deg) translateZ(-150px);
+        }
+        .three {
+            transform: rotateX(90deg) translateZ(150px);
+        }
+        .two {
+            transform: rotateX(90deg) translateZ(-150px);
+        }
+
+    </style>
+</head>
+<body>
+<!--1、我们的魔方是3d需要给我们的父亲盒子设置3d属性，我们的子元素才会具有3d场景-->
+<!--2、我们需要在整体上有一定的视距-->
+
+<!--3、我们需要设置一个控制我们3d模方的包含面-->
+</body>
+<div id="main">
+    <div id="box">
+        <div class="item one">1</div>
+        <div class="item two">2</div>
+        <div class="item three">3</div>
+        <div class="item four">4</div>
+        <div class="item five">5</div>
+        <div class="item six">6</div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background: red;
+            transform-style: preserve-3d;
+            perspective: 1000px; /*在呈现3d状态后他的xyz轴也是跟这转动的*/
+            transform: rotateY(60deg) translateY(10px) translateX(10px)  translateZ(10px);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

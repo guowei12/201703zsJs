@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 300px;
+            height: 300px;
+            margin: 200px auto;
+            perspective: 1000px;
+        }
+        #inner {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            box-sizing: border-box;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-animation:move 2s linear infinite;
+            -o-animation: move 2s linear infinite;
+            animation: move 2s linear infinite ;
+            transform:rotateX(0deg) rotateY(0deg);
+        }
+        .item {
+            width: 300px;
+            height: 300px;
+            line-height: 300px;
+            font-size: 26px;
+            background: #ccc;
+            text-align: center;
+            border: 1px solid red;
+            box-sizing: border-box;
+            opacity: 0.6;
+            position: absolute;
+        }
+        .six{
+            transform: translateZ(150px);
+        }
+        .five {
+            transform:translateX(150px) rotateY(90deg);
+        }
+        .four {
+            transform:translateZ(-150px);
+        }
+        .three {
+            transform:translateX(-150px) rotateY(-90deg) ;
+        }
+        .two {
+            transform:translateY(-150px) rotateX(90deg) ;
+        }
+        .one {
+            transform:translateY(150px) rotateX(-90deg) ;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="inner">
+        <div class="item one">1</div>
+        <div class="item two">2</div>
+        <div class="item three">3</div>
+        <div class="item four">4</div>
+        <div class="item five">5</div>
+        <div class="item six">6</div>
+    </div>
+</div>
+
+</body>
+</html>

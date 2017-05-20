@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+        }
+        html {
+            font-size: 100px;
+        }
+        #one {
+            width: 2rem;
+            height: 2rem;
+            border-width: 5px 0 5px 0;
+            border-color: red transparent blue transparent;
+            border-style: solid;
+            margin: 2rem auto;
+            background: green;
+            transform:rotateX(20deg);
+            transition: all 2s;
+
+            /*transform-origin: ; 所有变化的元点,默认位置是我们元素的中心（图形的中心），x轴和y轴交叉点，x轴和y轴的一半距离*/
+            /*我们在改变origin点的时候，我们的计算基础数据是根据我们的左上角的0，0开始的*/
+            /*transform-origin: x轴 y轴 z轴;*/
+            transform-origin:top;
+        }
+        /*#one:hover {*/
+            /*transform:  rotate(1800deg);*/
+        /*}*/
+    </style>
+</head>
+<body>
+<!--transform   改变元素的样式，对样式是进行了真正的改变-->
+<!--transition  变形过渡动画，没有对样式进行改变-->
+<!--animation   自定义的帧动画，没有对样式进行真正改变-->
+<div id="one"></div>
+</body>
+</html>

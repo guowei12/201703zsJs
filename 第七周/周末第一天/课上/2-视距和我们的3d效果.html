@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 500px;
+            height: 300px;
+            margin: 30px auto;
+            position: relative;
+            background-size: 100% 100%;
+        }
+
+        div img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -71px;
+            margin-top: -100px;
+            transform-origin: bottom;
+        }
+
+        div img:nth-child(1) {
+            opacity: .5;
+            z-index: 1;
+        }
+
+        div img:nth-child(2) {
+            z-index: 2;
+            transform: rotateX(45deg);
+        }
+
+        div:nth-of-type(2) {
+            perspective: 500px;
+            /*值越大的时候，元素的改变视距效果越小， 值越小，元素改变的视觉效果越大*/
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="../21.jpg" alt="" width="142" height="200"/>
+    <img src="../21.jpg" alt="" width="142" height="200"/>
+</div>
+<div>
+    <img src="../21.jpg" alt="" width="142" height="200"/>
+    <img src="../21.jpg" alt="" width="142" height="200"/>
+</div>
+</body>
+</html>

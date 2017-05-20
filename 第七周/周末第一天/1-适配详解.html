@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport"-->
+          <!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            font-size: 100px;
+        }
+        #one {
+            width: .1rem;
+            height: .1rem;
+            line-height: 2rem;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+            background: yellow;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+
+<!--iphone5的物理像素是640*1136像素   device independent pixels 物理像素 也就是简称dp 和 dip-->
+
+<!--我们写的px是逻辑像素 css pixels-->
+
+<!--dpr：devicePixelRadio设备像素缩放比-->
+
+<!--我们开发用的是逻辑像素，我们的设计图也是逻辑像素-->
+
+<!--那为什么我们,还有整一般呢？从效果上首先是更清晰-->
+<div id="one">Hello</div>
+
+</body>
+</html>
+<script>
+        function freshRem () {
+            var win = document.documentElement.clientWidth;
+            document.documentElement.style.fontSize = 100*win/640 + 'px';
+        }
+        freshRem();
+        window.addEventListener('resize',freshRem)
+</script>

@@ -1,0 +1,19 @@
+媒体查询的语法注释
+@media [not|only|all] type [and] [expr] {
+    rules
+}
+
+语义化去理解
+@media 查询媒体的关键词
+[not|only] //跟正则相同 [] 其中一项出现一次
+type 媒体类型
+and 是链接符  连接多个判断条件
+expr 媒体的表达方式
+rules 要写的css样式
+
+width 视口宽
+height 视口高
+device-width 设备宽
+device-height 设备高
+device-pixel-ratio 设备像素比
+orientation 设备窗口方向 portrait竖向 landscape 横向

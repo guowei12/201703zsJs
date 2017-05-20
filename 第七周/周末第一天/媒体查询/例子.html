@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+       /* @media all and (orientation: portrait) {
+            !*竖屏*!
+            div {
+                background: red;
+            }
+        }
+        @media all and (orientation: landscape) {
+            !*横屏*!
+            div {
+                background: green;
+            }
+        }*/
+       div {
+           width: 300px;
+           height: 500px;
+       }
+        @media all and (max-device-width:600px) {
+
+            div {
+                height: 100%;
+                background: green;
+            }
+        }
+        @media all and (min-width: 600px) and (max-width: 2000px) {
+            div{
+                height: 100%;
+                background: red;
+            }
+        }
+    </style>
+</head>
+<body>
+<div></div>
+
+</body>
+</html>

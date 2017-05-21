@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .flex-container {
+            display: -webkit-flex;
+            display: flex;
+            width: 400px;
+            height: 450px;
+            background-color: lightgrey;
+            /*justify-content:flex-start;*/ /*从伸缩行的开始边，默认左边，也就是紧贴着父元素的左边开始布局，依次向后排列*/
+            /*justify-content:flex-end*/; /*!*从伸缩行的结束边默认右边，也就是紧贴着父元素的右边开始布局，依次向前排列*!*/
+            /*justify-content:center;*//* !*从伸缩行中间，子元素紧贴着在父元素的中间开始布局，依次分均分开排列*!*/
+            justify-content:space-between; /*从伸缩行紧贴两端开始，子元素平均分裂开，空白区域平均分配*!*/
+            /*justify-content:space-around; !*子元素平均分裂开，空白区域环绕平均分配（类似我们的margin：0 auto）*!*/
+        }
+
+        .flex-item {
+            background-color: cornflowerblue;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<!--内容对齐（justify-content）属性应用在弹性容器上（父元素上），把弹性项沿着弹性容器的主轴线（main axis）对齐。-->
+<!--Flex Lines 伸缩行
+伸缩项目沿着伸缩容器内的一个 伸缩行 定位。通常每个伸缩容器只有一个伸缩行。-->
+
+<!--Main Axis 主轴  Cross Axis 侧轴   伸缩行跟随主轴。侧轴则垂直于主轴-->
+<!--
+主轴起点 Main Start
+主轴终点 Main End
+主轴方向 Main Direction (有时候也成为伸缩流方向 Flow Direction)
+侧轴起点 Cross Start
+侧轴终点 Cross End
+侧轴方向 Cross Direction
+-->
+<div class="flex-container">
+    <div class="flex-item">flex item 1</div>
+    <div class="flex-item">flex item 2</div>
+    <div class="flex-item">flex item 3</div>
+    <div class="flex-item">flex item 4</div>
+</div>
+
+</body>
+</html>

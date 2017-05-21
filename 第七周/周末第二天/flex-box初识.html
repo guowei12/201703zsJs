@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    * {
+        margin:0;
+        padding: 0;
+    }
+    #p1
+    {
+        -moz-box-flex:1.0; /* Firefox */
+        -webkit-box-flex:1.0; /* Safari 和 Chrome */
+        flex:1.0;
+        border:5px solid red;
+    }
+
+    #p2
+    {
+        flex:2.0;
+        border:5px solid blue;
+    }
+    #one {
+        display:-webkit-box;
+        display: flex;
+        /*display:-webkit-inline-flex;*/
+        /*给我们的父元素添加弹性盒模型属性，这样我们子类才会具有弹性盒子样式*/
+        width: 300px;
+        height: 200px;
+        margin: 20px auto;
+    }
+    </style>
+</head>
+<body>
+    <div id="one">
+        <p id="p1"></p>
+        <p id="p2"></p>
+    </div>
+    <!--弹性盒子由弹性容器(Flex container)和弹性子元素(Flex item)组成。-->
+    <!--弹性容器通过设置 display 属性的值为 flex 或 inline-flex将其定义为弹性容器。-->
+    <!--我们设置两个p标签，给他们设置box-flex属性，box-flex属性值是相对于占据父元素大小的比例-->
+
+    <!--box-flex 属性规定框的子元素是否可伸缩其尺寸。-->
+
+<!--可伸缩元素能够随着父元素盒模型的缩小或扩大而缩写或放大。
+只要框中有多余的空间，可伸缩元素就会扩展来填充这些空间。-->
+
+
+
+
+<!-- flex-box的好处
+    1、如果元素容器没有足够的空间，我们无需计算每个元素的宽度，就可以设置他们在同一行；
+    2、可以快速让他们布局在一列；
+    3、可以方便让他们对齐容器的左、右、中间等；
+    4、无需修改结构就可以改变他们的显示顺序；
+    5、如果元素容器设置百分比和视窗大小改变，不用提心未指定元素的确切宽度而破坏布局，因为容器中的每个子元素都可以自动分配容器的宽度或高度的比例。-->
+
+
+<!--弹性盒模型有三个版本了 box flex-box flex-->
+</body>
+</html>

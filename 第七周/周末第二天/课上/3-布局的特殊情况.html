@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .flex-container {
+            display: -webkit-flex;
+            display: flex;
+            width: 400px;
+            height: 250px;
+            background-color: lightgrey;
+            flex-direction: column;
+        }
+
+        .flex-item {
+            color: white;
+            width: 130px;
+            background-color: cornflowerblue;
+            height: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<!--特：我们的默认弹性盒模型子元素的渲染方式，布局是横向布局row，子元素基于主轴依次排列，过我们改变了内容排列布局方式，我们的父盒子的主轴和侧轴会交互位置，但是我们基于主轴和侧轴的属性在渲染的时候，还是根据我们主轴和侧轴进行渲染，会根据主轴和侧轴的变化而变化-->
+
+
+<!--flex-flow: flex-direction flex-wrap|initial|inherit;-->
+<div class="flex-container">
+    <div class="flex-item">zhufengpeixun</div>
+    <div class="flex-item">flex item 2</div>
+    <div class="flex-item">flex item 3</div>
+    <div class="flex-item">flex item 4</div>
+</div>
+</body>
+</html>

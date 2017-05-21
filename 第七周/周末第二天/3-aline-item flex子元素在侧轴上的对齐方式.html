@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .flex-container {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items:  flex-start;
+            align-items:  flex-start;
+            width: 400px;
+            height: 250px;
+            background-color: lightgrey;
+        }
+
+        .flex-item {
+            background-color: cornflowerblue;
+            width: 100px;
+            height:50px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<!--在父盒子上设置子元素的侧轴对齐方式-->
+<!--align-items: flex-start | flex-end | center | baseline | stretch-->
+<!--
+    flex-start：弹性盒子元素的侧轴（纵轴）开始位置（默认最上边）紧靠住该行的侧轴起始边界。
+    flex-end：弹性盒子元素位于符合自的底边（纵轴底部对齐）
+    center：弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。
+    baseline：基于我们内容的对于基线对齐，应用于文字对齐，该基线对齐。
+    stretch：弹性盒子元素的侧轴（纵轴）开始位置（默认最上边）紧靠住该行的侧轴起始边界。
+-->
+<div class="flex-container">
+    <div class="flex-item">flex item 1</div>
+    <div class="flex-item">flex item 2</div>
+    <div class="flex-item">flex item 3</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+body {
+
+}
+// 支持注释 // /**/ 两种
+/*这种是背编译的*/
+// 这种是不被编译的
+
+// less中的变量 在less中声明变量关键字是@符号
+@num:122px;
+@bg:yellow;
+@hg:100px;
+
+
+// 混合嵌套写法
+.box {
+  width: @num;
+  background: @bg;
+  height: @hg;
+  .border;
+}
+.border {
+  border: 5px solid red;
+}
+.box2 {
+  .box;
+  margin-left: 200px;
+}
+
+
+// 参数混合写法
+.border2(@borWidth) {
+  border: @borWidth solid red;
+}
+.test {
+  .border2(30px);
+}
+// 带默认值的写法  不用担心变量名的冲突，不同的样式类的变量参数属于不同的类
+.border3(@borWidth:10px) {
+  border:@borWidth solid green;
+}
+// 混合带默认值
+.test3 {
+  .border3(); // 还可以想修改默认值
+}
+.test4 {
+  .border3(30px); // 还可以想修改默认值
+}
+// 混合例子
+.border-radius(@radius:5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.radiusTest{
+  width: 100px;
+  height: 100px;
+  background: red;
+  .border-radius();
+}
+// 匹配模式
+// 三角形
+.sanjiao {
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border-width: 10px;
+  border-color: red transparent transparent transparent;
+  border-style: solid;
+}
+.clean {
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+// 怎么写上下左右 ； 类似混合 判断模式
+.triangle(top,@w:5px,@c:green){
+  border-width: @w;
+  border-color:@c transparent transparent transparent ;
+  border-style: solid;
+}
+
+.triangle(right,@w:5px,@c:green){
+
+  border-width: @w;
+  border-color:transparent transparent transparent @c ;
+  border-style: solid;
+}
+.triangle(down,@w:5px,@c:green){
+
+  border-width: @w;
+  border-color:transparent transparent transparent @c ;
+  border-style: solid;
+}
+.triangle(left,@w:5px,@c:green){
+  border-width: @w;
+  border-color:transparent transparent transparent @c ;
+  border-style: solid;
+}
+//匹配的样式始终带有样式 @_ 作用就是匹配标记，后面必须一致
+.triangle(@_,@w:5px,@c:green){
+  .clean;
+}
+.newsanjiao {
+  .triangle(left)
+}
+// 匹配-例子-定位
+.pos(r) {
+  position: relative;
+}
+.pos(a){
+  position: absolute;
+}
+.pos(f){
+  position: absolute;
+}
+// LESS 运算
+@num01:300px;
+.number {
+  width:@num01 + 20;
+}
+

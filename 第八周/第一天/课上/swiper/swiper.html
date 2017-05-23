@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="../../../animate.min.css">
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+        }
+        .swiper-slide {
+            text-align: center;
+            line-height: 300px;
+            font-size: 24px;
+            color: red;
+            background: yellow;
+        }
+        .img {
+            width: 500px;
+            height: 300px;
+        }
+        a {
+            width: 100px;
+            height: 100px;
+            color: green;
+            display: inline-block;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" >毛爷爷111111</div>
+        <div class="swiper-slide">珠峰培训</div>
+        <div class="swiper-slide" data-hash="one">分页器3333333</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <!--分页样式-->
+    <div class="swiper-button-prev"></div>
+    <!--点击向前按钮-->
+    <div class="swiper-button-next"></div>
+    <!--点击向后按钮-->
+</div>
+
+</body>
+</html>
+<script src="../../../jquery-1.10.1.min.js"></script>
+<script src="../../../swiper.animate1.0.2.min.js"></script>
+<script src="../../../swiper.min.js"></script>
+<script src="swiper-3.4.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var mySwiper = new Swiper('.swiper-container', {
+            effect:'flip', /*控制我们的切换效果*/
+            loop: true,/*实现无缝*/
+//            autoplay: 1000, /*自动播放,每一次跳转的时间是1s*/
+            pagination : '.swiper-pagination',
+            paginationType : 'fraction',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev'
+//            centeredSlides:true,
+//            slidesPerView:3,
+//            hashnav: true,
+//            initialSlide:0
+//            onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+//                swiperAnimateCache(swiper); //隐藏动画元素
+//                swiperAnimate(swiper); //初始化完成开始动画
+//            },
+//            onSlideChangeEnd: function(swiper){
+//                swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+//            }
+            /*在需要scroolbar的时候再设置，没有内容溢出的时候谨慎使用*/
+//            scrollbar: '.swiper-scrollbar'
+        });
+    });
+
+
+//    $(document).ready(function () {
+//        var mySwiper= new swiper ()
+//    })
+</script>
+

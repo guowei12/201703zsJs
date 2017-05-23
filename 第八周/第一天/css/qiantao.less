@@ -1,0 +1,21 @@
+// 嵌套写法
+.list {
+  width: 600px;
+  height: 300px;
+  margin: 30px auto;
+  li {
+    color: red;
+  }
+  a {
+    width: 10px;
+    a{
+      width: 10px;
+      height: 10px;
+      background: red;
+      &:hover{ // &代表他的上一层选择器，也就是当前&所在的选择器;
+        color: red;
+      }
+    };
+  }
+}
+// 伪类

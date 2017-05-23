@@ -1,0 +1,6 @@
+1、  首先要安装 node
+2、  然后打开我们的命令窗口 输入 npm install -g less
+3、  利用我们的nodejs包管理工具 npm 在全局下安装 less
+C:\Users\Touch-X\node_modules\less\bin\lessc $FilePath$ $FileDir$\$FileNameWithoutExtension$.css
+
+安装我们的less编译工具

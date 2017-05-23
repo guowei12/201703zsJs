@@ -1,0 +1,12 @@
+#main .box p span a {
+    color:red;
+}
+#main .box p span {
+    color: yellow;
+}
+#main .box p {
+    color: aquamarine;
+}
+#main .box p span a:hover {
+    color: #ceccec;
+}

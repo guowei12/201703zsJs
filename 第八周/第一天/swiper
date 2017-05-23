@@ -1,0 +1,21 @@
+ 安装swiper
+1- 引入我们的swiper.min.css
+2- 因为我们的swiper 是基于jq开发的,所以我们在引入swiper.min.js的时候首先要引入我们的jq;
+3-需要动画的话,在引入我们swaiper.animate
+4-我们需要对swiper进行初始化
+5-在初始化的过程中,要注意我们用的是swiper的样式的;
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="bounceOutRight" swiper-animate-duration="0.5s">第一个</p></div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide" data-hash="slide3">Slide 3</div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+6-还有我们的swiper实例的初始化
+    我们swiper是基于js的面向对象思想开发的,通过创建构造函数实例的方式进行了,swiper插件的实例化,在实例化的过程中传参, 比如我们所需要的功能参数
+
+    1/在定义swiper动画的时候,我们要首先进行初始化我们的动画(从结构和js+css),这时候就需要我们animatejs和css一定要引入这两个脚本;
+    2/在我们定义动画的时候,还要指定我们动画的具体元素(class='ani');动画的绑定是在我们的元素标签的行内属性上进行定义的;

@@ -1,0 +1,23 @@
+#main {
+  color: red;
+}
+#main .box {
+  color: yellow;
+}
+#main .box p {
+  color: green;
+}
+#main .box p span {
+  color: skyblue;
+}
+#main .box p span a {
+  font-size: scale(10+10)px;
+  color: purple;
+}
+#main .box p span a:hover {
+  color: greenyellow;
+  filter: alpha(opacity=1);
+}
+#main .box p a {
+  color: skyblue;
+}

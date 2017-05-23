@@ -1,0 +1,23 @@
+#main {
+  color:red;
+  .box {
+    color: yellow;
+    p {
+      color: green;
+      span {
+        color: skyblue;
+        a {
+          font-size: ~'scale(10+10)px' ; //组织预编译~''
+          color: purple;
+          &:hover { // &匹配当前所在的标签
+            color: greenyellow;
+            filter: alpha(opacity=1);
+          }
+        }
+      };
+      a {
+        color: skyblue;
+      }
+    }
+  }
+}

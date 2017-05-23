@@ -1,0 +1,117 @@
+
+// 我是一段注释我是不会被预编译的，不会进行预编译。（这是新增的在less）
+
+/* 我也是一段注释，但是我经过了预编译的过程*/
+// 变量 我们可以通过关键词@符号创建我们的变量，方便在不同的地方调用相同的css值
+// 变量
+@w:50px;
+@h:100px;
+@c:red;
+@rem:100px;
+html {
+  font-size: 100px;
+}
+div {
+  color: black;
+  width: @w;
+  height: @h;
+  background: white;
+  border: 5px solid @c;
+}
+// 混合嵌套写法（函数写法）
+.clean {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.align{
+  text-align: center;
+  margin: 0 auto;
+}
+.border {
+  border: 5px solid yellow;
+}
+.box {
+  height: 100px;
+  width: 100px;
+  background: lightgreen;
+}
+.box2 {
+  .box;
+  .borderNew(10px);
+  .clean;
+  .align;
+}
+// 函数写法
+// 创建---- 样式名（@变量名：默认值）{}
+// 调用---- 样式名（[值]）没有的情况下添加的是默认值
+.borderNew(@w:100px){
+  border: @w solid blue;
+}
+.box3 {
+  .borderNew(20px);
+  .box;
+  .border-radius();
+}
+.that(@w:100px) { // 不同的样式类之间的变量互不影响
+  width: @w;
+  height: 100px;
+}
+.border-radius(@r:5px) { //我们的less函数样式在结构中不能直接调用，因为函数是在调用的时候才进行的预编译
+  -webkit-border-radius: @r;
+  -moz-border-radius: @r;
+  border-radius: @r;
+}
+.border-radius{
+  .border-radius();
+}
+.tS(@w:10px,@s:solid){
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-width: @w;
+  border-style: @s;
+  width: 0;
+  height: 0;
+}
+.Triangle(top,@w,@c) {
+  .tS(@w);
+  border-color: @c transparent transparent transparent;
+}
+.Triangle(bottom,@w,@c) {
+  .tS(@w);
+  border-color: transparent  transparent @c transparent;
+}
+.Triangle(right,@w,@c) {
+  .tS(@w);
+  border-color: transparent  @c transparent    transparent;
+}
+.Triangle(left,@w,@c) {
+  .tS(@w);
+  border-color: transparent  @c transparent  transparent;
+}
+.thatTriangle {
+  .Triangle(top,20px,blue)
+}
+.thatTriangB {
+  .Triangle(bottom,20px,red)
+}
+
+@num:12px;
+.font {
+  font-size: @num*.1/(1+3);
+}
+
+.yuan (@w,@h,@r:50%) {
+  width:@w;
+  height: @h;
+  background: red;
+  .borderNew;
+  border-radius: @r;
+}
+.border(@w:10px,@s:solid,@c:red) {
+  border: @arguments;
+}
+.HY{
+  .border
+}

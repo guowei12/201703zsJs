@@ -1,0 +1,8 @@
+.box {
+  border: 30px green solid;
+}
+.box2 {
+  height: 100px;
+  width: 100px;
+  border: 30px green solid;
+}

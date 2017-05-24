@@ -1,0 +1,52 @@
+/*** Iscroll ***/
+【iScroll v4.2.5】
+http://sandbox.runjs.cn/show/agvervd3
+http://www.jq22.com/demo/iscroll_V4.2.5201702062041/
+http://www.360doc.com/content/14/0724/11/16276861_396699901.shtml
+【参数设置】
+hScroll *	是否允许水平滚动	false 否 true 是	true
+vScroll *	是否允许垂直滚动	false 否 true 是	true
+bounce *	是否超过实际位置反弹	false 否 true 是	true
+bounceLock	当内容少于滚动是否可以反弹	false 否 true 是	false
+momentum *	是否开启拖动惯性	false 否 true 是	true
+lockDirection	当水平或垂直拖动时是否锁定另一边的拖动	false 否 true 是	true
+useTransform	是否使用CSS变形	false 否 true 是	true
+useTransition	是否使用CSS变换	false 否 true 是	false
+checkDOMChanges	是否自动检测内容变化	false 否 true 是	false
+topOffset	已经滚动的基准值(一般用在拖动刷新)	数字值	0
+x	滚动水平初始位置（负值）	数字值	0
+y	滚动垂直初始位置（负值）	数字值	0
+【Scrollbar 的相关参数】
+参数名	说明	可选值	默认值
+hScrollbar *	是否显示水平滚动条	false 否 true 是	true
+vScrollbar *	是否显示垂直滚动条	false 否 true 是	true
+fixedScrollbar	在iOS系统上，当元素拖动超出了scroller的边界时，滚动条会收缩，设置为true可以禁止滚动条超出scroller的可见区域。	false 否 true 是	默认在Android上为true， iOS上为false
+hideScrollbar	是否隐藏滚动条	false 否 true 是	默认在Android上为false， iOS上为true
+fadeScrollbar	滚动条是否渐隐渐显	false 否 true 是	默认在Android上为false， iOS上为true
+scrollbarClass *	字定义滚动条的样式名	自定义class	''
+【Zoom 放大相关的参数】
+zoom	是否放大	false 否 true 是	false
+zoomMin	放大的最小倍数	数字值	1
+zoomMax	放大的最大倍数	数字值	4
+doubleTapZoom	双击放大倍数	数字值	2
+wheelAction	鼠标滚动行为（还可以是zoom）	none 不支持 'scroll' 鼠标滚动 'zoom' 鼠标缩放	'scroll'
+【snap 捕捉元素相关的参数】
+snap	是否开启捕捉元素，snap值可以为true 或是 DOM元素的tagname，当为true 时，捕捉的元素会根据可滚动的位置和滚动区域计算得到可滑动几页。如果为tagname,则滑动会对齐到捕捉的元素上。	false 否 true 是< DOM元素的tagname	false
+snapThreshold	滑动的长度限制，只有大于这个距离才会触发捕捉元素事件	数字值	1
+【自定义 Events 的相关参数】
+onBeforeScrollStart	开始滚动前的事件回调
+默认是阻止浏览器默认行为	null 不设置
+Function 自定义函数	function (e) { e.preventDefault(); }
+onRefresh	refresh 的回调	null
+onScrollStart	开始滚动的回调
+onBeforeScrollMove	在内容移动前的回调
+onScrollMove	内容移动的回调
+onBeforeScrollEnd	在滚动结束前的回调
+onScrollEnd	在滚动完成后的回调
+onTouchEnd	手离开屏幕后的回调
+onDestroy	销毁实例的回调
+onZoomStart	放大开始时的回调
+onZoom	放大的回调
+onZoomEnd	放大结束后的回调
+
+-------------------------------------------------------------------

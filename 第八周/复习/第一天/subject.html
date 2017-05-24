@@ -10,25 +10,23 @@
             margin: 0;
             padding: 0;
         }
-
         .swiper-container {
-            width: 1200px;
+            width: 680px;
             height: 300px;
         }
-
         .swiper-slide {
+            background: yellow;
             line-height: 300px;
             color: #fff;
             font-size: 36px;
             text-align: center;
-            background: red;
         }
     </style>
 </head>
 <body>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><p class="ani" swiper-animate-effect="bounceOutRight" swiper-animate-duration="0.5s">第一个</p></div>
+        <div class="swiper-slide"><p class="ani" swiper-animate-effect="bounceOutRight" swiper-animate-duration="0.5s" swiper-animate-delay ='0.1s'>第一个</p></div>
         <div class="swiper-slide">Slide 2</div>
         <div class="swiper-slide" data-hash="slide3">Slide 3</div>
     </div>
@@ -36,10 +34,7 @@
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
 </div>
-<div>
-    <a href="http://localhost:63342/%E4%B8%89%E6%9C%9F%E6%AD%A3%E5%BC%8F%E8%AF%BE/%E7%AC%AC%E5%85%AB%E5%91%A8/%E7%AC%AC%E4%B8%80%E5%A4%A9/subject.html#slide3"
-       target="_blank"> 第三张</a>
-</div>
+
 </body>
 </html>
 <script src="../swiper.animate1.0.2.min.js"></script>
@@ -51,6 +46,7 @@
             loop: true,/*实现无缝*/
             autoplay: 1000,
             pagination: '.swiper-pagination',
+            paginationType: 'progress',
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             hashnav: true,

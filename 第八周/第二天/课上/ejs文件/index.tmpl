@@ -1,0 +1,8 @@
+    <div>
+    <%$.each(res,function (i,item) {%>
+        <p>
+            <img src=<%=item.url%> alt=<%=item.name%>>
+            <span class=<%=item.className%>><%=item.price%>元</span>
+        </p>
+    <%})%>
+    </div>

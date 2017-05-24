@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="./css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="../../animate.min.css">
+    <style>
+        html {
+            font-size: 100px;
+        }
+        .swiper-container {
+            width: 320px;
+            height: 300px;
+        }
+        .swiper-slide {
+            width: 320px;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            font-size: 36px;
+            background: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<!--
+引入我们的swiper
+1、引入css样式
+2、引入js库
+3、写结构的时候，根据css样式库进行类名添加定义
+4、因为swiper是利用面向对象思想进行构建的,我们实例化结构以后还有实例化我们的js对象  ，我们在用他的时候必须实例化new
+5、在实例化过程中，根据我们实例对象的属性和值把我们对应的功能加上
+
+6、别直接引用$('span') 来修改我们样式，首先从代码上不规范，再一个会导致全局的span发生变化
+7、在调用我们的swiper动画的同时 不要重复添加我们animate动画
+-->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><a href="">123123</a><span>1231123123阿萨德</span></div>
+        <div class="swiper-slide"><span>Slide 2</span></div>
+        <div class="swiper-slide"><span>Slide 3</span></div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+</div>
+</body>
+</html>
+<script src="js/jquery-1.10.1.min.js"></script>
+<script src="js/swiper-3.4.2.min.js"></script>
+<script src="../../swiper.animate1.0.2.min.js"></script>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+                direction:'vertical',
+                pagination:'.swiper-pagination',
+                paginationType:'fraction'
+//        direction:'vertical'
+            })
+</script>
+<!--<script>-->
+    <!--var mySwiper = new Swiper ('.swiper-container', {-->
+        <!--direction : 'vertical',-->
+        <!--loop: true,-->
+        <!--// 如果需要分页器-->
+        <!--pagination: '.swiper-pagination',-->
+        <!--// 如果需要前进后退按钮-->
+        <!--nextButton: '.swiper-button-next',-->
+        <!--prevButton: '.swiper-button-prev',-->
+<!--//        onInit:function (swiper) {-->
+<!--//            swiperAnimate(swiper);-->
+<!--//        },-->
+<!--//        onTouchStart:function (swiper,event) {-->
+<!--//            alert('点下了！')-->
+<!--//        },-->
+        <!--onTouchEnd:function (swiper,event) {-->
+            <!--// 加我们animate动画-->
+            <!--// 1 引入我们animate动画库-->
+            <!--// 2 给我们指定的元素加我们指定动画的类名-->
+<!--//            alert('弹起')-->
+            <!--// $('span').removeClass().addClass('flash animated');-->
+        <!--},-->
+        <!--onTouchMove:function (swiper,event) {-->
+<!--//            console.log(event.toElement.className);-->
+        <!--},-->
+<!--//        onInit:function (swiper) {-->
+<!--//            alert('实例化了！')-->
+<!--//        },-->
+        <!--onSlideChangeEnd: function(swiper){-->
+<!--//            if(swiper.activeIndex === 1) {-->
+<!--//-->
+<!--//            }-->
+            <!--$('span').removeClass().addClass('flash' + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){-->
+                <!--$(this).removeClass();-->
+            <!--});-->
+        <!--}-->
+    <!--})-->
+
+<!--</script>-->

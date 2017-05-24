@@ -49,8 +49,8 @@
   overflow: hidden;
 }
 .newsanjiao {
-  border-width: 100px;
-  border-color: transparent transparent transparent yellow;
+  border-width: 5px;
+  border-color: transparent transparent transparent green;
   border-style: solid;
   width: 0;
   height: 0;

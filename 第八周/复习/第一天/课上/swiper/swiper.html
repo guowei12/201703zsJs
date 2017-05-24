@@ -6,7 +6,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="swiper-3.4.2.min.css">
-    <link rel="stylesheet" href="../../../animate.min.css">
+    <link rel="stylesheet" href="../../资料/animate.min.css">
+    <link rel="stylesheet" href="./animate.css">
     <style>
         * {
             margin:0;
@@ -36,9 +37,9 @@
 <body>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" >毛爷爷111111</div>
-        <div class="swiper-slide">珠峰培训</div>
-        <div class="swiper-slide" data-hash="one">分页器3333333</div>
+        <div class="swiper-slide" ><span>毛爷爷</span></div>
+        <div class="swiper-slide"><span>珠峰培训</span></div>
+        <div class="swiper-slide" data-hash="one"><span>分页器材</span></div>
     </div>
     <div class="swiper-pagination"></div>
     <!--分页样式-->
@@ -50,9 +51,9 @@
 
 </body>
 </html>
-<script src="../../../jquery-1.10.1.min.js"></script>
-<script src="../../../swiper.animate1.0.2.min.js"></script>
-<script src="../../../swiper.min.js"></script>
+<script src="../../资料/jquery-1.10.1.min.js"></script>
+<script src="../../资料/swiper.animate1.0.2.min.js"></script>
+<script src="../../资料/swiper.min.js"></script>
 <script src="swiper-3.4.2.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -63,7 +64,13 @@
             pagination : '.swiper-pagination',
             paginationType : 'fraction',
             nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev'
+            prevButton: '.swiper-button-prev',
+            onSlideChangeStart:function(){
+                $('span').addClass('bounceIn');
+                alert(1)
+            }
+
+
 //            centeredSlides:true,
 //            slidesPerView:3,
 //            hashnav: true,

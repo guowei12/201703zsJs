@@ -9,6 +9,8 @@ body {
 @num:122px;
 @bg:yellow;
 @hg:100px;
+
+
 // 混合嵌套写法
 .box {
   width: @num;
@@ -23,6 +25,8 @@ body {
   .box;
   margin-left: 200px;
 }
+
+
 // 参数混合写法
 .border2(@borWidth) {
   border: @borWidth solid red;
@@ -73,7 +77,6 @@ body {
 }
 // 怎么写上下左右 ； 类似混合 判断模式
 .triangle(top,@w:5px,@c:green){
-
   border-width: @w;
   border-color:@c transparent transparent transparent ;
   border-style: solid;
@@ -92,7 +95,6 @@ body {
   border-style: solid;
 }
 .triangle(left,@w:5px,@c:green){
-
   border-width: @w;
   border-color:transparent transparent transparent @c ;
   border-style: solid;
@@ -102,7 +104,7 @@ body {
   .clean;
 }
 .newsanjiao {
-  .triangle(left,100px,yellow)
+  .triangle(left)
 }
 // 匹配-例子-定位
 .pos(r) {

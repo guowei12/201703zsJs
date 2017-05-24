@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            font-size: 100px;
+        }
+
+        html, body {
+            height: 568px;
+        }
+        #wrapper {
+          height: auto;
+        }
+
+        ul,li {
+            list-style: none;
+            font-size: 24px;
+            color: white;
+        }
+        ul li {
+            width: 100%;
+            line-height: 30px;
+            height: 30px;
+            text-align: center;
+        }
+        ul li:nth-of-type(odd) {
+            background: yellowgreen;
+        }
+        ul li:nth-of-type(even) {
+            background: lightgreen;
+        }
+        .big {
+            width: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section id="wrapper">
+            <ul id="contain">
+                <li class="item">1</li>
+                <li class="item">2</li>
+                <li class="item">3</li>
+                <li class="item">4</li>
+                <li class="item">5</li>
+                <li class="item">6</li>
+                <li class="item">7</li>
+                <li class="item">8</li>
+                <li class="item">9</li>
+                <li class="item">10</li>
+                <li class="item">11</li>
+                <li class="item">12</li>
+                <li class="item">13</li>
+                <li class="item">14</li>
+                <li class="item">15</li>
+                <li class="item">16</li>
+                <li class="item">17</li>
+                <li class="item">18</li>
+                <li class="item">19</li>
+                <li class="item">20</li>
+                <li class="item">20</li>
+                <li class="item">20</li>
+                <li class="item">20</li>
+                <li class="item">20</li>
+            </ul>
+    </section>
+</body>
+</html>
+<script src="iscroll.js"></script>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+
+    var  myScroll = new iScroll('wrapper',{
+//         必须规定指定方向的scroll功能如vScroll：true；指定方向的滚动
+        // 完善功能我们需要在我们的实例化对象的属性上完成
+        vScroll: true,
+        vScrollBar:true,
+        fadeScrollBar:true, /*给我们的滚动条添加渐隐渐现的效果*/
+        onScrollMove:function () {
+            $.ajax({
+                type:'get',
+                url:'./data.json',
+                dataType:'JSON',
+                async:false,
+                success:function (data) {
+                    $.each(data,function (i,item) {
+                            $('#contain').append('<li>'+item.name+'</li>');
+                    })
+                }
+            })
+        }
+    });
+</script>

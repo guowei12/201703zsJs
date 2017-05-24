@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li:nth-of-type(odd) {
+            background: #f17f49;
+        }
+
+        li:nth-of-type(even){
+            background: #008000;
+        }
+
+        /*header*/
+        header {
+            height: 1rem;
+            line-height: 1rem;
+            background: -webkit-linear-gradient(#00cc99, #0069d6, #0000cc);
+        }
+
+        header span {
+            float: left;
+            width: 25%;
+            text-align: center;
+            font-size: .36rem;
+        }
+
+        /*main*/
+        .main {
+            position: relative;
+        }
+
+        .main ul li {
+            height: .8rem;
+            line-height: .8rem;
+            list-style: none;
+        }
+
+        .main span {
+            float: left;
+            width: 25%;
+            text-align: center;
+            font-size: .28rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <span>编号</span>
+    <span>姓名</span>
+    <span>性别</span>
+    <span>分数</span>
+</header>
+<section id="wrapper" class="main">
+
+
+</section>
+
+</body>
+</html>
+<script src="../../../tools/node_modules/ejs/ejs.js"></script>
+<script src="./jquery-1.10.1.min.js"></script>
+<script src="./iscroll.js"></script>
+<script type="text/template" id="content">
+    <ul> <!--  <%%>        -->
+        <%  $.each(data,function(i,item){  %>
+        <li>
+            <span><%=item.id%></span>
+            <span><%=item.name%></span>
+            <span><%=item.sex%></span>
+            <span><%=item.score%></span>
+        </li>
+        <%  })  %>
+    </ul>
+</script>
+<script>
+    /*模板引擎*/
+    function refreshRem() {
+        var desW = 640;
+        win = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = win * 100 / 640 + 'px'
+    }
+    refreshRem();
+    window.addEventListener('resize', function () {
+        refreshRem();
+    });
+    $.ajax({
+        url: './data.json',
+        type: 'get',
+        async: false,
+        dataType: 'json',
+        success: function (data) {
+            var thatHtml = $('#content').html();
+            var result = ejs.render(thatHtml, {data: data});
+            $('.main').html(result)
+        }
+    });
+
+
+    var myScroll = new iScroll('wrapper', {
+        vScrollbar: false,
+        //是否显示垂直方向的滚动条  false 隐藏  true 显示
+        fadeScrollbar: true,
+        // 设置滚动条的渐隐渐现功能
+        topOffset: 50,/*属性设置iScroll已经滚动的基准值；*/
+        onScrollMove: function(){
+            if (this.y<(this.maxScrollY)) {
+                $.ajax({
+                    url: './data.json',
+                    type: 'get',
+                    async: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        var thatHtml = $('#content').html();
+                        var result = ejs.render(thatHtml, {data: data});
+                        $('.main').append(result)
+                    }
+                });
+            }
+        },/*判断当前滚动是到顶端还是底端；*/
+//        onScrollEnd: function(){},/* 触发加载新数据，再通过 refresh 方法重新渲染界面*/
+//        onRefresh: function(){},/*调整刷新后的界面结构*/
+        /*onTouchEnd:function () {
+            $.ajax({
+                url: './data.json',
+                type: 'get',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    var thatHtml = $('#content').html();
+                    var result = ejs.render(thatHtml, {data: data});
+                    $('.main').append(result)
+                }
+            });
+        }*/
+    })
+
+
+</script>

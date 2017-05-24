@@ -1,0 +1,26 @@
+[
+  {
+    "url":"./xiaomi/one.jpg",
+    "name":"耳机",
+    "price": "12RMB",
+    "className":"one"
+  },
+  {
+    "url":"./xiaomi/two.jpg",
+    "name":"耳机",
+    "price": "22RMB",
+    "className":"two"
+  },
+  {
+    "url":"./xiaomi/three.jpg",
+    "name":"耳机",
+    "price": "32RMB",
+    "className":"three"
+  },
+  {
+    "url":"./xiaomi/four.jpg",
+    "name":"耳机",
+    "price": "52RMB",
+    "className":"four"
+  }
+]

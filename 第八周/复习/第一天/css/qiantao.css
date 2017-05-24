@@ -1,0 +1,19 @@
+.list {
+  width: 600px;
+  height: 300px;
+  margin: 30px auto;
+}
+.list li {
+  color: red;
+}
+.list a {
+  width: 10px;
+}
+.list a a {
+  width: 10px;
+  height: 10px;
+  background: red;
+}
+.list a a:hover {
+  color: red;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #one {
+            width: 1000px;
+            height: 150px;
+        }
+
+        #one div img {
+            width: 150px;
+            height: 150px;
+            margin: 0px 10px;
+        }
+
+        #one div p {
+            float: left;
+            border: 1px solid #cecece;
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            text-align: center;
+
+        }
+
+        #one div p span {
+            display: block;
+        }
+
+        #one div p:hover {
+            transform: translate(-5px, -6px);
+            transition: all 0.1s;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="one">
+
+</div>
+</body>
+</html>
+
+
+<!--1、引入我们的模板引擎--><!--模板引擎的原理就是提前生成我们想要的字符串格式的结构，而且是嵌套了我们的数据-->
+<script src="../ejs.min.js"></script>
+<script src="./jquery-1.10.1.min.js"></script>
+
+<script>
+    /*ejs模板引擎，ejs模板引擎是我们的前后端通用一个模板引擎，可以在nodejs中引用也可以在纯前端中引用*/
+    /*我们业界熟悉的模板引擎smarty（php后台） jsp（java） template（处理json交互---BaiduTemplate模板引擎）*/
+
+</script>
+<!--3、创建我们的ejs模板 type = "text/template"-->
+<script type="text/template" id="oneTemp">
+    <!--写我们的ejs语法，他可以用jq 也可以原生js语法-->
+    <div>
+        <%$.each(res,function (i,item) {%>
+        <p>
+            <img src=<%=item.url%> alt=<%=item.name%>>
+            <span class=<%=item.className%>><%=item.price%>元</span>
+        </p>
+        <%})%>
+    </div>
+</script>
+<script>
+    var obj = [
+        {url: "./xiaomi/four.jpg", price: '122RMB', name: '耳机'},
+        {url: "./xiaomi/four.jpg", price: '122RMB', name: '耳机'},
+        {url: "./xiaomi/four.jpg", price: '122RMB', name: '耳机'},
+        {url: "./xiaomi/four.jpg", price: '122RMB', name: '耳机'}
+    ];
+    var res = $('#oneTemp').html();
+    var result = ejs.render(res,{res:obj});
+    $('#one').html(result);
+
+
+
+//    $.ajax({
+//        url: './erji.json',
+//        type: 'get',
+//        dataType: 'JSON',
+//        async: false,
+//        success: function (data) {
+//            // SUCCESS中的data是为接收后台返回的数据而设置的形参，请求成功后返回来的数据，都会作为实参赋给我们的data这个形参
+//
+//
+//            // 通过查找我们的模板然后获取他的html结构来获取我们模板字符串
+//            var res = $('#oneTemp').html(); // ejs模板字符串
+//
+//
+//            // 调用ejs的render函数，跟我们创建ejs模板和我们ajax请求的数据，形成映射关系，做数据的嵌套处理，处理完的就是嵌套好数据的字符串（结构）
+//            var result = ejs.render(res, {res: data});// 1-模板字符串
+//            //2-我们模板中需要的数据
+//            // 把我们ejs处理的结果，加到我们的页面中
+//            $('#one').html(result);
+//        }
+//    });
+
+
+</script>
